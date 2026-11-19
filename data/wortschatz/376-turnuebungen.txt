@@ -1,0 +1,24 @@
+# Turnübungen
+> Radschlag, Hampelmann und Bärengang
+Radschlag = cartwheel move
+Hampelmann = jumping jack
+Liegestütz = press-up
+Kniebeuge = knee bend
+Hocksprung = squat jump
+Strecksprung = straight jump
+Froschsprung = frog jump
+Bärengang = bear walk
+Krebsgang = crab walk
+Entengang = duck walk
+Storchengang = stork walk
+Zehenspitzen = tiptoes
+Hopserlauf = skipping run
+Seitgalopp = side gallop
+Rückwärtslauf = running backwards
+Schlusssprung = two-footed jump
+Einbeinstand = standing on one leg
+Schulterstand = shoulder stand
+Armkreisen = arm circles
+Hüpfseil = skipping rope
+Bewegungsbaustelle = movement play area
+Bewegungslied = action song

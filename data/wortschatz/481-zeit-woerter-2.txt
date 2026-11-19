@@ -1,0 +1,31 @@
+# Zeitwörter
+> Zeiger, Pläne und Pausen
+Jahreszahl = year number
+Uhrzeiger = clock pointer
+Stundenzeiger = hour hand
+Minutenzeiger = minute hand
+Sekundenzeiger = second hand
+Kalenderwoche = calendar week
+Monatsanfang = beginning of the month
+Jahresende = end of the year
+Schaltjahr = leap year
+Wochenmitte = midweek
+Tagesplan = daily plan
+Zeitplan = schedule
+Wartezeit = waiting time
+Schlafenszeit = bedtime
+Essenszeit = mealtime
+Spielzeit = playing time
+Pausenzeit = break time
+Ferienzeit = holiday time
+Sommerzeit = summertime
+Winterzeit = wintertime
+Halbjahr = half-year
+Vierteljahr = quarter of a year
+Jahrestag = anniversary
+Wochenmarkttag = market day
+Lieblingstag = favourite day
+Wochenplaner = weekly planner
+Geburtstagskalender = birthday calendar
+Countdownkalender = countdown calendar
+Uhrmacherwerkstatt = watchmaker's workshop

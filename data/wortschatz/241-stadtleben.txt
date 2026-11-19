@@ -1,0 +1,32 @@
+# Leben in der Stadt
+> Busse, Plakate und Straßenmusik
+Stadtbus = city bus
+Stadtfest = town festival
+Stadtbücherei = public library
+Stadtrundfahrt = city tour
+Stadtviertel = quarter
+Stadtrand = outskirts
+Stadtzentrum = city centre
+Stadtwald = town forest
+Stadtbad = public baths
+Hafenstadt = port city
+Kirchturmspitze = church spire
+Ampelkreuzung = traffic-light junction
+Straßenkünstler = street artist
+Straßenmusiker = street musician
+Straßenfeger = road sweeper
+Straßenbahnfahrer = tram driver
+Taxistand = taxi rank
+Fahrradverleih = bike hire
+Trinkbrunnen = drinking fountain
+Bücherschrank = public bookcase
+Litfaßsäule = advertising pillar
+Plakat = placard
+Werbung = advertising
+Schaufensterpuppe = mannequin
+Postfach = post-office box
+Stadtpark = city park
+Großstadtdschungel = urban jungle
+Häuserblock = block of houses
+Hausdach = house roof
+Mietshaus = tenement

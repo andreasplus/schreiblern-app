@@ -1,0 +1,27 @@
+# Wäschetag und Hausputz
+> Wörter für die Arbeit im Haushalt
+Abwasch = washing-up
+Hausputz = house cleaning
+Wäscheberg = pile of laundry
+Bügelwäsche = ironing
+Schmutzwäsche = dirty laundry
+Buntwäsche = coloured wash
+Wäschetrockner = tumble dryer
+Putzplan = cleaning rota
+Einkaufstag = shopping day
+Waschtag = washing day
+Putztag = cleaning day
+Müllabfuhr = rubbish collection
+Mülltag = bin day
+Sperrmüll = bulky waste
+Altkleider = old clothes
+Kleidersack = clothes bag
+Spendenbox = donation box
+Flohmarkt = flea market
+Staubwolke = cloud of dust
+Wollmaus = dust bunny
+Spinnwebe = cobweb strand
+Fensterleder = chamois leather
+Glasreiniger = glass cleaner
+Schmierseife = soft soap
+Allzweckreiniger = all-purpose cleaner

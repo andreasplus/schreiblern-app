@@ -1,0 +1,32 @@
+# Verpackungen im Einkaufskorb
+> Tüten, Becher, Dosen und Flaschen
+Milchtüte = milk carton
+Saftflasche = juice bottle
+Joghurtbecher = yoghurt pot
+Quarkbecher = quark tub
+Butterpackung = packet of butter
+Eierpackung = egg carton
+Nudelpackung = packet of pasta
+Müslipackung = cereal box
+Chipstüte = bag of crisps
+Bonbontüte = bag of sweets
+Tiefkühlpizza = frozen pizza
+Konservendose = tin can
+Getränkedose = drinks can
+Pfandbon = deposit receipt
+Mehltüte = bag of flour
+Zuckertüte = bag of sugar
+Keksschachtel = biscuit box
+Pralinenschachtel = box of chocolates
+Teepackung = packet of tea
+Kaffeedose = coffee tin
+Honigglas = honey jar
+Senftube = tube of mustard
+Ketchupflasche = ketchup bottle
+Wasserkiste = crate of water
+Saftkarton = juice carton
+Eisverpackung = ice cream packaging
+Brötchentüte = bread bag
+Obstnetz = fruit net
+Gemüsekiste = vegetable box
+Einkaufsnetz = string bag

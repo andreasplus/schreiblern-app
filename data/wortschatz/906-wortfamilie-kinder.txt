@@ -1,0 +1,32 @@
+# Wortfamilie Kind
+> Zusammengesetzte Wörter mit Kind und Kinder
+Kind = child
+Kinder = children
+Kinderarzt = paediatrician
+Kinderbett = cot
+Kinderbuch = children's book
+Kindergarten = kindergarten
+Kindergeburtstag = children's birthday party
+Kinderhand = child's hand
+Kinderküche = play kitchen
+Kinderlied = nursery rhyme
+Kindersitz = child seat
+Kinderspiel = children's game
+Kinderstuhl = high chair
+Kinderteller = children's meal
+Kindertag = Children's Day
+Kinderwagen = pram
+Kinderzimmer = children's room
+Kinderfahrrad = children's bike
+Kinderfilm = children's film
+Kinderpunsch = children's punch
+Kinderkarte = children's menu
+Kindheit = childhood
+Kleinkind = toddler
+Schulkind = schoolchild
+Einzelkind = only child
+Enkelkind = grandchild
+Patenkind = godchild
+Geburtstagskind = birthday child
+Christkind = Christ Child
+kindlich = childlike

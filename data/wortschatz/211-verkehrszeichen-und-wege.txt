@@ -1,0 +1,40 @@
+# Verkehrszeichen und Wege
+> Schilder lesen und sicher ankommen
+Verkehrszeichen = traffic sign
+Vorfahrtsschild = right-of-way sign
+Einbahnstraße = one-way street
+Halteverbot = no stopping
+Parkverbot = no parking
+Tempolimit = speed limit
+Spielstraßenschild = play street sign
+Radwegschild = cycle path sign
+Fußgängerüberweg = pedestrian crossing
+Gehwegkante = edge of the pavement
+Mittelstreifen = central reservation
+Leitplanke = crash barrier
+Verkehrsinsel = traffic island
+Ampelmännchen = traffic light man
+Druckknopfampel = push-button light
+Schulweghelfer = school crossing helper
+Blitzer = speed camera
+Tunnelausfahrt = tunnel exit
+Autobahnauffahrt = motorway slip road
+Rastplatz = lay-by
+Parkuhr = parking meter
+Parkschein = parking ticket
+Strafzettel = fine ticket
+Abschleppdienst = towing service
+Straßenbahnhaltestelle = tram stop
+Straßenschild = street sign
+Hinweisschild = information sign
+Warnschild = warning sign
+Gefahrenzeichen = danger sign
+Umleitung = diversion
+Sackgassenschild = dead-end sign
+Fahrradstraße = cycle street
+Feldweg = field path
+Schotterweg = gravel path
+Trampelpfad = beaten track
+
+Weggabelung = fork in the road
+Wegkreuzung = path junction
