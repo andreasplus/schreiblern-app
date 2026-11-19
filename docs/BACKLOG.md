@@ -232,6 +232,52 @@ Vor Umsetzung prüfen:
 - Wie werden Schriften, Bilder, Seitenumbrüche und große Listen zuverlässig verarbeitet?
 - Ein serverseitiger Renderer darf keine frei eingegebenen URLs oder beliebiges HTML laden.
 
+## Neu aufgenommen am 19. November 2026
+
+Diese drei Punkte kamen nach Abschluss von P0 dazu. Sie sind erfasst, aber noch nicht umgesetzt. Die Einordnung ist ein Vorschlag.
+
+### APP-16: Eigene Schrift importieren (P1, vor APP-08)
+
+Hintergrund: Online verfügbare Schriften sind für Kinder schlecht nachzuschreiben. Eine eigene, kindgerechte Schreibschrift oder Druckschrift soll ABeeZee ersetzen oder ergänzen.
+
+Einordnung: Zu Beginn von P1, vor neuen Wörtern und vor dem 1.000-Wörter-Bestand. Die Schrift bestimmt Schriftgröße, Verkleinerung langer Wörter und die Lage in der Lineatur. Ein späterer Wechsel würde alle Druckseiten erneut abnahmepflichtig machen.
+
+Abnahme:
+- Die Schriftdatei liegt als TTF, OTF oder WOFF2 vor. Lizenz und Erlaubnis zur Einbettung im Web sind dokumentiert. Bei einem öffentlichen Repository auch die Erlaubnis zur Weitergabe.
+- Die Schrift wird lokal ausgeliefert, nicht über einen externen Schriftdienst.
+- Die Schriftbreiten werden aus der Datei erzeugt (`npm run fonts:metrics`), damit lange Wörter weiter proportional verkleinert werden.
+- Die x-Höhe füllt wie bisher genau einen Lineaturbereich von 40/3 pt. Ober- und Unterlängen treffen die obere und untere Linie. Die Lineatur selbst bleibt unverändert.
+- Umlaute, ß, Ziffern 0 bis 9 und alle Buchstaben der Seed-Daten sind enthalten. Fehlende Zeichen werden beim Erzeugen der Breiten gemeldet.
+- Alle Referenzseiten (Auto, blau, Banane, Blitz, eins, zehn) werden mit der neuen Schrift neu gerendert und von Andreas freigegeben. Danach ersetzen sie die bisherigen Referenzen.
+- Offen: Ersetzt die eigene Schrift ABeeZee vollständig, oder können Nutzer zwischen Schriften wählen? Eine Auswahl wirkt sich auf Vorlage, Vorschau und gespeicherte Listen aus.
+
+### APP-17: Druck-Sets (P1, mit APP-12)
+
+Hintergrund: Vorbereitete Sets wie „Kurze Wörter“, „Tiere“ oder „Zahlen“ sollen mit einem Klick gedruckt werden können.
+
+Einordnung: P1 zusammen mit den Wortlisten (APP-12). Technisch ist ein Set eine vom Betreiber gepflegte, öffentliche Liste. P0 enthält bereits zwei feste Sammlungen („Erste Wörter“ und „Zahlen 1 bis 10“), auf denen das aufbaut.
+
+Abnahme:
+- Sets haben Namen, Beschreibung, feste Reihenfolge und verweisen auf Bedeutungen, nicht auf Suchwörter.
+- Eine Bedeutung kann in mehreren Sets vorkommen, etwa „Kuh“ in „Tiere“ und „Kurze Wörter“.
+- Erste Sets: Kurze Wörter, Tiere, Zahlen. Kriterium für „kurz“ festlegen, Vorschlag höchstens vier Buchstaben.
+- Ein Set druckt genau eine A4-Seite je Eintrag. Nutzer können ein Set in die Druckauswahl oder eine eigene Liste übernehmen und dort anpassen.
+- Sets werden über Seed-Dateien oder die Betreiberprüfung gepflegt, nicht von anonymen Nutzern.
+- Beim Import der 1.000 Wörter (APP-13) erhalten Einträge Themen, damit Sets automatisch wachsen können.
+
+### APP-18: Kurze einfache Sätze üben (P2)
+
+Hintergrund: Nach einzelnen Wörtern sollen Kinder kurze, einfache Sätze nachspuren und schreiben, etwa „Der Hund ist braun.“
+
+Einordnung: P2, nach APP-16 (die Schrift bestimmt die Satzbreite) und nach dem Wortbestand. Es ist ein neuer Seitentyp mit eigenem Layout, das wie das Wortblatt freigegeben werden muss.
+
+Abnahme:
+- Ein neues Arbeitsblattlayout für Sätze wird entworfen und freigegeben, vor der Umsetzung als Muster-PDF. Zu klären: eine Spalte über die volle Breite oder weiter Deutsch und Englisch nebeneinander, Zahl der Nachspur- und freien Zeilen, Bild ja oder nein.
+- Sätze werden nicht abgeschnitten. Lange Sätze werden in der Länge begrenzt (Vorschlag: höchstens etwa 25 Zeichen) oder auf zwei Zeilen umbrochen, nicht beliebig verkleinert.
+- Sätze bestehen aus vorhandenen, geprüften Wörtern. Die Übersetzung wird geprüft, nicht ungeprüft automatisch erzeugt.
+- Satzzeichen und Großschreibung am Satzanfang bleiben erhalten.
+- Ob Nutzer eigene Sätze eingeben dürfen, ist offen. Wenn ja, gelten dieselben Kontingente und Prüfregeln wie für neue Wörter (APP-08 bis APP-11).
+
 ## Datenmodell als Ausgangspunkt
 
 | Entität | Wesentliche Felder |
@@ -257,15 +303,21 @@ Die konkrete Transaktionsstrategie für D1 muss Claude anhand der aktuellen Plat
 5. Quelle und Definition der 1.000 häufigsten Wörter.
 6. Prüfverfahren für neue öffentliche Einträge und Betreiberzugang.
 7. Aufbewahrungsdauer privater Listen und optionale Freigabelinks.
+8. Eigene Schrift: Datei, Lizenz und ob sie ABeeZee ersetzt oder zur Auswahl steht (APP-16).
+9. Erste Druck-Sets und die Definition von „kurzes Wort“ (APP-17).
+10. Layout der Satzseite und ob Nutzer eigene Sätze eingeben dürfen (APP-18).
 
 ## Empfohlene Reihenfolge
 
 1. Druckvorlage und vorhandene Daten lokal funktionsfähig machen.
-2. Suche, Bedeutungswahl und Wortlisten ergänzen.
-3. Browserkennung, atomare Kontingente und Statusanzeige umsetzen.
-4. Externe Übersetzung und neue Einträge kontrolliert aktivieren.
-5. Qualitätssicherung und Betreiberprüfung ergänzen.
-6. Den vorbereiteten Bestand auf 1.000 Wörter erweitern.
+2. Suche und Bedeutungswahl ergänzen (mit 1. als P0 erledigt).
+3. Eigene Schrift einbauen und Referenzseiten neu freigeben (APP-16).
+4. Wortlisten und Druck-Sets ergänzen (APP-12, APP-17).
+5. Browserkennung, atomare Kontingente und Statusanzeige umsetzen.
+6. Externe Übersetzung und neue Einträge kontrolliert aktivieren.
+7. Qualitätssicherung und Betreiberprüfung ergänzen.
+8. Den vorbereiteten Bestand auf 1.000 Wörter erweitern.
+9. Satzseiten ergänzen (APP-18).
 
 ## Abnahmeszenarien
 

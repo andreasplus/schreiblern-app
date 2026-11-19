@@ -22,4 +22,5 @@
 4. APP-12 Private Wortlisten.
 5. APP-13 Die 1.000 häufigsten Wörter (Quelle, Nutzungsrecht und Prüfung offen).
 6. APP-14 Qualität, Sicherheit, Betrieb. APP-15 optionaler PDF-Download.
-7. Aus „Noch festzulegen“: Name und Domain, Höhe der Kontingente, Prüfverfahren für neue öffentliche Einträge, Aufbewahrung privater Listen.
+7. APP-16 Eigene Schrift (P1, vor neuen Wörtern), APP-17 Druck-Sets (P1, mit Wortlisten), APP-18 kurze Sätze (P2). Details in BACKLOG.md.
+8. Aus „Noch festzulegen“: Name und Domain, Höhe der Kontingente, Prüfverfahren für neue öffentliche Einträge, Aufbewahrung privater Listen.
