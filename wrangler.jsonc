@@ -4,7 +4,11 @@
   "main": "src/worker/index.ts",
   "compatibility_date": "2026-11-01",
   "compatibility_flags": ["nodejs_compat"],
+  // Damit auch ein reines `wrangler deploy` (z. B. Cloudflare Workers Builds ohne eigenen
+  // Build-Befehl) zuerst Frontend und Worker baut.
+  "build": { "command": "npm run build" },
   "assets": {
+    "directory": "./dist/client",
     "not_found_handling": "single-page-application",
     "run_worker_first": ["/api/*"]
   },
@@ -13,9 +17,8 @@
     {
       "binding": "DB",
       "database_name": "schreiblern-app",
-      // Platzhalter für die lokale Entwicklung. Vor dem ersten Deployment durch die
-      // ID aus `npx wrangler d1 create schreiblern-app` ersetzen (siehe docs/DEPLOYMENT.md).
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      // Ohne database_id legt `wrangler deploy` die Datenbank beim ersten Deployment
+      // automatisch an (automatische Ressourcenbereitstellung) und verwendet sie danach weiter.
       "migrations_dir": "migrations"
     }
   ]
