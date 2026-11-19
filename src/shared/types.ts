@@ -16,6 +16,17 @@ export interface Meaning {
   status: MeaningStatus;
   collection: string | null;
   sortOrder: number | null;
+  /** IDs der Sammlungen, in denen die Bedeutung steht (nur in /api/words). */
+  collections?: string[];
+  /** Position je Sammlung (1-basiert), passend zu `collections`. */
+  collectionPositions?: Record<string, number>;
+}
+
+export interface Collection {
+  id: string;
+  name: string;
+  description: string | null;
+  count: number;
 }
 
 export interface SearchResultWord {

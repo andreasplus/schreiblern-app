@@ -1,4 +1,4 @@
-import { getCollection, getMeanings, searchWords, MAX_IDS, MAX_QUERY_LENGTH } from "./db.ts";
+import { getAllWords, getCollection, getMeanings, listCollections, searchWords, MAX_IDS, MAX_QUERY_LENGTH } from "./db.ts";
 
 export interface Env {
   DB: D1Database;
@@ -30,6 +30,9 @@ export async function handleApi(request: Request, env: Env): Promise<Response> {
     if (ids.length > MAX_IDS) return error(400, `Höchstens ${MAX_IDS} Einträge pro Abruf.`);
     return json({ meanings: await getMeanings(env.DB, ids) });
   }
+
+  if (path === "/api/words") return json({ meanings: await getAllWords(env.DB) });
+  if (path === "/api/collections") return json({ collections: await listCollections(env.DB) });
 
   const collection = /^\/api\/collections\/([a-z0-9-]{1,40})$/.exec(path);
   if (collection) return json({ meanings: await getCollection(env.DB, collection[1]!) });

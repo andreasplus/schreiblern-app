@@ -1,9 +1,13 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { getPlatformProxy } from "wrangler";
-import type { SeedRecord } from "../src/shared/seed.ts";
+import type { CollectionRecord, SeedRecord } from "../src/shared/seed.ts";
 
 export const root = join(import.meta.dirname, "..");
+
+export function collectionRecords(): CollectionRecord[] {
+  return JSON.parse(readFileSync(join(root, "data", "collections.json"), "utf8")) as CollectionRecord[];
+}
 
 export function seedRecords(): SeedRecord[] {
   const read = (f: string) => JSON.parse(readFileSync(join(root, "data", f), "utf8")) as SeedRecord[];
@@ -29,6 +33,8 @@ export async function run(db: D1Database, sql: string) {
 export async function freshDb() {
   const proxy = await getPlatformProxy<{ DB: D1Database }>({ persist: false, configPath: join(root, "wrangler.jsonc") });
   const db = proxy.env.DB;
-  await run(db, readFileSync(join(root, "migrations", "0001_wortbestand.sql"), "utf8"));
+  for (const f of readdirSync(join(root, "migrations")).filter((f) => f.endsWith(".sql")).sort()) {
+    await run(db, readFileSync(join(root, "migrations", f), "utf8"));
+  }
   return { db, dispose: () => proxy.dispose() };
 }

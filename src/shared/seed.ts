@@ -154,3 +154,31 @@ export function findSeedConflicts(rows: SeedMeaningRow[], existing: ExistingMean
   }
   return out;
 }
+
+export interface CollectionRecord {
+  id: string;
+  name: string;
+  description?: string;
+  members: string[];
+}
+
+/** Prüft Sammlungen gegen die Seed-Bedeutungen und erzeugt wiederholbares SQL. */
+export function collectionsSql(collections: CollectionRecord[], rows: SeedMeaningRow[]): string {
+  const known = new Set(rows.map((r) => r.id));
+  const ids = new Set<string>();
+  for (const c of collections) {
+    if (!/^[a-z0-9-]+$/.test(c.id) || ids.has(c.id)) throw new Error(`Sammlungs-ID ungültig oder doppelt: ${c.id}`);
+    ids.add(c.id);
+    const members = new Set<string>();
+    for (const m of c.members) {
+      if (!known.has(m)) throw new Error(`Sammlung ${c.id}: unbekannte Bedeutung ${m}`);
+      if (members.has(m)) throw new Error(`Sammlung ${c.id}: ${m} doppelt`);
+      members.add(m);
+    }
+  }
+  const lines = [`INSERT OR IGNORE INTO collections (id, name, description, sort_order) VALUES`];
+  lines.push(collections.map((c, i) => `(${q(c.id)}, ${q(c.name)}, ${q(c.description ?? null)}, ${i + 1})`).join(",\n") + ";");
+  lines.push(`INSERT OR IGNORE INTO collection_items (collection_id, meaning_id, sort_order) VALUES`);
+  lines.push(collections.flatMap((c) => c.members.map((m, i) => `(${q(c.id)}, ${q(m)}, ${i + 1})`)).join(",\n") + ";");
+  return lines.join("\n") + "\n";
+}

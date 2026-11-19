@@ -11,7 +11,7 @@ import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { toSeedRows, seedSql, findSeedConflicts, SEED_CHECK_SQL } from "../src/shared/seed.ts";
+import { toSeedRows, seedSql, collectionsSql, findSeedConflicts, SEED_CHECK_SQL } from "../src/shared/seed.ts";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const mode = process.argv.includes("--remote") ? "--remote" : process.argv.includes("--sql-only") ? null : "--local";
@@ -19,7 +19,7 @@ const read = (f) => JSON.parse(readFileSync(join(root, "data", f), "utf8"));
 const rows = toSeedRows([...read("seed-words.json"), ...read("seed-supplement.json")]);
 mkdirSync(join(root, "generated"), { recursive: true });
 const sqlFile = join(root, "generated", "seed.sql");
-writeFileSync(sqlFile, seedSql(rows));
+writeFileSync(sqlFile, seedSql(rows) + collectionsSql(read("collections.json"), rows));
 console.log(`${rows.length} Bedeutungen vorbereitet: ${sqlFile}`);
 if (!mode) process.exit(0);
 
