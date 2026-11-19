@@ -1,0 +1,365 @@
+[
+  {
+    "id": "seed-001",
+    "de": "Auto",
+    "en": "car",
+    "set": "words",
+    "order": 1,
+    "pictogram_key": "Auto",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-002",
+    "de": "blau",
+    "en": "blue",
+    "set": "words",
+    "order": 2,
+    "pictogram_key": "blau",
+    "review_status": "reference",
+    "kind": "color",
+    "color": "#3286df"
+  },
+  {
+    "id": "seed-003",
+    "de": "Haus",
+    "en": "house",
+    "set": "words",
+    "order": 3,
+    "pictogram_key": "Haus",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-004",
+    "de": "Maus",
+    "en": "mouse",
+    "set": "words",
+    "order": 4,
+    "pictogram_key": "Maus",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-005",
+    "de": "Tisch",
+    "en": "table",
+    "set": "words",
+    "order": 5,
+    "pictogram_key": "Tisch",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-006",
+    "de": "Ball",
+    "en": "ball",
+    "set": "words",
+    "order": 6,
+    "pictogram_key": "Ball",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-007",
+    "de": "Hund",
+    "en": "dog",
+    "set": "words",
+    "order": 7,
+    "pictogram_key": "Hund",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-008",
+    "de": "Katze",
+    "en": "cat",
+    "set": "words",
+    "order": 8,
+    "pictogram_key": "Katze",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-009",
+    "de": "Fisch",
+    "en": "fish",
+    "set": "words",
+    "order": 9,
+    "pictogram_key": "Fisch",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-010",
+    "de": "Kuh",
+    "en": "cow",
+    "set": "words",
+    "order": 10,
+    "pictogram_key": "Kuh",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-011",
+    "de": "Ei",
+    "en": "egg",
+    "set": "words",
+    "order": 11,
+    "pictogram_key": "Ei",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-012",
+    "de": "Milch",
+    "en": "milk",
+    "set": "words",
+    "order": 12,
+    "pictogram_key": "Milch",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-013",
+    "de": "Brot",
+    "en": "bread",
+    "set": "words",
+    "order": 13,
+    "pictogram_key": "Brot",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-014",
+    "de": "Apfel",
+    "en": "apple",
+    "set": "words",
+    "order": 14,
+    "pictogram_key": "Apfel",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-015",
+    "de": "Banane",
+    "en": "banana",
+    "set": "words",
+    "order": 15,
+    "pictogram_key": "Banane",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-016",
+    "de": "rot",
+    "en": "red",
+    "set": "words",
+    "order": 16,
+    "pictogram_key": "rot",
+    "review_status": "reference",
+    "kind": "color",
+    "color": "#e74941"
+  },
+  {
+    "id": "seed-017",
+    "de": "grün",
+    "en": "green",
+    "set": "words",
+    "order": 17,
+    "pictogram_key": "grün",
+    "review_status": "reference",
+    "kind": "color",
+    "color": "#53a861"
+  },
+  {
+    "id": "seed-018",
+    "de": "gelb",
+    "en": "yellow",
+    "set": "words",
+    "order": 18,
+    "pictogram_key": "gelb",
+    "review_status": "reference",
+    "kind": "color",
+    "color": "#ffda38"
+  },
+  {
+    "id": "seed-019",
+    "de": "Sonne",
+    "en": "sun",
+    "set": "words",
+    "order": 19,
+    "pictogram_key": "Sonne",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-020",
+    "de": "Mond",
+    "en": "moon",
+    "set": "words",
+    "order": 20,
+    "pictogram_key": "Mond",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-021",
+    "de": "Stern",
+    "en": "star",
+    "set": "words",
+    "order": 21,
+    "pictogram_key": "Stern",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-022",
+    "de": "Bett",
+    "en": "bed",
+    "set": "words",
+    "order": 22,
+    "pictogram_key": "Bett",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-023",
+    "de": "Hand",
+    "en": "hand",
+    "set": "words",
+    "order": 23,
+    "pictogram_key": "Hand",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-024",
+    "de": "Buch",
+    "en": "book",
+    "set": "words",
+    "order": 24,
+    "pictogram_key": "Buch",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "seed-025",
+    "de": "Mama",
+    "en": "mom",
+    "set": "words",
+    "order": 25,
+    "pictogram_key": "Mama",
+    "review_status": "reference",
+    "kind": "word"
+  },
+  {
+    "id": "number-01",
+    "de": "eins",
+    "en": "one",
+    "set": "numbers",
+    "kind": "number",
+    "number": 1,
+    "order": 1,
+    "review_status": "reference"
+  },
+  {
+    "id": "number-02",
+    "de": "zwei",
+    "en": "two",
+    "set": "numbers",
+    "kind": "number",
+    "number": 2,
+    "order": 2,
+    "review_status": "reference"
+  },
+  {
+    "id": "number-03",
+    "de": "drei",
+    "en": "three",
+    "set": "numbers",
+    "kind": "number",
+    "number": 3,
+    "order": 3,
+    "review_status": "reference"
+  },
+  {
+    "id": "number-04",
+    "de": "vier",
+    "en": "four",
+    "set": "numbers",
+    "kind": "number",
+    "number": 4,
+    "order": 4,
+    "review_status": "reference"
+  },
+  {
+    "id": "number-05",
+    "de": "fünf",
+    "en": "five",
+    "set": "numbers",
+    "kind": "number",
+    "number": 5,
+    "order": 5,
+    "review_status": "reference"
+  },
+  {
+    "id": "number-06",
+    "de": "sechs",
+    "en": "six",
+    "set": "numbers",
+    "kind": "number",
+    "number": 6,
+    "order": 6,
+    "review_status": "reference"
+  },
+  {
+    "id": "number-07",
+    "de": "sieben",
+    "en": "seven",
+    "set": "numbers",
+    "kind": "number",
+    "number": 7,
+    "order": 7,
+    "review_status": "reference"
+  },
+  {
+    "id": "number-08",
+    "de": "acht",
+    "en": "eight",
+    "set": "numbers",
+    "kind": "number",
+    "number": 8,
+    "order": 8,
+    "review_status": "reference"
+  },
+  {
+    "id": "number-09",
+    "de": "neun",
+    "en": "nine",
+    "set": "numbers",
+    "kind": "number",
+    "number": 9,
+    "order": 9,
+    "review_status": "reference"
+  },
+  {
+    "id": "number-10",
+    "de": "zehn",
+    "en": "ten",
+    "set": "numbers",
+    "kind": "number",
+    "number": 10,
+    "order": 10,
+    "review_status": "reference"
+  },
+  {
+    "id": "extra-blitz",
+    "de": "Blitz",
+    "en": "lightning",
+    "set": "extra",
+    "kind": "word",
+    "pictogram_key": "Blitz",
+    "review_status": "reference"
+  }
+]
