@@ -13,6 +13,8 @@
     "run_worker_first": ["/api/*"]
   },
   "observability": { "enabled": true },
+  // Nötig für Vorschau-Deployments von Branches über Workers Builds (`wrangler preview`).
+  "previews": {},
   "d1_databases": [
     {
       "binding": "DB",
