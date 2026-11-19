@@ -9,6 +9,13 @@
 - **Bank als Ergänzung.** Für die Abnahme von APP-04 enthält `data/seed-supplement.json` „Bank (Geldinstitut) · bank“ und „Bank (Sitzgelegenheit) · bench“, Status „ungeprüft“, ohne Piktogramm.
 - **Tests ohne vitest-pool-workers.** Das Paket war zum Zeitpunkt der Umsetzung nicht mit Vitest 5 kompatibel. Die Integrationstests nutzen stattdessen eine flüchtige D1 über `getPlatformProxy` aus Wrangler.
 
+## Wortübersicht und Sammlungen (APP-17, erster Stand)
+
+- Sammlungen liegen in `data/collections.json` und den Tabellen `collections` und `collection_items` (Migration 0002). Eine Bedeutung kann in mehreren Sammlungen stehen. Der Seed-Import ergänzt neue Mitglieder, entfernt aber keine. Dafür braucht es eine Migration.
+- „Kurze Wörter“ ist bewusst ein Längenfilter (Deutsch oder Englisch) und keine feste Sammlung.
+- Neu und ungeprüft: orange, lila, rosa, braun, schwarz, weiß sowie Vogel, Wolke, Baum, Blume und Herz mit eigenen Zeichnungen.
+- `/api/words` liefert alle Bedeutungen, gefiltert und sortiert wird im Browser. Ab einigen tausend Wörtern braucht es serverseitige Filter und Seiten.
+
 ## Noch zu prüfen
 
 - Druck bei 100 % in **Firefox** und **Safari** sowie mobiles Drucken. Automatisiert geprüft ist nur Chromium.
