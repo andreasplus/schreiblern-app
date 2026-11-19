@@ -1,0 +1,24 @@
+[
+  {
+    "id": "extra-bank-geld",
+    "de": "Bank",
+    "en": "bank",
+    "description": "Geldinstitut",
+    "set": "extra",
+    "kind": "word",
+    "pictogram_key": null,
+    "review_status": "draft",
+    "source": "Ergänzung für die Abnahme von APP-04 (mehrdeutige Wörter), noch ohne Piktogramm und ungeprüft"
+  },
+  {
+    "id": "extra-bank-sitz",
+    "de": "Bank",
+    "en": "bench",
+    "description": "Sitzgelegenheit",
+    "set": "extra",
+    "kind": "word",
+    "pictogram_key": null,
+    "review_status": "draft",
+    "source": "Ergänzung für die Abnahme von APP-04 (mehrdeutige Wörter), noch ohne Piktogramm und ungeprüft"
+  }
+]
