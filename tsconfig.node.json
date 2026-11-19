@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    "types": ["node", "@cloudflare/workers-types"],
+    "jsx": "react-jsx",
+    "tsBuildInfoFile": "./node_modules/.tmp/node.tsbuildinfo"
+  },
+  "include": ["vite.config.ts", "vitest.config.ts", "test", "src/shared", "src/worker", "src/client/selection.ts"]
+}

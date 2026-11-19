@@ -1,0 +1,4 @@
+# Vorlage für lokale Geheimnisse. Als .dev.vars kopieren; .dev.vars wird nicht eingecheckt.
+# P0 benötigt keine Geheimnisse. Ab P1 zum Beispiel:
+# TRANSLATION_PROVIDER=none
+# TRANSLATION_API_KEY=
