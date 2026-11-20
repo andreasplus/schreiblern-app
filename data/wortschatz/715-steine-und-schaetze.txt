@@ -1,0 +1,32 @@
+# Steine und Schätze der Erde
+> Kristalle, Fossilien und Vulkane
+Bergkristall = rock crystal
+Amethyst = amethyst
+Rosenquarz = rose quartz
+Granit = granite
+Kalkstein = limestone
+Sandstein = sandstone
+Schiefer = slate
+Bernstein = amber
+Magma = magma
+Versteinerung = petrification
+Ammonit = ammonite
+Muschelkalk = shell limestone
+Kohle = charcoal
+Erz = ore
+Goldnugget = gold nugget
+Smaragd = emerald
+Rubin = ruby
+Saphir = sapphire
+Opal = opal
+Steinsammlung = rock collection
+Höhlenwand = cave wall
+Tropfstein = dripstone
+Tropfsteinhöhle = stalactite cave
+Erdbeben = earthquake
+Vulkanausbruch = volcanic eruption
+Geysir = geyser
+Erdkruste = earth's crust
+Erdkern = earth's core
+Gebirgskette = mountain chain
+Felsbrocken = boulder

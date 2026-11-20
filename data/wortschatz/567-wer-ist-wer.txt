@@ -1,0 +1,39 @@
+# Wer ist wer?
+> Männliche und weibliche Personenwörter
+Siegerin = female winner
+Gewinnerin = female prize winner
+Verliererin = female loser
+Läuferin = female runner
+Schwimmerin = female swimmer
+Radfahrerin = female cyclist
+Fußgängerin = pedestrian
+Zuschauerin = spectator
+Besucherin = visitor
+Bewohnerin = resident
+Einwohnerin = inhabitant
+Bürgerin = citizen
+Anfängerin = beginner
+Meisterin = champion
+Riesin = giantess
+Kaiserin = empress
+Kaiser = emperor
+Gräfin = countess
+Graf = count
+Herzog = duke
+Herzogin = duchess
+Detektivin = detective
+Räuberin = robber
+Tigerin = tigress
+Bärin = she-bear
+Wölfin = she-wolf
+Füchsin = vixen
+Hündin = female dog
+Eselin = female donkey
+Entenmutter = mother duck
+Elefantenkuh = cow elephant
+
+Kinderfreundin = childhood friend
+Spielkameradin = playmate
+Nachbarskind = neighbour's child
+Klassenkamerad = classmate
+Klassenkameradin = classmate

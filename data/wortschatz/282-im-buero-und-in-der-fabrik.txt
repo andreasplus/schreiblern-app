@@ -1,0 +1,33 @@
+# Im Büro und in der Fabrik
+> Wo Mama und Papa arbeiten
+Büro = office
+Bürostuhl = office chair
+Schreibtischlampe = desk lamp
+Aktenordner = lever-arch file
+Akte = dossier
+Kopierer = photocopier
+Visitenkarte = business card
+Briefpapier = writing paper
+Notizblock = memo pad
+Kalenderblatt = calendar page
+Terminkalender = appointment diary
+Besprechung = meeting
+Konferenzraum = meeting room
+Kollege = colleague
+Kollegin = colleague
+Feierabend = end of work
+Arbeitsplatz = workplace
+Kantine = staff canteen
+Kaffeeküche = staff kitchen
+Fabrik = factory
+Fabrikhalle = factory hall
+Fließband = assembly line
+Maschine = machine
+Lager = storeroom
+Gabelstapler = forklift
+Arbeiter = worker
+Arbeiterin = worker
+Schutzkleidung = protective clothing
+Pause = break
+Schicht = shift
+Lohnzettel = payslip

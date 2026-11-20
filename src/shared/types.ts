@@ -16,6 +16,8 @@ export interface Meaning {
   status: MeaningStatus;
   collection: string | null;
   sortOrder: number | null;
+  /** Schwierigkeitsstufe 1 (sehr leicht) bis 5 (sehr schwer), berechnet aus der Schreibweise. */
+  difficulty: number | null;
   /** IDs der Sammlungen, in denen die Bedeutung steht (nur in /api/words). */
   collections?: string[];
   /** Position je Sammlung (1-basiert), passend zu `collections`. */
@@ -27,6 +29,15 @@ export interface Collection {
   name: string;
   description: string | null;
   count: number;
+}
+
+/** Eine Seite der Wortübersicht (/api/words). */
+export interface WordsPage {
+  meanings: Meaning[];
+  /** Anzahl aller Treffer für die Filter, unabhängig von limit und offset. */
+  total: number;
+  offset: number;
+  limit: number;
 }
 
 export interface SearchResultWord {

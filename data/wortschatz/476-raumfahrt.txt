@@ -1,0 +1,29 @@
+# Raumfahrt
+> Mit der Rakete ins All
+Raumfahrt = space travel
+Raumfahrer = space traveller
+Raumkapsel = space capsule
+Raumsonde = space probe
+Marsmobil = Mars rover
+Marsmensch = Martian
+Mondkrater = moon crater
+Sonnenwind = solar wind
+Polarlicht = aurora
+Nordlicht = northern lights
+Lichtjahr = light year
+Startrampe = launch pad
+Kontrollzentrum = mission control
+Bodenstation = ground station
+Weltraumspaziergang = spacewalk
+Schwerelosigkeit = weightlessness
+Astronautennahrung = space food
+Sauerstoff = oxygen
+Mondstein = moonstone
+Sternkarte = star chart
+Planetenring = planetary ring
+Erdumlaufbahn = Earth orbit
+Weltraumteleskop = space telescope
+Raketenstart = rocket launch
+Weltraummüll = space junk
+Funkspruch = radio message
+Countdownuhr = countdown clock

@@ -1,0 +1,32 @@
+# Im Hotel und im Freizeitpark
+> Ferien mit Zimmerschlüssel und Achterbahn
+Hotelzimmer = hotel room
+Zimmerschlüssel = room key
+Zimmerservice = room service
+Frühstücksraum = breakfast room
+Frühstücksbuffet = breakfast buffet
+Hotelpool = hotel pool
+Hotelbett = hotel bed
+Kofferträger = porter
+Empfangschef = head receptionist
+Zimmermädchen = chambermaid
+Gästebuch = guest book
+Kinderclub = kids' club
+Animateur = entertainer
+Minigolf = mini golf
+Freizeitpark = theme park
+Wasserpark = water park
+Achterbahn = roller coaster
+Wildwasserbahn = log flume
+Kettenkarussell = chair-o-plane
+Riesenrad = Ferris wheel
+Spiegelkabinett = hall of mirrors
+Kletterpark = climbing park
+Sommerrodelbahn = summer toboggan
+Hüpfburg = bouncy castle
+Streichelgehege = petting enclosure
+Bimmelbahn = little tourist train
+Parkplan = park map
+Warteschlange = queue
+Tageskarte = day ticket
+Erinnerungsfoto = souvenir photo

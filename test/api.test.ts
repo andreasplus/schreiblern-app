@@ -1,7 +1,8 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { handleApi } from "../src/worker/index.ts";
 import { collectionsSql, seedSql, toSeedRows } from "../src/shared/seed.ts";
-import type { Collection, Meaning, SearchResponse } from "../src/shared/types.ts";
+import type { Collection, Meaning, SearchResponse, WordsPage } from "../src/shared/types.ts";
+import { difficultyOf } from "../src/shared/difficulty.ts";
 import { collectionRecords, freshDb, run, seedRecords } from "./helpers.ts";
 
 let db: D1Database;
@@ -78,12 +79,45 @@ describe("Abruf für den Druck", () => {
     expect(body.meanings.map((m) => m.de).slice(0, 4)).toEqual(["rot", "blau", "grün", "gelb"]);
     expect(body.meanings.every((m) => m.kind === "color")).toBe(true);
   });
-  it("liefert alle Wörter mit Sammlungen und Positionen", async () => {
-    const { body } = await call<{ meanings: Meaning[] }>("/api/words");
+  it("liefert alle Wörter mit Sammlungen, Positionen und Schwierigkeit", async () => {
+    const { body } = await call<WordsPage>("/api/words");
     const kuh = body.meanings.find((m) => m.de === "Kuh")!;
     expect(kuh.collections).toEqual(["erste-woerter", "tiere"]);
     expect(kuh.collectionPositions).toEqual({ "erste-woerter": 10, tiere: 5 });
+    expect(kuh.difficulty).toBe(difficultyOf("Kuh"));
     expect(body.meanings.length).toBe(rowsCount());
+    expect(body.total).toBe(rowsCount());
+    expect(body.meanings.filter((m) => m.id.startsWith("t-")).every((m) => m.difficulty === null)).toBe(true);
+  });
+  it("teilt die Wortübersicht in Seiten", async () => {
+    const all = (await call<WordsPage>("/api/words?sort=alpha")).body.meanings.map((m) => m.id);
+    const p1 = (await call<WordsPage>("/api/words?sort=alpha&limit=10")).body;
+    const p2 = (await call<WordsPage>("/api/words?sort=alpha&limit=10&offset=10")).body;
+    expect(p1.total).toBe(all.length);
+    expect([...p1.meanings, ...p2.meanings].map((m) => m.id)).toEqual(all.slice(0, 20));
+    expect(p2.meanings[0]!.collections).toBeDefined();
+  });
+  it("filtert serverseitig nach Sammlung, Schwierigkeit, Länge und Suche", async () => {
+    const farben = (await call<WordsPage>("/api/words?collection=farben")).body;
+    expect(farben.meanings.map((m) => m.de).slice(0, 4)).toEqual(["rot", "blau", "grün", "gelb"]);
+    expect(farben.total).toBe(farben.meanings.length);
+    const leicht = (await call<WordsPage>("/api/words?maxDiff=1")).body.meanings;
+    expect(leicht.length).toBeGreaterThan(0);
+    expect(leicht.every((m) => m.difficulty === 1)).toBe(true);
+    const drei = (await call<WordsPage>("/api/words?minLen=3&maxLen=3")).body.meanings;
+    expect(drei.every((m) => [...m.de].filter((c) => /\p{L}/u.test(c)).length === 3)).toBe(true);
+    const suche = (await call<WordsPage>("/api/words?q=kuh")).body.meanings;
+    expect(suche.map((m) => m.de)).toContain("Kuh");
+  });
+  it("sortiert nach Schwierigkeit", async () => {
+    const d = (await call<WordsPage>("/api/words?sort=difficulty&limit=500")).body.meanings.map((m) => m.difficulty ?? 6);
+    expect(d).toEqual([...d].sort((a, b) => a - b));
+  });
+  it("prüft limit, offset und Suchlänge", async () => {
+    expect((await call("/api/words?limit=0")).status).toBe(400);
+    expect((await call("/api/words?limit=501")).status).toBe(400);
+    expect((await call("/api/words?offset=-1")).status).toBe(400);
+    expect((await call("/api/words?q=" + "a".repeat(61))).status).toBe(400);
   });
   it("liefert Seed-Gruppen weiterhin in Seed-Reihenfolge", async () => {
     const { body } = await call<{ meanings: Meaning[] }>("/api/collections/words");

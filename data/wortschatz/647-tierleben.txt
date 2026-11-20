@@ -1,0 +1,25 @@
+# Tierleben
+> Wie Tiere leben, jagen und wandern
+Vogelzug = bird migration
+Tierwanderung = animal migration
+Fellwechsel = moulting
+Brutzeit = breeding season
+Futtersuche = foraging
+Revier = territory
+Leittier = lead animal
+Herdentier = herd animal
+Einzelgänger = loner
+Beutetier = prey animal
+Jagdrevier = hunting ground
+Tarnung = camouflage
+Winterquartier = winter quarters
+Vorratskammer = larder
+Tierspuren = animal tracks
+Tierkot = animal droppings
+Gewölle = owl pellet
+Federkleid = plumage
+Winterfell = winter fur
+Sommerfell = summer fur
+Balz = courtship display
+Paarungszeit = mating season
+Jungvogel = young bird

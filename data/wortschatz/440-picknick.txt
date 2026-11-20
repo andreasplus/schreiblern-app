@@ -1,0 +1,36 @@
+# Picknick
+> Draußen essen mit Decke und Korb
+Picknick = picnic
+Picknickkorb = picnic basket
+Picknickdecke = picnic blanket
+Kühltasche = cool bag
+Thermoskanne = thermos flask
+Brotdose = lunch box
+Trinkflasche = water bottle
+Pappbecher = paper cup
+Pappteller = paper plate
+Serviette = napkin
+Brot = bread
+Butterbrot = slice of bread and butter
+Sandwich = sandwich
+Ei = egg
+Obst = fruit
+Rohkost = raw vegetables
+Gurke = cucumber
+Tomate = tomato
+Käse = cheese
+Kuchen = cake
+Saft = juice
+Limonade = lemonade
+Wiese = meadow
+Sonne = sun
+Schatten = shadow
+Wespe = wasp
+Ameise = ant
+auspacken = unpack
+einpacken = pack
+teilen = share
+essen = eat
+sitzen = sit
+lecker = tasty
+gemütlich = cosy

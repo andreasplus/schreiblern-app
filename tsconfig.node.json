@@ -6,5 +6,5 @@
     "jsx": "react-jsx",
     "tsBuildInfoFile": "./node_modules/.tmp/node.tsbuildinfo"
   },
-  "include": ["vite.config.ts", "vitest.config.ts", "test", "src/shared", "src/worker", "src/client/selection.ts", "src/client/filters.ts"]
+  "include": ["vite.config.ts", "vitest.config.ts", "test", "src/shared", "src/worker", "src/client/selection.ts", "src/client/filters.ts", "scripts/seed-data.ts", "scripts/wortschatz-report.ts"]
 }

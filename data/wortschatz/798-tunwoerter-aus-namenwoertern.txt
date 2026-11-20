@@ -1,0 +1,30 @@
+# Tunwörter aus Namenwörtern
+> Picknicken, pinseln, salzen
+picknicken = have a picnic
+campen = go camping
+skaten = skate
+pinseln = brush on
+kleistern = paste
+ölen = oil
+salzen = salt
+pfeffern = pepper
+zuckern = sugar
+löffeln = spoon
+tapezieren = wallpaper
+duzen = say du
+siezen = say Sie
+frühstücken = have breakfast
+schaufeln = shovel
+radeln = cycle
+rodeln = toboggan
+bügeln = iron
+hämmern = hammer
+filmen = film
+fotografieren = take photos
+telefonieren = phone
+musizieren = make music
+stempeln = stamp
+schaukeln = swing
+paddeln = paddle
+grillen = grill
+würzen = season

@@ -1,0 +1,32 @@
+# Bastelideen
+> Papierketten, Fensterbilder und Freundschaftsbänder
+Bastelschere = craft scissors
+Bastelbogen = craft sheet
+Faltblatt = folding sheet
+Papierkette = paper chain
+Papiermaske = paper mask
+Papierlaterne = paper lantern
+Papierblume = paper flower
+Fensterbild = window picture
+Kastanienfigur = conker figure
+Salzteigfigur = salt dough figure
+Tonfigur = clay figure
+Knetfigur = play dough figure
+Perlenkette = string of beads
+Freundschaftsband = friendship bracelet
+Grußkarte = greeting card
+Bastelvorlage = craft template
+Stempelbild = stamp picture
+Fingerabdruckbild = fingerprint picture
+Kartoffeldruck = potato print
+Wollbild = wool picture
+Webrahmen = weaving frame
+Strickliesel = French knitting doll
+Häkelnadel = crochet hook
+Stricknadel = knitting needle
+Sticknadel = embroidery needle
+Stickrahmen = embroidery hoop
+Kreuzstich = cross-stitch
+Bastelanleitung = craft instructions
+Bastelnachmittag = craft afternoon
+Kunstwerk = work of art

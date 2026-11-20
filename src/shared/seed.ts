@@ -8,6 +8,7 @@
  */
 import { BUILTIN_PICTOGRAMS } from "./pictograms.ts";
 import { cleanDisplay, normalizeTerm } from "./normalize.ts";
+import { difficultyOf, type Difficulty } from "./difficulty.ts";
 
 export interface SeedRecord {
   id: string;
@@ -22,6 +23,8 @@ export interface SeedRecord {
   description?: string;
   review_status?: string;
   source?: string;
+  /** Optionaler fester Schwierigkeitsgrad; sonst aus der Schreibweise berechnet. */
+  difficulty?: Difficulty;
 }
 
 export interface SeedMeaningRow {
@@ -40,6 +43,7 @@ export interface SeedMeaningRow {
   source: string;
   collection: string;
   sortOrder: number;
+  difficulty: Difficulty;
 }
 
 export const PICTOGRAM_LIBRARY = "Schreiblern-Referenz";
@@ -90,32 +94,53 @@ export function toSeedRows(records: SeedRecord[]): SeedMeaningRow[] {
       source: r.source ?? "Übergabepaket data/seed-words.json",
       collection: r.set,
       sortOrder,
+      difficulty: r.difficulty ?? difficultyOf(display),
     };
   });
 }
 
 const q = (v: string | number | null) => (v === null ? "NULL" : typeof v === "number" ? String(v) : `'${v.replace(/'/g, "''")}'`);
 
+/** D1 begrenzt die Länge einer Anweisung (100 KB). Große Imports werden deshalb in Blöcke geteilt. */
+export const SQL_CHUNK = 100;
+
+function insertChunks(head: string, values: string[]): string[] {
+  const out: string[] = [];
+  for (let i = 0; i < values.length; i += SQL_CHUNK) out.push(`${head}\n${values.slice(i, i + SQL_CHUNK).join(",\n")};`);
+  return out;
+}
+
 export function seedSql(rows: SeedMeaningRow[]): string {
   const lines: string[] = ["-- Automatisch erzeugt von scripts/seed.mjs. Wiederholbar, überschreibt nichts."];
-  lines.push(`INSERT OR IGNORE INTO pictograms (id, kind, path, library, license, attribution) VALUES`);
   const pics = [
     `(${q("color-circle")}, 'color', NULL, ${q(PICTOGRAM_LIBRARY)}, ${q(PICTOGRAM_LICENSE)}, NULL)`,
     `(${q("number-dots")}, 'number', NULL, ${q(PICTOGRAM_LIBRARY)}, ${q(PICTOGRAM_LICENSE)}, NULL)`,
     ...BUILTIN_PICTOGRAMS.map((k) => `(${q(`builtin:${k}`)}, 'builtin', NULL, ${q(PICTOGRAM_LIBRARY)}, ${q(PICTOGRAM_LICENSE)}, NULL)`),
   ];
-  lines.push(pics.join(",\n") + ";");
+  lines.push(...insertChunks(`INSERT OR IGNORE INTO pictograms (id, kind, path, library, license, attribution) VALUES`, pics));
   const words = new Map(rows.map((r) => [r.wordId, r]));
-  lines.push(`INSERT OR IGNORE INTO words (id, lang, display, normalized) VALUES`);
-  lines.push([...words.values()].map((r) => `(${q(r.wordId)}, 'de', ${q(r.display)}, ${q(r.normalized)})`).join(",\n") + ";");
   lines.push(
-    `INSERT OR IGNORE INTO meanings (id, word_id, sense_key, description, translation_en, kind, number_value, color_hex, pictogram_id, status, source, collection, sort_order) VALUES`,
+    ...insertChunks(
+      `INSERT OR IGNORE INTO words (id, lang, display, normalized) VALUES`,
+      [...words.values()].map((r) => `(${q(r.wordId)}, 'de', ${q(r.display)}, ${q(r.normalized)})`),
+    ),
   );
   lines.push(
-    rows
-      .map((r) => `(${[r.id, r.wordId, r.senseKey, r.description, r.en, r.kind, r.number, r.color, r.pictogramId, r.status, r.source, r.collection, r.sortOrder].map(q).join(", ")})`)
-      .join(",\n") + ";",
+    ...insertChunks(
+      `INSERT OR IGNORE INTO meanings (id, word_id, sense_key, description, translation_en, kind, number_value, color_hex, pictogram_id, status, source, collection, sort_order, difficulty) VALUES`,
+      rows.map(
+        (r) =>
+          `(${[r.id, r.wordId, r.senseKey, r.description, r.en, r.kind, r.number, r.color, r.pictogramId, r.status, r.source, r.collection, r.sortOrder, r.difficulty].map(q).join(", ")})`,
+      ),
+    ),
   );
+  // Ältere Einträge ohne Schwierigkeitsgrad nachtragen. Ein gesetzter Wert wird nie überschrieben.
+  for (const level of [1, 2, 3, 4, 5] as const) {
+    const ids = rows.filter((r) => r.difficulty === level).map((r) => q(r.id));
+    for (let i = 0; i < ids.length; i += SQL_CHUNK * 3) {
+      lines.push(`UPDATE meanings SET difficulty = ${level} WHERE difficulty IS NULL AND id IN (${ids.slice(i, i + SQL_CHUNK * 3).join(", ")});`);
+    }
+  }
   return lines.join("\n") + "\n";
 }
 
@@ -176,9 +201,15 @@ export function collectionsSql(collections: CollectionRecord[], rows: SeedMeanin
       members.add(m);
     }
   }
-  const lines = [`INSERT OR IGNORE INTO collections (id, name, description, sort_order) VALUES`];
-  lines.push(collections.map((c, i) => `(${q(c.id)}, ${q(c.name)}, ${q(c.description ?? null)}, ${i + 1})`).join(",\n") + ";");
-  lines.push(`INSERT OR IGNORE INTO collection_items (collection_id, meaning_id, sort_order) VALUES`);
-  lines.push(collections.flatMap((c) => c.members.map((m, i) => `(${q(c.id)}, ${q(m)}, ${i + 1})`)).join(",\n") + ";");
+  const lines = insertChunks(
+    `INSERT OR IGNORE INTO collections (id, name, description, sort_order) VALUES`,
+    collections.map((c, i) => `(${q(c.id)}, ${q(c.name)}, ${q(c.description ?? null)}, ${i + 1})`),
+  );
+  lines.push(
+    ...insertChunks(
+      `INSERT OR IGNORE INTO collection_items (collection_id, meaning_id, sort_order) VALUES`,
+      collections.flatMap((c) => c.members.map((m, i) => `(${q(c.id)}, ${q(m)}, ${i + 1})`)),
+    ),
+  );
   return lines.join("\n") + "\n";
 }

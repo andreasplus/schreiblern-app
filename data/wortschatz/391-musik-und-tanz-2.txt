@@ -1,0 +1,30 @@
+# Musizieren und Tanzen
+> Noten, Saiten und Tanzschuhe
+Musikinstrument = musical instrument
+Notenschlüssel = clef
+Notenständer = music stand
+Geigenbogen = violin bow
+Gitarrensaite = guitar string
+Klaviertaste = piano key
+Trommelstock = drumstick
+Musiklehrerin = music teacher
+Musiklehrer = male music teacher
+Chorprobe = choir practice
+Konzertsaal = concert hall
+Liederbuch = songbook
+Liedtext = lyrics
+Kindertanz = children's dance
+Tanzgruppe = dance group
+Tanzschule = dance school
+Ballettschuh = ballet shoe
+Tanzkleid = dancing dress
+Discokugel = disco ball
+Karaoke = karaoke
+Musikvideo = music video
+Lieblingslied = favourite song
+Klatschrhythmus = clapping rhythm
+Trommelkreis = drum circle
+Musikkapelle = town band
+Volkslied = folk song
+Tanzfläche = dance floor
+Bühnenbild = stage set

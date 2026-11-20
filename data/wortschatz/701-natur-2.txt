@@ -1,0 +1,32 @@
+# Wald, Feld und Fluss
+> Noch mehr Wörter aus der Natur
+Waldboden = forest floor
+Waldbeere = wild berry
+Waldameise = wood ant
+Waldmaus = wood mouse
+
+Waldbrand = forest fire
+Waldsee = forest lake
+Waldhaus = forest house
+Feldblume = field flower
+Feldhamster = field hamster
+Feldlerche = skylark
+Bergwiese = mountain meadow
+Bergbach = mountain stream
+Bergziege = mountain goat
+Flussufer = riverbank
+Flussbett = riverbed
+Flussmündung = estuary
+Seeufer = lakeshore
+Bucht = bay
+Lagune = lagoon
+Steilküste = coastal cliffs
+Sandwüste = sand desert
+Dünengras = marram grass
+Moorsee = moor lake
+Baumgrenze = tree line
+Felsspalte = crevice
+Bachlauf = course of a stream
+Wildwechsel = deer crossing
+Vogelschutzgebiet = bird sanctuary
+Blätterdach = canopy of leaves

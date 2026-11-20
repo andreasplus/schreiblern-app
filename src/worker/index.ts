@@ -1,4 +1,5 @@
-import { getAllWords, getCollection, getMeanings, listCollections, searchWords, MAX_IDS, MAX_QUERY_LENGTH } from "./db.ts";
+import { getCollection, getMeanings, getWordsPage, listCollections, searchWords, MAX_IDS, MAX_QUERY_LENGTH, WORDS_PAGE_DEFAULT, WORDS_PAGE_MAX } from "./db.ts";
+import { filtersFromParams } from "../shared/filters.ts";
 
 export interface Env {
   DB: D1Database;
@@ -31,10 +32,18 @@ export async function handleApi(request: Request, env: Env): Promise<Response> {
     return json({ meanings: await getMeanings(env.DB, ids) });
   }
 
-  if (path === "/api/words") return json({ meanings: await getAllWords(env.DB) });
+  if (path === "/api/words") {
+    const p = url.searchParams;
+    if ((p.get("q") ?? "").length > MAX_QUERY_LENGTH) return error(400, `Suchbegriff ist länger als ${MAX_QUERY_LENGTH} Zeichen.`);
+    const offset = Number(p.get("offset") ?? 0);
+    const limit = Number(p.get("limit") ?? WORDS_PAGE_DEFAULT);
+    if (!Number.isInteger(offset) || offset < 0) return error(400, "offset muss eine ganze Zahl ab 0 sein.");
+    if (!Number.isInteger(limit) || limit < 1 || limit > WORDS_PAGE_MAX) return error(400, `limit muss zwischen 1 und ${WORDS_PAGE_MAX} liegen.`);
+    return json(await getWordsPage(env.DB, filtersFromParams(p), offset, limit));
+  }
   if (path === "/api/collections") return json({ collections: await listCollections(env.DB) });
 
-  const collection = /^\/api\/collections\/([a-z0-9-]{1,40})$/.exec(path);
+  const collection = /^\/api\/collections\/([a-z0-9-]{1,64})$/.exec(path);
   if (collection) return json({ meanings: await getCollection(env.DB, collection[1]!) });
 
   return error(404, "Unbekannter API-Pfad.");

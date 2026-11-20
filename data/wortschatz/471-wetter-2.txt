@@ -1,0 +1,32 @@
+# Wetterwörter
+> Wetterfrosch, Hundewetter und Hagelschauer
+Wetterkarte = weather map
+Wetterfrosch = weather frog
+Wetterstation = weather station
+Regenmesser = rain gauge
+Windrichtung = wind direction
+Windsack = windsock
+Schneewetter = snowy weather
+Sonnenwetter = sunny weather
+Badewetter = swimming weather
+Schmuddelwetter = dirty weather
+Hundewetter = foul weather
+Gewitterregen = thundery rain
+Hagelschauer = hail shower
+Schneeschauer = snow shower
+Nebelbank = fog bank
+Frosttag = frosty day
+Hitzetag = hot day
+Sommerhitze = summer heat
+Winterkälte = winter cold
+Wolkendecke = cloud cover
+Sturmflut = storm surge
+Unwetter = severe weather
+Regenzeit = rainy season
+Trockenzeit = dry season
+Wetterumschwung = change in the weather
+Aprilschauer = April shower
+Morgennebel = morning mist
+Abendrot = red evening sky
+Sonnenhitze = heat of the sun
+Regenpfütze = rain puddle
