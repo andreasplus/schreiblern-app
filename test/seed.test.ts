@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { findSeedConflicts, seedSql, toSeedRows, SEED_CHECK_SQL, type ExistingMeaning } from "../src/shared/seed.ts";
-import { freshDb, run, seedRecords } from "./helpers.ts";
+import { collectionsSql, findSeedConflicts, seedSql, toSeedRows, SEED_CHECK_SQL, type ExistingMeaning } from "../src/shared/seed.ts";
+import { collectionRecords, freshDb, run, seedRecords } from "./helpers.ts";
 
 describe("Seed-Daten", () => {
   const rows = toSeedRows(seedRecords());
@@ -23,6 +23,14 @@ describe("Seed-Daten", () => {
     expect(bank.map((r) => [r.description, r.en])).toEqual([["Geldinstitut", "bank"], ["Sitzgelegenheit", "bench"]]);
     expect(new Set(bank.map((r) => r.wordId)).size).toBe(1);
   });
+  it("ordnet jede Bildbedeutung mindestens einer Sammlung zu und kennt alle Mitglieder", () => {
+    const cols = collectionRecords();
+    expect(() => collectionsSql(cols, rows)).not.toThrow();
+    const member = new Set(cols.flatMap((c) => c.members));
+    const orphans = rows.filter((r) => !member.has(r.id) && r.display !== "Bank").map((r) => r.display);
+    expect(orphans).toEqual([]);
+    expect(() => collectionsSql([{ id: "x", name: "X", members: ["gibt-es-nicht"] }], rows)).toThrow(/unbekannte/);
+  });
   it("lehnt doppelte Bedeutungen ab", () => {
     const recs = seedRecords();
     expect(() => toSeedRows([...recs, { ...recs[0]!, id: "kopie" }])).toThrow(/doppelt/);
@@ -37,10 +45,14 @@ describe("Seed-Import in D1", () => {
   afterAll(() => dispose?.());
 
   it("ist wiederholbar ohne Dubletten", async () => {
-    await run(db, seedSql(rows));
-    await run(db, seedSql(rows));
-    const count = await db.prepare("SELECT (SELECT count(*) FROM meanings) AS m, (SELECT count(*) FROM words) AS w").first<{ m: number; w: number }>();
-    expect(count).toEqual({ m: 38, w: 37 });
+    const sql = seedSql(rows) + collectionsSql(collectionRecords(), rows);
+    await run(db, sql);
+    await run(db, sql);
+    const count = await db
+      .prepare("SELECT (SELECT count(*) FROM meanings) AS m, (SELECT count(*) FROM words) AS w, (SELECT count(*) FROM collections) AS c, (SELECT count(*) FROM collection_items) AS i")
+      .first<{ m: number; w: number; c: number; i: number }>();
+    const items = collectionRecords().reduce((n, c) => n + c.members.length, 0);
+    expect(count).toEqual({ m: rows.length, w: rows.length - 1, c: collectionRecords().length, i: items });
   });
 
   it("überschreibt geänderte Einträge nicht und meldet die Abweichung", async () => {

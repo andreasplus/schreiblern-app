@@ -24,6 +24,8 @@ export interface PictogramInput {
 export const BUILTIN_PICTOGRAMS = [
   "Auto", "Haus", "Maus", "Tisch", "Ball", "Hund", "Katze", "Fisch", "Kuh", "Ei", "Milch",
   "Brot", "Apfel", "Banane", "Sonne", "Mond", "Stern", "Bett", "Hand", "Buch", "Blitz", "Mama",
+  // Ergänzungen im selben Stil (eigene Zeichnungen, noch ungeprüft)
+  "Vogel", "Wolke", "Baum", "Blume", "Herz",
 ] as const;
 
 const n = (v: number) => Number(v.toFixed(3)).toString();
@@ -111,7 +113,7 @@ function drawAnimal(p: Pen, word: "Maus" | "Hund" | "Katze" | "Kuh") {
   }
 }
 
-const DRAWINGS: Record<(typeof BUILTIN_PICTOGRAMS)[number], (p: Pen) => void> = {
+const DRAWINGS: Record<Exclude<(typeof BUILTIN_PICTOGRAMS)[number], "Vogel" | "Wolke" | "Baum" | "Blume" | "Herz">, (p: Pen) => void> = {
   Auto(p) {
     // Eigene Zeichnung (ersetzt car.png aus der Nutzervorlage).
     p.path("M-70 -22L-70 6Q-70 14 -60 15L-40 17L-24 40Q-20 46 -10 46L26 46Q35 46 40 40L56 17L66 14Q72 12 72 4L72 -22Z", "#e8574a");
@@ -222,6 +224,40 @@ const DRAWINGS: Record<(typeof BUILTIN_PICTOGRAMS)[number], (p: Pen) => void> = 
   },
 };
 
+// Ergänzungen vom 19.11.2026: eigene Zeichnungen im Stil der Referenz.
+const EXTRA_DRAWINGS: Record<"Vogel" | "Wolke" | "Baum" | "Blume" | "Herz", (p: Pen) => void> = {
+  Vogel(p) {
+    p.poly([[-34, 6], [-58, 22], [-52, -8]], "#3d8bd0");
+    p.poly([[34, 8], [54, 1], [34, -6]], "#ffb53b");
+    p.ellipse(0, 0, 38, 28, "#5aa9e6");
+    p.ellipse(-6, -3, 19, 11, "#3d8bd0");
+    p.ellipse(19, 9, 3, 3, DARK);
+  },
+  Wolke(p) {
+    p.ellipse(-28, -8, 26, 20, "#e9f1f6");
+    p.ellipse(28, -8, 26, 20, "#e9f1f6");
+    p.ellipse(0, 10, 32, 28, "#e9f1f6");
+  },
+  Baum(p) {
+    p.rect(-9, -52, 18, 44, "#9b6b43");
+    p.ellipse(-22, 4, 25, 23, "#6ab04c");
+    p.ellipse(22, 4, 25, 23, "#6ab04c");
+    p.ellipse(0, 28, 30, 26, "#6ab04c");
+  },
+  Blume(p) {
+    p.lineWidth = 4;
+    p.line(0, -54, 0, 0);
+    p.lineWidth = LINE_WIDTH;
+    p.ellipse(13, -30, 13, 6, "#6ea05e");
+    for (let i = 0; i < 6; i++) {
+      const a = (i * Math.PI) / 3 + Math.PI / 2;
+      p.ellipse(18 * Math.cos(a), 16 + 18 * Math.sin(a), 12, 12, "#f28cb1");
+    }
+    p.ellipse(0, 16, 11, 11, "#ffd129");
+  },
+  Herz: (p) => p.path("M0 -42C-62 2 -46 52 0 24C46 52 62 2 0 -42Z", "#e74941"),
+};
+
 export function isBuiltinPictogram(key: string): key is (typeof BUILTIN_PICTOGRAMS)[number] {
   return (BUILTIN_PICTOGRAMS as readonly string[]).includes(key);
 }
@@ -234,6 +270,10 @@ export function pictogramSvg(input: PictogramInput): string {
   const p = new Pen();
   if (input.number !== null) drawNumber(p, input.number);
   else if (input.color) p.ellipse(0, 0, 42, 42, input.color);
-  else if (input.pictogram && isBuiltinPictogram(input.pictogram)) DRAWINGS[input.pictogram](p);
+  else if (input.pictogram && isBuiltinPictogram(input.pictogram)) {
+    const key = input.pictogram;
+    if (key in EXTRA_DRAWINGS) EXTRA_DRAWINGS[key as keyof typeof EXTRA_DRAWINGS](p);
+    else DRAWINGS[key as keyof typeof DRAWINGS](p);
+  }
   return p.out.join("");
 }

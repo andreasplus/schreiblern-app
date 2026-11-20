@@ -1,0 +1,10 @@
+[
+  { "id": "erste-woerter", "name": "Erste Wörter", "description": "Die 25 Wörter der ersten Schreibmappe", "members": ["seed-001","seed-002","seed-003","seed-004","seed-005","seed-006","seed-007","seed-008","seed-009","seed-010","seed-011","seed-012","seed-013","seed-014","seed-015","seed-016","seed-017","seed-018","seed-019","seed-020","seed-021","seed-022","seed-023","seed-024","seed-025"] },
+  { "id": "zahlen", "name": "Zahlen", "description": "eins bis zehn mit Ziffer und Zählpunkten", "members": ["number-01","number-02","number-03","number-04","number-05","number-06","number-07","number-08","number-09","number-10"] },
+  { "id": "farben", "name": "Farben", "description": "Farbwörter mit farbigem Kreis", "members": ["seed-016","seed-002","seed-017","seed-018","extra-orange","extra-lila","extra-rosa","extra-braun","extra-schwarz","extra-weiss"] },
+  { "id": "tiere", "name": "Tiere", "members": ["seed-004","seed-007","seed-008","seed-009","seed-010","extra-vogel"] },
+  { "id": "essen", "name": "Essen und Trinken", "members": ["seed-011","seed-012","seed-013","seed-014","seed-015"] },
+  { "id": "natur", "name": "Natur und Himmel", "members": ["seed-019","seed-020","seed-021","extra-blitz","extra-wolke","extra-baum","extra-blume"] },
+  { "id": "zuhause", "name": "Zuhause und Spielen", "members": ["seed-003","seed-005","seed-022","seed-024","seed-006","seed-001"] },
+  { "id": "familie", "name": "Familie und Körper", "members": ["seed-025","seed-023","extra-herz"] }
+]

@@ -20,5 +20,115 @@
     "pictogram_key": null,
     "review_status": "draft",
     "source": "Ergänzung für die Abnahme von APP-04 (mehrdeutige Wörter), noch ohne Piktogramm und ungeprüft"
+  },
+  {
+    "id": "extra-orange",
+    "de": "orange",
+    "en": "orange",
+    "set": "extra",
+    "kind": "color",
+    "color": "#f28c28",
+    "review_status": "draft",
+    "source": "Ergänzung vom 19.11.2026 für Sammlungen, ungeprüft"
+  },
+  {
+    "id": "extra-lila",
+    "de": "lila",
+    "en": "purple",
+    "set": "extra",
+    "kind": "color",
+    "color": "#8e5cc4",
+    "review_status": "draft",
+    "source": "Ergänzung vom 19.11.2026 für Sammlungen, ungeprüft"
+  },
+  {
+    "id": "extra-rosa",
+    "de": "rosa",
+    "en": "pink",
+    "set": "extra",
+    "kind": "color",
+    "color": "#f4a6c8",
+    "review_status": "draft",
+    "source": "Ergänzung vom 19.11.2026 für Sammlungen, ungeprüft"
+  },
+  {
+    "id": "extra-braun",
+    "de": "braun",
+    "en": "brown",
+    "set": "extra",
+    "kind": "color",
+    "color": "#8b5a2b",
+    "review_status": "draft",
+    "source": "Ergänzung vom 19.11.2026 für Sammlungen, ungeprüft"
+  },
+  {
+    "id": "extra-schwarz",
+    "de": "schwarz",
+    "en": "black",
+    "set": "extra",
+    "kind": "color",
+    "color": "#2b2b2b",
+    "review_status": "draft",
+    "source": "Ergänzung vom 19.11.2026 für Sammlungen, ungeprüft"
+  },
+  {
+    "id": "extra-weiss",
+    "de": "weiß",
+    "en": "white",
+    "set": "extra",
+    "kind": "color",
+    "color": "#ffffff",
+    "review_status": "draft",
+    "source": "Ergänzung vom 19.11.2026 für Sammlungen, ungeprüft"
+  },
+  {
+    "id": "extra-vogel",
+    "de": "Vogel",
+    "en": "bird",
+    "set": "extra",
+    "kind": "word",
+    "pictogram_key": "Vogel",
+    "review_status": "draft",
+    "source": "Ergänzung vom 19.11.2026 für Sammlungen, ungeprüft"
+  },
+  {
+    "id": "extra-wolke",
+    "de": "Wolke",
+    "en": "cloud",
+    "set": "extra",
+    "kind": "word",
+    "pictogram_key": "Wolke",
+    "review_status": "draft",
+    "source": "Ergänzung vom 19.11.2026 für Sammlungen, ungeprüft"
+  },
+  {
+    "id": "extra-baum",
+    "de": "Baum",
+    "en": "tree",
+    "set": "extra",
+    "kind": "word",
+    "pictogram_key": "Baum",
+    "review_status": "draft",
+    "source": "Ergänzung vom 19.11.2026 für Sammlungen, ungeprüft"
+  },
+  {
+    "id": "extra-blume",
+    "de": "Blume",
+    "en": "flower",
+    "set": "extra",
+    "kind": "word",
+    "pictogram_key": "Blume",
+    "review_status": "draft",
+    "source": "Ergänzung vom 19.11.2026 für Sammlungen, ungeprüft"
+  },
+  {
+    "id": "extra-herz",
+    "de": "Herz",
+    "en": "heart",
+    "set": "extra",
+    "kind": "word",
+    "pictogram_key": "Herz",
+    "review_status": "draft",
+    "source": "Ergänzung vom 19.11.2026 für Sammlungen, ungeprüft"
   }
 ]

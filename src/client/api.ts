@@ -1,4 +1,4 @@
-import type { Meaning, SearchResponse } from "../shared/types.ts";
+import type { Collection, Meaning, SearchResponse } from "../shared/types.ts";
 
 async function get<T>(path: string, signal?: AbortSignal): Promise<T> {
   const res = await fetch(path, { signal, headers: { accept: "application/json" } });
@@ -15,3 +15,7 @@ export const fetchMeanings = async (ids: string[], signal?: AbortSignal) =>
 
 export const fetchCollection = async (name: string) =>
   (await get<{ meanings: Meaning[] }>(`/api/collections/${encodeURIComponent(name)}`)).meanings;
+
+export const fetchWords = async () => (await get<{ meanings: Meaning[] }>("/api/words")).meanings;
+
+export const fetchCollections = async () => (await get<{ collections: Collection[] }>("/api/collections")).collections;

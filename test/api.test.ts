@@ -1,10 +1,11 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { handleApi } from "../src/worker/index.ts";
-import { seedSql, toSeedRows } from "../src/shared/seed.ts";
-import type { Meaning, SearchResponse } from "../src/shared/types.ts";
-import { freshDb, run, seedRecords } from "./helpers.ts";
+import { collectionsSql, seedSql, toSeedRows } from "../src/shared/seed.ts";
+import type { Collection, Meaning, SearchResponse } from "../src/shared/types.ts";
+import { collectionRecords, freshDb, run, seedRecords } from "./helpers.ts";
 
 let db: D1Database;
+const rowsCount = () => toSeedRows(seedRecords()).length + 2; // + schon/schön aus dem Test
 let dispose: () => Promise<void>;
 const call = async <T>(path: string, init?: RequestInit) => {
   const res = await handleApi(new Request(`https://test.local${path}`, init), { DB: db });
@@ -13,7 +14,8 @@ const call = async <T>(path: string, init?: RequestInit) => {
 
 beforeAll(async () => {
   ({ db, dispose } = await freshDb());
-  await run(db, seedSql(toSeedRows(seedRecords())));
+  const rows = toSeedRows(seedRecords());
+  await run(db, seedSql(rows) + collectionsSql(collectionRecords(), rows));
   // Testwörter für Umlaut-Unterscheidung
   await run(db, `INSERT INTO words (id, lang, display, normalized) VALUES ('de:schon', 'de', 'schon', 'schon'), ('de:schön', 'de', 'schön', 'schön');
 INSERT INTO meanings (id, word_id, sense_key, translation_en, kind, status, source) VALUES ('t-schon', 'de:schon', '', 'already', 'word', 'draft', 'test'), ('t-schoen', 'de:schön', '', 'beautiful', 'word', 'draft', 'test');
@@ -66,7 +68,24 @@ describe("Abruf für den Druck", () => {
     const ids = Array.from({ length: 101 }, (_, i) => `id-${i}`).join(",");
     expect((await call(`/api/meanings?ids=${ids}`)).status).toBe(400);
   });
-  it("liefert Sammlungen in Seed-Reihenfolge", async () => {
+  it("listet Sammlungen mit Anzahl", async () => {
+    const { body } = await call<{ collections: Collection[] }>("/api/collections");
+    expect(body.collections.map((c) => c.id).slice(0, 3)).toEqual(["erste-woerter", "zahlen", "farben"]);
+    expect(body.collections.find((c) => c.id === "tiere")?.count).toBe(6);
+  });
+  it("liefert eine Sammlung in ihrer Reihenfolge", async () => {
+    const { body } = await call<{ meanings: Meaning[] }>("/api/collections/farben");
+    expect(body.meanings.map((m) => m.de).slice(0, 4)).toEqual(["rot", "blau", "grün", "gelb"]);
+    expect(body.meanings.every((m) => m.kind === "color")).toBe(true);
+  });
+  it("liefert alle Wörter mit Sammlungen und Positionen", async () => {
+    const { body } = await call<{ meanings: Meaning[] }>("/api/words");
+    const kuh = body.meanings.find((m) => m.de === "Kuh")!;
+    expect(kuh.collections).toEqual(["erste-woerter", "tiere"]);
+    expect(kuh.collectionPositions).toEqual({ "erste-woerter": 10, tiere: 5 });
+    expect(body.meanings.length).toBe(rowsCount());
+  });
+  it("liefert Seed-Gruppen weiterhin in Seed-Reihenfolge", async () => {
     const { body } = await call<{ meanings: Meaning[] }>("/api/collections/words");
     expect(body.meanings).toHaveLength(25);
     expect(body.meanings[0]!.de).toBe("Auto");

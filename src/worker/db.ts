@@ -1,4 +1,4 @@
-import type { Meaning, SearchResultWord } from "../shared/types.ts";
+import type { Collection, Meaning, SearchResultWord } from "../shared/types.ts";
 import { normalizeTerm } from "../shared/normalize.ts";
 
 export const MAX_QUERY_LENGTH = 60;
@@ -80,7 +80,46 @@ export async function getMeanings(db: D1Database, ids: string[]): Promise<Meanin
   return ids.flatMap((id) => byId.get(id) ?? []);
 }
 
+/** Bedeutungen einer Sammlung in ihrer Reihenfolge. Fällt auf die Seed-Gruppe (words, numbers, extra) zurück. */
 export async function getCollection(db: D1Database, name: string): Promise<Meaning[]> {
+  const fromItems = await db
+    .prepare(`${SELECT} JOIN collection_items ci ON ci.meaning_id = m.id WHERE ci.collection_id = ?1 ORDER BY ci.sort_order, m.id`)
+    .bind(name)
+    .all<MeaningRow>();
+  if (fromItems.results.length) return fromItems.results.map(toMeaning);
   const { results } = await db.prepare(`${SELECT} WHERE m.collection = ?1 ORDER BY m.sort_order, m.id`).bind(name).all<MeaningRow>();
   return results.map(toMeaning);
+}
+
+export async function listCollections(db: D1Database): Promise<Collection[]> {
+  const { results } = await db
+    .prepare(
+      `SELECT c.id, c.name, c.description, count(ci.meaning_id) AS count
+       FROM collections c LEFT JOIN collection_items ci ON ci.collection_id = c.id
+       GROUP BY c.id ORDER BY c.sort_order, c.id`,
+    )
+    .all<Collection>();
+  return results;
+}
+
+/** Alle Bedeutungen mit ihren Sammlungen, für die Wortübersicht. */
+export async function getAllWords(db: D1Database): Promise<Meaning[]> {
+  const [meanings, items] = await db.batch([
+    db.prepare(`${SELECT} ORDER BY m.collection, m.sort_order, w.normalized, m.id`),
+    db.prepare(
+      `SELECT ci.meaning_id, ci.collection_id, ci.sort_order FROM collection_items ci JOIN collections c ON c.id = ci.collection_id ORDER BY c.sort_order`,
+    ),
+  ]);
+  const tags = new Map<string, { ids: string[]; pos: Record<string, number> }>();
+  for (const r of items!.results as Array<{ meaning_id: string; collection_id: string; sort_order: number }>) {
+    const t = tags.get(r.meaning_id) ?? { ids: [], pos: {} };
+    t.ids.push(r.collection_id);
+    t.pos[r.collection_id] = r.sort_order;
+    tags.set(r.meaning_id, t);
+  }
+  return (meanings!.results as unknown as MeaningRow[]).map((r) => ({
+    ...toMeaning(r),
+    collections: tags.get(r.id)?.ids ?? [],
+    collectionPositions: tags.get(r.id)?.pos ?? {},
+  }));
 }

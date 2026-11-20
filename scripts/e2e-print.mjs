@@ -39,38 +39,58 @@ await page.addInitScript(() => {
 });
 await page.goto(base);
 
-// Auto: vorhandener Eintrag, Vorschau ohne Auswahlschritt
-await page.fill("#q", "  auto ");
-await page.getByRole("button", { name: /Auto · car/ }).click();
-check(await page.locator(".preview svg.worksheet").count() === 1, "Auto öffnet direkt die Vorschau");
+const cards = page.locator(".word-card");
+await cards.first().waitFor();
+const total = await cards.count();
+check(total >= 40, `Wortübersicht zeigt alle Wörter als Kacheln (${total})`);
 
-// Bank: zwei Bedeutungen, keine Vorauswahl
-await page.fill("#q", "BANK");
-await page.getByRole("button", { name: /Bank · 2 Bedeutungen/ }).click();
-check(await page.locator(".choice-item").count() === 2, "Bank zeigt zwei Bedeutungen");
-check(await page.locator(".preview svg.worksheet").count() === 0, "Bank wählt keine Bedeutung automatisch");
-await page.getByRole("button", { name: /Bank \(Sitzgelegenheit\) · bench/ }).click();
-const previewText = await page.locator(".preview svg.worksheet").textContent();
+// Auto: Kachel öffnet die Vorschau
+await page.getByRole("button", { name: "Vorschau Auto · car" }).click();
+check(await page.locator(".preview-dialog .preview svg.worksheet").count() === 1, "Auto öffnet die Vorschau im Dialog");
+await page.getByRole("button", { name: "Schließen" }).click();
+
+// Bank: zwei Bedeutungen als getrennte Kacheln, keine Vorauswahl
+await page.fill("#q", "  BANK ");
+check(await cards.count() === 2, "Bank erscheint als zwei Bedeutungen");
+check(await page.locator(".word-card.is-selected").count() === 0, "Bank wird nicht automatisch ausgewählt");
+await page.getByRole("button", { name: "Vorschau Bank (Sitzgelegenheit) · bench" }).click();
+const previewText = await page.locator(".preview-dialog svg.worksheet").textContent();
 check(previewText.includes("bench") && !previewText.includes("Sitzgelegenheit"), "Arbeitsblatt zeigt Bank ohne Klammerzusatz, englisch bench");
-if (shots) await page.screenshot({ path: join(outDir, "bank-auswahl.png") });
+if (shots) await page.screenshot({ path: join(outDir, "bank-vorschau.png") });
+await page.keyboard.press("Escape");
 
 // Keine Treffer
 await page.fill("#q", "Xylofonwort");
-await page.getByText(/Kein vorhandener Eintrag/).waitFor();
+await page.getByText(/Keine Wörter passen/).waitFor();
 check(true, "Kein-Treffer-Hinweis erscheint");
+await page.fill("#q", "");
 
-// schon/schön werden nicht gleichgesetzt (keiner der beiden ist im Bestand, aber „schon“ darf nicht „schön“ finden)
-const res = await page.evaluate(async () => (await fetch("/api/search?q=gr%C3%BCn")).json());
-check(res.results.length === 1 && res.results[0].de === "grün", "Umlaute bleiben erhalten (grün)");
-const res2 = await page.evaluate(async () => (await fetch("/api/search?q=grun")).json());
-check(res2.results.length === 0, "„grun“ findet nicht „grün“");
+// Sammlungen, Sortierung, Längenfilter
+await page.getByRole("button", { name: /^Tiere/ }).click();
+check(await cards.count() === 6, "Sammlung Tiere zeigt 6 Wörter");
+await page.getByRole("button", { name: /^Farben/ }).click();
+check(await page.locator(".word-card.is-color").count() === await cards.count(), "Sammlung Farben zeigt nur Farbkreise");
+await page.getByRole("button", { name: /^Alle/ }).first().click();
+await page.getByRole("button", { name: "3 Buchstaben" }).click();
+const de3 = await page.locator(".word-de").allTextContents();
+check(de3.length > 0 && de3.every((w) => [...w.replace(/[^\p{L}]/gu, "")].length === 3), `3 Buchstaben (Deutsch): ${de3.join(", ")}`);
+await page.getByRole("button", { name: "Englisch", exact: true }).click();
+const en3 = await page.locator(".word-en").allTextContents();
+check(en3.length > 0 && en3.every((w) => w.length === 3), `3 Buchstaben (Englisch): ${en3.join(", ")}`);
+await page.locator("select").first().selectOption("alpha");
+const sorted = await page.locator(".word-en").allTextContents();
+check(JSON.stringify(sorted) === JSON.stringify([...sorted].sort((a, b) => a.localeCompare(b, "en"))), "alphabetisch nach Englisch sortiert");
+if (shots) await page.screenshot({ path: join(outDir, "filter-3-buchstaben.png") });
+await page.getByRole("button", { name: "Filter zurücksetzen" }).click();
+if (shots) await page.screenshot({ path: join(outDir, "uebersicht.png") });
 
-// Sammlungen und Mehrseitendruck
-await page.getByRole("button", { name: "Erste Wörter (25) hinzufügen" }).click();
-await page.getByRole("button", { name: "Zahlen 1 bis 10 hinzufügen" }).click();
+// Mehrseitendruck: Erste Wörter + Zahlen
+await page.getByRole("button", { name: /^Erste Wörter/ }).click();
+await page.getByRole("button", { name: "Alle angezeigten zur Druckauswahl" }).click();
+await page.getByRole("button", { name: /^Zahlen/ }).click();
+await page.getByRole("button", { name: "Alle angezeigten zur Druckauswahl" }).click();
 await page.getByRole("heading", { name: "Druckauswahl (35)" }).waitFor();
 check(page.url().includes("#auswahl=seed-001,"), "Druckauswahl steht in der Adresse");
-if (shots) await page.screenshot({ path: join(outDir, "auswahl.png") });
 
 await page.getByRole("button", { name: "35 Seiten drucken" }).click();
 await page.locator(".print-page").nth(34).waitFor({ state: "attached" });
@@ -81,27 +101,28 @@ const info = pdfPages(pdf35);
 check(info.pages === 35, `Druck erzeugt 35 Seiten (ist: ${info.pages})`);
 check(/\(A4\)/.test(info.size), `Seitenformat A4 (ist: ${info.size})`);
 const text = execFileSync("pdftotext", ["-f", "1", "-l", "1", pdf35, "-"], { encoding: "utf8" });
-check(!/Druckauswahl|Wort suchen|drucken/.test(text), "Bedienelemente erscheinen nicht im Ausdruck");
+check(!/Druckauswahl|Sammlung|drucken/.test(text), "Bedienelemente erscheinen nicht im Ausdruck");
 
-// Auswahl übersteht Neuladen
 await page.reload();
 await page.getByRole("heading", { name: "Druckauswahl (35)" }).waitFor();
 check(true, "Druckauswahl übersteht Neuladen");
 
-// Einzelseite
+// Einzelseite aus der Vorschau
 await page.fill("#q", "Blitz");
-await page.getByRole("button", { name: /Blitz · lightning/ }).click();
+await page.getByRole("button", { name: "Vorschau Blitz · lightning" }).click();
 await page.getByRole("button", { name: "Diese Seite drucken" }).click();
 await page.locator(".print-page").first().waitFor({ state: "attached" });
 const pdf1 = join(outDir, "blitz.pdf");
 await page.pdf({ path: pdf1, preferCSSPageSize: true, printBackground: true });
 check(pdfPages(pdf1).pages === 1, "Einzeldruck erzeugt genau eine Seite, keine leere Schlussseite");
+await page.keyboard.press("Escape");
 
 // Mobile Ansicht
+await page.fill("#q", "");
 await page.setViewportSize({ width: 390, height: 844 });
 const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
 check(!overflow, "Kein waagerechtes Scrollen bei 390 px Breite");
-if (shots) await page.screenshot({ path: join(outDir, "mobil.png"), fullPage: true });
+if (shots) await page.screenshot({ path: join(outDir, "mobil.png") });
 
 await browser.close();
 console.log(failures ? `${failures} Prüfungen fehlgeschlagen.` : "Alle Prüfungen bestanden.");
