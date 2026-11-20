@@ -83,7 +83,8 @@ button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); o
 .word-num { color: var(--muted); }
 .word-en { font-family: "ABeeZee", system-ui, sans-serif; font-size: 1.05rem; color: var(--muted); }
 .word-desc { font-size: 0.8rem; color: var(--muted); font-style: italic; }
-.word-meta { margin-top: 4px; font-size: 0.72rem; color: #8a979f; display: inline-flex; gap: 6px; align-items: center; }
+.word-meta { margin-top: 4px; font-size: 0.72rem; color: #8a979f; display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 2px 6px; align-items: center; }
+.word-meta > span { white-space: nowrap; }
 .word-toggle { position: absolute; top: 8px; right: 8px; width: 32px; height: 32px; padding: 0; border-radius: 50%; font-size: 1.1rem; line-height: 1; background: #fff; box-shadow: 0 1px 3px rgb(0 0 0 / 0.12); }
 .word-toggle[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
 

@@ -74,11 +74,16 @@ check(true, "Kein-Treffer-Hinweis erscheint");
 await page.fill("#q", "");
 
 // Sammlungen, Sortierung, Längenfilter
-const collectionSelect = page.getByLabel("Sammlung");
+// Nach jeder Filteränderung lädt die Übersicht vom Server; warten, bis die neue Seite da ist.
+const settle = async () => {
+  await page.waitForTimeout(350);
+  await page.waitForFunction(() => !document.body.textContent.includes("Wörter werden geladen"));
+};
+const collectionSelect = page.getByLabel("Sammlung", { exact: true });
 const pickCollection = async (label) => {
   const value = await collectionSelect.locator("option", { hasText: label }).first().getAttribute("value");
   await collectionSelect.selectOption(value);
-  await page.waitForFunction((t) => !document.querySelector(".count")?.textContent?.startsWith(String(t)), total);
+  await settle();
 };
 await pickCollection("Tiere (");
 const tiereOption = (await collectionSelect.locator("option", { hasText: "Tiere (" }).first().textContent()) ?? "";
@@ -86,19 +91,23 @@ check(String(await totalWords()) === /\((\d+)\)/.exec(tiereOption)?.[1], `Sammlu
 await pickCollection("Farben (");
 check((await page.locator(".word-card").first().getAttribute("class"))?.includes("is-color"), "Sammlung Farben beginnt mit Farbkreisen");
 await collectionSelect.selectOption("");
+await settle();
 await page.getByLabel("Schwierigkeit bis").selectOption("1");
-await page.waitForFunction((t) => !document.querySelector(".count")?.textContent?.startsWith(String(t)), total);
+await settle();
 const metas = await page.locator(".word-meta").allTextContents();
 check(metas.length > 0 && metas.every((t) => t.includes("Stufe 1")), `Schwierigkeit „sehr leicht“ zeigt nur Stufe 1 (${metas.length} Kacheln)`);
 await page.getByLabel("Schwierigkeit bis").selectOption("5");
+await settle();
 await page.getByRole("button", { name: "3 Buchstaben" }).click();
+await settle();
 const de3 = await page.locator(".word-de").allTextContents();
 check(de3.length > 0 && de3.every((w) => [...w.replace(/[^\p{L}]/gu, "")].length === 3), `3 Buchstaben (Deutsch): ${de3.join(", ")}`);
 await page.getByRole("button", { name: "Englisch", exact: true }).click();
+await settle();
 const en3 = await page.locator(".word-en").allTextContents();
 check(en3.length > 0 && en3.every((w) => w.length === 3), `3 Buchstaben (Englisch): ${en3.join(", ")}`);
-await page.getByLabel("Sortieren").selectOption("alpha");
-await page.waitForTimeout(500);
+await page.getByLabel("Sortieren", { exact: true }).selectOption("alpha");
+await settle();
 const sorted = await page.locator(".word-en").allTextContents();
 check(JSON.stringify(sorted) === JSON.stringify([...sorted].sort((a, b) => a.localeCompare(b, "en"))), "alphabetisch nach Englisch sortiert");
 if (shots) await page.screenshot({ path: join(outDir, "filter-3-buchstaben.png") });

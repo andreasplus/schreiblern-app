@@ -23,7 +23,7 @@ writeFileSync(sqlFile, seedSql(rows) + collectionsSql(collections, rows));
 console.log(`${rows.length} Bedeutungen in ${collections.length} Sammlungen vorbereitet: ${sqlFile}`);
 if (!mode) process.exit(0);
 
-const wrangler = (...a) => execFileSync("npx", ["wrangler", "d1", "execute", "schreiblern-app", mode, ...a], { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "inherit"] });
+const wrangler = (...a) => execFileSync("npx", ["wrangler", "d1", "execute", "schreiblern-app", mode, ...a], { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "inherit"], maxBuffer: 256 * 1024 * 1024 });
 wrangler("--file", sqlFile, "--yes");
 const result = JSON.parse(wrangler("--json", "--command", SEED_CHECK_SQL));
 const existing = result[0]?.results ?? [];

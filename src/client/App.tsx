@@ -174,7 +174,7 @@ export function App() {
 
               <label className="control collection-control">
                 <span>Sammlung</span>
-                <select value={filters.collection} onChange={(e) => setFilter("collection", e.target.value)}>
+                <select aria-label="Sammlung" value={filters.collection} onChange={(e) => setFilter("collection", e.target.value)}>
                   <option value="">Alle Sammlungen{allCount !== null ? ` (${allCount})` : ""}</option>
                   {collections.map((c) => (
                     <option key={c.id} value={c.id} title={c.description ?? undefined}>
@@ -187,7 +187,7 @@ export function App() {
               <div className="controls">
                 <label className="control">
                   <span>Sortieren</span>
-                  <select value={filters.sort} onChange={(e) => setFilter("sort", e.target.value as SortKey)}>
+                  <select aria-label="Sortieren" value={filters.sort} onChange={(e) => setFilter("sort", e.target.value as SortKey)}>
                     <option value="collection">nach Sammlung</option>
                     <option value="alpha">alphabetisch</option>
                     <option value="length">nach Länge</option>
@@ -289,8 +289,8 @@ export function App() {
                       <span className="word-en">{m.en}</span>
                       {m.description && <span className="word-desc">{m.description}</span>}
                       <span className="word-meta">
-                        {letterCount(filters.lang === "de" ? m.de : m.en)} Buchst.
-                        {m.difficulty !== null && <span title={DIFFICULTY_LABELS[m.difficulty as 1]}> · Stufe {m.difficulty}</span>}
+                        <span>{letterCount(filters.lang === "de" ? m.de : m.en)} Buchst.</span>
+                        {m.difficulty !== null && <span title={DIFFICULTY_LABELS[m.difficulty as 1]}>Stufe {m.difficulty}</span>}
                         {m.status === "draft" && <span className="badge">ungeprüft</span>}
                       </span>
                     </button>
