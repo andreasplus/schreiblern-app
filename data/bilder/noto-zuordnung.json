@@ -1,0 +1,3732 @@
+{
+ "extra-bank-geld": {
+  "emoji": "🏦",
+  "icon": "bank",
+  "how": "hand"
+ },
+ "n-abflug": {
+  "emoji": "🛫",
+  "icon": "airplane-departure",
+  "how": "name"
+ },
+ "n-achterbahn": {
+  "emoji": "🎢",
+  "icon": "roller-coaster",
+  "how": "name"
+ },
+ "n-adler": {
+  "emoji": "🦅",
+  "icon": "eagle",
+  "how": "name"
+ },
+ "n-aerger": {
+  "emoji": "💢",
+  "icon": "anger-symbol",
+  "how": "name"
+ },
+ "n-aerzte": {
+  "emoji": "👨‍⚕",
+  "icon": "man-health-worker",
+  "how": "mehrzahl",
+  "from": "n-arzt"
+ },
+ "n-aerztin": {
+  "emoji": "👩‍⚕",
+  "icon": "woman-health-worker",
+  "how": "name"
+ },
+ "n-affe": {
+  "emoji": "🐒",
+  "icon": "monkey",
+  "how": "name"
+ },
+ "n-affen": {
+  "emoji": "🐒",
+  "icon": "monkey",
+  "how": "mehrzahl",
+  "from": "n-affe"
+ },
+ "n-ahornblatt": {
+  "emoji": "🍁",
+  "icon": "maple-leaf",
+  "how": "name"
+ },
+ "n-akkordeon": {
+  "emoji": "🪗",
+  "icon": "accordion",
+  "how": "name"
+ },
+ "n-ameise": {
+  "emoji": "🐜",
+  "icon": "ant",
+  "how": "name"
+ },
+ "n-ameisen": {
+  "emoji": "🐜",
+  "icon": "ant",
+  "how": "mehrzahl",
+  "from": "n-ameise"
+ },
+ "n-amulett": {
+  "emoji": "🧿",
+  "icon": "nazar-amulet",
+  "how": "name2"
+ },
+ "n-ananas": {
+  "emoji": "🍍",
+  "icon": "pineapple",
+  "how": "name"
+ },
+ "n-anker": {
+  "emoji": "⚓",
+  "icon": "anchor",
+  "how": "name"
+ },
+ "n-armbanduhr": {
+  "emoji": "⌚",
+  "icon": "watch",
+  "how": "name"
+ },
+ "n-arzt": {
+  "emoji": "👨‍⚕",
+  "icon": "man-health-worker",
+  "how": "name"
+ },
+ "n-astronaut": {
+  "emoji": "👨‍🚀",
+  "icon": "man-astronaut",
+  "how": "name"
+ },
+ "n-astronauten": {
+  "emoji": "👨‍🚀",
+  "icon": "man-astronaut",
+  "how": "mehrzahl",
+  "from": "n-astronaut"
+ },
+ "n-astronautin": {
+  "emoji": "👩‍🚀",
+  "icon": "woman-astronaut",
+  "how": "name"
+ },
+ "n-aubergine": {
+  "emoji": "🍆",
+  "icon": "eggplant",
+  "how": "name"
+ },
+ "n-auge": {
+  "emoji": "👁",
+  "icon": "eye",
+  "how": "name"
+ },
+ "n-augen": {
+  "emoji": "👀",
+  "icon": "eyes",
+  "how": "name"
+ },
+ "n-ausserirdischer": {
+  "emoji": "👽",
+  "icon": "alien",
+  "how": "name"
+ },
+ "n-auster": {
+  "emoji": "🦪",
+  "icon": "oyster",
+  "how": "name"
+ },
+ "n-ausweis": {
+  "emoji": "🪪",
+  "icon": "identification-card",
+  "how": "name"
+ },
+ "n-autobahn": {
+  "emoji": "🛣",
+  "icon": "motorway",
+  "how": "name"
+ },
+ "n-autobahnen": {
+  "emoji": "🛣",
+  "icon": "motorway",
+  "how": "mehrzahl",
+  "from": "n-autobahn"
+ },
+ "n-avocado": {
+  "emoji": "🥑",
+  "icon": "avocado",
+  "how": "name"
+ },
+ "n-axt": {
+  "emoji": "🪓",
+  "icon": "axe",
+  "how": "name"
+ },
+ "n-baby": {
+  "emoji": "👶",
+  "icon": "baby",
+  "how": "name"
+ },
+ "n-babyflasche": {
+  "emoji": "🍼",
+  "icon": "baby-bottle",
+  "how": "name"
+ },
+ "n-babys": {
+  "emoji": "👶",
+  "icon": "baby",
+  "how": "mehrzahl",
+  "from": "n-baby"
+ },
+ "n-badeanzuege": {
+  "emoji": "🩱",
+  "icon": "one-piece-swimsuit",
+  "how": "mehrzahl",
+  "from": "n-badeanzug"
+ },
+ "n-badeanzug": {
+  "emoji": "🩱",
+  "icon": "one-piece-swimsuit",
+  "how": "name2"
+ },
+ "n-badewanne": {
+  "emoji": "🛁",
+  "icon": "bathtub",
+  "how": "name"
+ },
+ "n-badewannen": {
+  "emoji": "🛁",
+  "icon": "bathtub",
+  "how": "mehrzahl",
+  "from": "n-badewanne"
+ },
+ "n-badminton": {
+  "emoji": "🏸",
+  "icon": "badminton",
+  "how": "name"
+ },
+ "n-baer": {
+  "emoji": "🐻",
+  "icon": "bear",
+  "how": "name"
+ },
+ "n-baeren": {
+  "emoji": "🐻",
+  "icon": "bear",
+  "how": "mehrzahl",
+  "from": "n-baer"
+ },
+ "n-baeuerin": {
+  "emoji": "👩‍🌾",
+  "icon": "woman-farmer",
+  "how": "name"
+ },
+ "n-baguette": {
+  "emoji": "🥖",
+  "icon": "baguette-bread",
+  "how": "name"
+ },
+ "n-bahnhoefe": {
+  "emoji": "🚉",
+  "icon": "station",
+  "how": "mehrzahl",
+  "from": "n-bahnhof"
+ },
+ "n-bahnhof": {
+  "emoji": "🚉",
+  "icon": "station",
+  "how": "name"
+ },
+ "n-banjo": {
+  "emoji": "🪕",
+  "icon": "banjo",
+  "how": "name"
+ },
+ "n-baseball": {
+  "emoji": "⚾",
+  "icon": "baseball",
+  "how": "name"
+ },
+ "n-basketbaelle": {
+  "emoji": "🏀",
+  "icon": "basketball",
+  "how": "mehrzahl",
+  "from": "n-basketball"
+ },
+ "n-basketball": {
+  "emoji": "🏀",
+  "icon": "basketball",
+  "how": "name"
+ },
+ "n-batterie": {
+  "emoji": "🔋",
+  "icon": "battery",
+  "how": "name"
+ },
+ "n-batterien": {
+  "emoji": "🔋",
+  "icon": "battery",
+  "how": "mehrzahl",
+  "from": "n-batterie"
+ },
+ "n-bauarbeiter": {
+  "emoji": "👷‍♂",
+  "icon": "man-construction-worker",
+  "how": "name"
+ },
+ "n-bauarbeiterin": {
+  "emoji": "👷‍♀",
+  "icon": "woman-construction-worker",
+  "how": "name"
+ },
+ "n-bauer": {
+  "emoji": "👨‍🌾",
+  "icon": "man-farmer",
+  "how": "name"
+ },
+ "n-bauern": {
+  "emoji": "👨‍🌾",
+  "icon": "man-farmer",
+  "how": "mehrzahl",
+  "from": "n-bauer"
+ },
+ "n-bein": {
+  "emoji": "🦵",
+  "icon": "leg",
+  "how": "name"
+ },
+ "n-beine": {
+  "emoji": "🦵",
+  "icon": "leg",
+  "how": "mehrzahl",
+  "from": "n-bein"
+ },
+ "n-berg": {
+  "emoji": "⛰",
+  "icon": "mountain",
+  "how": "name"
+ },
+ "n-berge": {
+  "emoji": "⛰",
+  "icon": "mountain",
+  "how": "mehrzahl",
+  "from": "n-berg"
+ },
+ "n-bergsteiger": {
+  "emoji": "🧗‍♂",
+  "icon": "man-climbing",
+  "how": "name"
+ },
+ "n-bergsteigerin": {
+  "emoji": "🧗‍♀",
+  "icon": "woman-climbing",
+  "how": "name"
+ },
+ "n-besen": {
+  "emoji": "🧹",
+  "icon": "broom",
+  "how": "name"
+ },
+ "n-biber": {
+  "emoji": "🦫",
+  "icon": "beaver",
+  "how": "name"
+ },
+ "n-biene": {
+  "emoji": "🐝",
+  "icon": "honeybee",
+  "how": "name"
+ },
+ "n-bienen": {
+  "emoji": "🐝",
+  "icon": "honeybee",
+  "how": "mehrzahl",
+  "from": "n-biene"
+ },
+ "n-bikini": {
+  "emoji": "👙",
+  "icon": "bikini",
+  "how": "name"
+ },
+ "n-bild": {
+  "emoji": "🖼",
+  "icon": "framed-picture",
+  "how": "name2"
+ },
+ "n-bilder": {
+  "emoji": "🖼",
+  "icon": "framed-picture",
+  "how": "mehrzahl",
+  "from": "n-bild"
+ },
+ "n-birne--obst": {
+  "emoji": "🍐",
+  "icon": "pear",
+  "how": "hand"
+ },
+ "n-birnen": {
+  "emoji": "🍐",
+  "icon": "pear",
+  "how": "mehrzahl",
+  "from": "n-birne--obst"
+ },
+ "n-bison": {
+  "emoji": "🦬",
+  "icon": "bison",
+  "how": "name"
+ },
+ "n-blaetter": {
+  "emoji": "🍃",
+  "icon": "leaf-fluttering-in-wind",
+  "how": "mehrzahl",
+  "from": "n-blatt--pflanze"
+ },
+ "n-blatt--papier": {
+  "emoji": "📄",
+  "icon": "page-facing-up",
+  "how": "hand"
+ },
+ "n-blatt--pflanze": {
+  "emoji": "🍃",
+  "icon": "leaf-fluttering-in-wind",
+  "how": "hand"
+ },
+ "n-bleistift": {
+  "emoji": "✏",
+  "icon": "pencil",
+  "how": "name"
+ },
+ "n-bleistifte": {
+  "emoji": "✏",
+  "icon": "pencil",
+  "how": "mehrzahl",
+  "from": "n-bleistift"
+ },
+ "n-blindenstock": {
+  "emoji": "🦯",
+  "icon": "white-cane",
+  "how": "name"
+ },
+ "n-bluete": {
+  "emoji": "🌼",
+  "icon": "blossom",
+  "how": "name2"
+ },
+ "n-blueten": {
+  "emoji": "🌼",
+  "icon": "blossom",
+  "how": "mehrzahl",
+  "from": "n-bluete"
+ },
+ "n-blumenstrauss": {
+  "emoji": "💐",
+  "icon": "bouquet",
+  "how": "name"
+ },
+ "n-bluse": {
+  "emoji": "👚",
+  "icon": "womans-clothes",
+  "how": "name"
+ },
+ "n-bohnen": {
+  "emoji": "🫘",
+  "icon": "beans",
+  "how": "name"
+ },
+ "n-bonbon": {
+  "emoji": "🍬",
+  "icon": "candy",
+  "how": "name"
+ },
+ "n-bonbons": {
+  "emoji": "🍬",
+  "icon": "candy",
+  "how": "mehrzahl",
+  "from": "n-bonbon"
+ },
+ "n-bowling": {
+  "emoji": "🎳",
+  "icon": "bowling",
+  "how": "name"
+ },
+ "n-boxhandschuh": {
+  "emoji": "🥊",
+  "icon": "boxing-glove",
+  "how": "name"
+ },
+ "n-brezel": {
+  "emoji": "🥨",
+  "icon": "pretzel",
+  "how": "name"
+ },
+ "n-brezeln": {
+  "emoji": "🥨",
+  "icon": "pretzel",
+  "how": "mehrzahl",
+  "from": "n-brezel"
+ },
+ "n-briefkaesten": {
+  "emoji": "📮",
+  "icon": "postbox",
+  "how": "mehrzahl",
+  "from": "n-briefkasten"
+ },
+ "n-briefkasten": {
+  "emoji": "📮",
+  "icon": "postbox",
+  "how": "name"
+ },
+ "n-briefumschlag": {
+  "emoji": "✉",
+  "icon": "envelope",
+  "how": "name"
+ },
+ "n-brille": {
+  "emoji": "👓",
+  "icon": "glasses",
+  "how": "name"
+ },
+ "n-brillen": {
+  "emoji": "👓",
+  "icon": "glasses",
+  "how": "mehrzahl",
+  "from": "n-brille"
+ },
+ "n-brokkoli": {
+  "emoji": "🥦",
+  "icon": "broccoli",
+  "how": "name"
+ },
+ "n-bronzemedaille": {
+  "emoji": "🥉",
+  "icon": "3rd-place-medal",
+  "how": "name"
+ },
+ "n-buerogebaeude": {
+  "emoji": "🏢",
+  "icon": "office-building",
+  "how": "name"
+ },
+ "n-bueroklammer": {
+  "emoji": "📎",
+  "icon": "paperclip",
+  "how": "name"
+ },
+ "n-burrito": {
+  "emoji": "🌯",
+  "icon": "burrito",
+  "how": "name"
+ },
+ "n-bus": {
+  "emoji": "🚌",
+  "icon": "bus",
+  "how": "name"
+ },
+ "n-bushaltestelle": {
+  "emoji": "🚏",
+  "icon": "bus-stop",
+  "how": "name"
+ },
+ "n-bushaltestellen": {
+  "emoji": "🚏",
+  "icon": "bus-stop",
+  "how": "mehrzahl",
+  "from": "n-bushaltestelle"
+ },
+ "n-busse": {
+  "emoji": "🚌",
+  "icon": "bus",
+  "how": "mehrzahl",
+  "from": "n-bus"
+ },
+ "n-butter": {
+  "emoji": "🧈",
+  "icon": "butter",
+  "how": "name"
+ },
+ "n-camping": {
+  "emoji": "🏕",
+  "icon": "camping",
+  "how": "name"
+ },
+ "n-computermaus": {
+  "emoji": "🖱",
+  "icon": "computer-mouse",
+  "how": "name"
+ },
+ "n-creme": {
+  "emoji": "🧴",
+  "icon": "lotion-bottle",
+  "how": "name"
+ },
+ "n-croissant": {
+  "emoji": "🥐",
+  "icon": "croissant",
+  "how": "name"
+ },
+ "n-cupcake": {
+  "emoji": "🧁",
+  "icon": "cupcake",
+  "how": "name"
+ },
+ "n-dachs": {
+  "emoji": "🦡",
+  "icon": "badger",
+  "how": "name"
+ },
+ "n-delfin": {
+  "emoji": "🐬",
+  "icon": "dolphin",
+  "how": "name"
+ },
+ "n-delfine": {
+  "emoji": "🐬",
+  "icon": "dolphin",
+  "how": "mehrzahl",
+  "from": "n-delfin"
+ },
+ "n-detektiv": {
+  "emoji": "🕵‍♂",
+  "icon": "man-detective",
+  "how": "name"
+ },
+ "n-detektivin": {
+  "emoji": "🕵‍♀",
+  "icon": "woman-detective",
+  "how": "name"
+ },
+ "n-discokugel": {
+  "emoji": "🪩",
+  "icon": "mirror-ball",
+  "how": "name"
+ },
+ "n-doener": {
+  "emoji": "🥙",
+  "icon": "stuffed-flatbread",
+  "how": "name"
+ },
+ "n-donut": {
+  "emoji": "🍩",
+  "icon": "doughnut",
+  "how": "name"
+ },
+ "n-drache": {
+  "emoji": "🐉",
+  "icon": "dragon",
+  "how": "name"
+ },
+ "n-drachen--spielzeug": {
+  "emoji": "🪁",
+  "icon": "kite",
+  "how": "hand"
+ },
+ "n-dromedar": {
+  "emoji": "🐪",
+  "icon": "camel",
+  "how": "name"
+ },
+ "n-drucker": {
+  "emoji": "🖨",
+  "icon": "printer",
+  "how": "name"
+ },
+ "n-dusche": {
+  "emoji": "🚿",
+  "icon": "shower",
+  "how": "name"
+ },
+ "n-duschen": {
+  "emoji": "🚿",
+  "icon": "shower",
+  "how": "mehrzahl",
+  "from": "n-dusche"
+ },
+ "n-e-mail": {
+  "emoji": "📧",
+  "icon": "e-mail",
+  "how": "name"
+ },
+ "n-edelstein": {
+  "emoji": "💎",
+  "icon": "gem-stone",
+  "how": "name"
+ },
+ "n-eidechse": {
+  "emoji": "🦎",
+  "icon": "lizard",
+  "how": "name"
+ },
+ "n-eidechsen": {
+  "emoji": "🦎",
+  "icon": "lizard",
+  "how": "mehrzahl",
+  "from": "n-eidechse"
+ },
+ "n-eimer": {
+  "emoji": "🪣",
+  "icon": "bucket",
+  "how": "name"
+ },
+ "n-einhorn": {
+  "emoji": "🦄",
+  "icon": "unicorn",
+  "how": "name"
+ },
+ "n-einkaufswagen": {
+  "emoji": "🛒",
+  "icon": "shopping-cart",
+  "how": "name"
+ },
+ "n-einmachglas": {
+  "emoji": "🫙",
+  "icon": "jar",
+  "how": "name"
+ },
+ "n-eis--speiseeis": {
+  "emoji": "🍦",
+  "icon": "soft-ice-cream",
+  "how": "hand"
+ },
+ "n-eisbaer": {
+  "emoji": "🐻‍❄",
+  "icon": "polar-bear",
+  "how": "name"
+ },
+ "n-eishockey": {
+  "emoji": "🏒",
+  "icon": "ice-hockey",
+  "how": "name"
+ },
+ "n-eiswuerfel": {
+  "emoji": "🧊",
+  "icon": "ice",
+  "how": "name"
+ },
+ "n-elch": {
+  "emoji": "🫎",
+  "icon": "moose",
+  "how": "name"
+ },
+ "n-elefant": {
+  "emoji": "🐘",
+  "icon": "elephant",
+  "how": "name"
+ },
+ "n-elefanten": {
+  "emoji": "🐘",
+  "icon": "elephant",
+  "how": "mehrzahl",
+  "from": "n-elefant"
+ },
+ "n-elfe": {
+  "emoji": "🧝‍♀",
+  "icon": "woman-elf",
+  "how": "name"
+ },
+ "n-ente": {
+  "emoji": "🦆",
+  "icon": "duck",
+  "how": "name"
+ },
+ "n-enten": {
+  "emoji": "🦆",
+  "icon": "duck",
+  "how": "mehrzahl",
+  "from": "n-ente"
+ },
+ "n-erbsenschote": {
+  "emoji": "🫛",
+  "icon": "pea-pod",
+  "how": "name"
+ },
+ "n-erdbeere": {
+  "emoji": "🍓",
+  "icon": "strawberry",
+  "how": "name"
+ },
+ "n-erdbeeren": {
+  "emoji": "🍓",
+  "icon": "strawberry",
+  "how": "mehrzahl",
+  "from": "n-erdbeere"
+ },
+ "n-erde--planet": {
+  "emoji": "🌍",
+  "icon": "globe-showing-europe-africa",
+  "how": "hand"
+ },
+ "n-erdnuss": {
+  "emoji": "🥜",
+  "icon": "peanuts",
+  "how": "name"
+ },
+ "n-esel": {
+  "emoji": "🫏",
+  "icon": "donkey",
+  "how": "name"
+ },
+ "n-etikett": {
+  "emoji": "🏷",
+  "icon": "label",
+  "how": "name"
+ },
+ "n-eule": {
+  "emoji": "🦉",
+  "icon": "owl",
+  "how": "name"
+ },
+ "n-eulen": {
+  "emoji": "🦉",
+  "icon": "owl",
+  "how": "mehrzahl",
+  "from": "n-eule"
+ },
+ "n-fabrik": {
+  "emoji": "🏭",
+  "icon": "factory",
+  "how": "name"
+ },
+ "n-fabriken": {
+  "emoji": "🏭",
+  "icon": "factory",
+  "how": "mehrzahl",
+  "from": "n-fabrik"
+ },
+ "n-faden": {
+  "emoji": "🧵",
+  "icon": "thread",
+  "how": "name"
+ },
+ "n-faehre": {
+  "emoji": "⛴",
+  "icon": "ferry",
+  "how": "name"
+ },
+ "n-fahrrad": {
+  "emoji": "🚲",
+  "icon": "bicycle",
+  "how": "name"
+ },
+ "n-fahrraeder": {
+  "emoji": "🚲",
+  "icon": "bicycle",
+  "how": "mehrzahl",
+  "from": "n-fahrrad"
+ },
+ "n-falafel": {
+  "emoji": "🧆",
+  "icon": "falafel",
+  "how": "name"
+ },
+ "n-fallschirm": {
+  "emoji": "🪂",
+  "icon": "parachute",
+  "how": "name"
+ },
+ "n-familie": {
+  "emoji": "👪",
+  "icon": "family",
+  "how": "name"
+ },
+ "n-faultier": {
+  "emoji": "🦥",
+  "icon": "sloth",
+  "how": "name"
+ },
+ "n-feder--vogel": {
+  "emoji": "🪶",
+  "icon": "feather",
+  "how": "hand"
+ },
+ "n-fee": {
+  "emoji": "🧚‍♀",
+  "icon": "woman-fairy",
+  "how": "name"
+ },
+ "n-feen": {
+  "emoji": "🧚‍♀",
+  "icon": "woman-fairy",
+  "how": "mehrzahl",
+  "from": "n-fee"
+ },
+ "n-felsen": {
+  "emoji": "🪨",
+  "icon": "rock",
+  "how": "name"
+ },
+ "n-fenster": {
+  "emoji": "🪟",
+  "icon": "window",
+  "how": "name"
+ },
+ "n-fernseher": {
+  "emoji": "📺",
+  "icon": "television",
+  "how": "name"
+ },
+ "n-feuer": {
+  "emoji": "🔥",
+  "icon": "fire",
+  "how": "name"
+ },
+ "n-feuerloescher": {
+  "emoji": "🧯",
+  "icon": "fire-extinguisher",
+  "how": "name"
+ },
+ "n-feuerwehrauto": {
+  "emoji": "🚒",
+  "icon": "fire-engine",
+  "how": "name"
+ },
+ "n-feuerwehrautos": {
+  "emoji": "🚒",
+  "icon": "fire-engine",
+  "how": "mehrzahl",
+  "from": "n-feuerwehrauto"
+ },
+ "n-feuerwehrfrau": {
+  "emoji": "👩‍🚒",
+  "icon": "woman-firefighter",
+  "how": "name"
+ },
+ "n-feuerwehrleute": {
+  "emoji": "👨‍🚒",
+  "icon": "man-firefighter",
+  "how": "mehrzahl",
+  "from": "n-feuerwehrmann"
+ },
+ "n-feuerwehrmann": {
+  "emoji": "👨‍🚒",
+  "icon": "man-firefighter",
+  "how": "name"
+ },
+ "n-feuerwerk": {
+  "emoji": "🎆",
+  "icon": "fireworks",
+  "how": "name"
+ },
+ "n-feuerwerkskoerper": {
+  "emoji": "🧨",
+  "icon": "firecracker",
+  "how": "name"
+ },
+ "n-finger": {
+  "emoji": "🤌",
+  "icon": "pinched-fingers",
+  "how": "name2"
+ },
+ "n-fingerabdruck": {
+  "emoji": "🫆",
+  "icon": "fingerprint",
+  "how": "name"
+ },
+ "n-fladenbrot": {
+  "emoji": "🫓",
+  "icon": "flatbread",
+  "how": "name"
+ },
+ "n-flamingo": {
+  "emoji": "🦩",
+  "icon": "flamingo",
+  "how": "name"
+ },
+ "n-flaschengeist": {
+  "emoji": "🧞",
+  "icon": "genie",
+  "how": "name"
+ },
+ "n-fledermaus": {
+  "emoji": "🦇",
+  "icon": "bat",
+  "how": "name"
+ },
+ "n-fliege--insekt": {
+  "emoji": "🪰",
+  "icon": "fly",
+  "how": "hand"
+ },
+ "n-fliegen": {
+  "emoji": "🪰",
+  "icon": "fly",
+  "how": "mehrzahl",
+  "from": "n-fliege--insekt"
+ },
+ "n-fliegenpilz": {
+  "emoji": "🍄",
+  "icon": "mushroom",
+  "how": "name"
+ },
+ "n-floete": {
+  "emoji": "🪈",
+  "icon": "flute",
+  "how": "name"
+ },
+ "n-floeten": {
+  "emoji": "🪈",
+  "icon": "flute",
+  "how": "mehrzahl",
+  "from": "n-floete"
+ },
+ "n-fluegel--vogel": {
+  "emoji": "🪽",
+  "icon": "wing",
+  "how": "hand"
+ },
+ "n-flugzeug": {
+  "emoji": "✈",
+  "icon": "airplane",
+  "how": "name"
+ },
+ "n-flugzeuge": {
+  "emoji": "✈",
+  "icon": "airplane",
+  "how": "mehrzahl",
+  "from": "n-flugzeug"
+ },
+ "n-fotoapparat": {
+  "emoji": "📷",
+  "icon": "camera",
+  "how": "name"
+ },
+ "n-frau": {
+  "emoji": "👩",
+  "icon": "woman",
+  "how": "name"
+ },
+ "n-frauen": {
+  "emoji": "👩",
+  "icon": "woman",
+  "how": "mehrzahl",
+  "from": "n-frau"
+ },
+ "n-frisbee": {
+  "emoji": "🥏",
+  "icon": "flying-disc",
+  "how": "name"
+ },
+ "n-froesche": {
+  "emoji": "🐸",
+  "icon": "frog",
+  "how": "mehrzahl",
+  "from": "n-frosch"
+ },
+ "n-frosch": {
+  "emoji": "🐸",
+  "icon": "frog",
+  "how": "name"
+ },
+ "n-fuchs": {
+  "emoji": "🦊",
+  "icon": "fox",
+  "how": "name"
+ },
+ "n-fuechse": {
+  "emoji": "🦊",
+  "icon": "fox",
+  "how": "mehrzahl",
+  "from": "n-fuchs"
+ },
+ "n-fuesse": {
+  "emoji": "🦶",
+  "icon": "foot",
+  "how": "mehrzahl",
+  "from": "n-fuss"
+ },
+ "n-fuss": {
+  "emoji": "🦶",
+  "icon": "foot",
+  "how": "name"
+ },
+ "n-fussbaelle": {
+  "emoji": "⚽",
+  "icon": "soccer-ball",
+  "how": "mehrzahl",
+  "from": "n-fussball"
+ },
+ "n-fussball": {
+  "emoji": "⚽",
+  "icon": "soccer-ball",
+  "how": "name"
+ },
+ "n-fussgaenger": {
+  "emoji": "🚶‍♂",
+  "icon": "man-walking",
+  "how": "name"
+ },
+ "n-fussgaengerin": {
+  "emoji": "🚶‍♀",
+  "icon": "woman-walking",
+  "how": "name"
+ },
+ "n-gaense": {
+  "emoji": "🪿",
+  "icon": "goose",
+  "how": "mehrzahl",
+  "from": "n-gans"
+ },
+ "n-gans": {
+  "emoji": "🪿",
+  "icon": "goose",
+  "how": "name"
+ },
+ "n-garnele": {
+  "emoji": "🦐",
+  "icon": "shrimp",
+  "how": "name"
+ },
+ "n-gebaeude": {
+  "emoji": "🏛",
+  "icon": "classical-building",
+  "how": "name2"
+ },
+ "n-geburtstagskuchen": {
+  "emoji": "🎂",
+  "icon": "birthday-cake",
+  "how": "name"
+ },
+ "n-gehirn": {
+  "emoji": "🧠",
+  "icon": "brain",
+  "how": "name"
+ },
+ "n-geige": {
+  "emoji": "🎻",
+  "icon": "violin",
+  "how": "name"
+ },
+ "n-geigen": {
+  "emoji": "🎻",
+  "icon": "violin",
+  "how": "mehrzahl",
+  "from": "n-geige"
+ },
+ "n-geister": {
+  "emoji": "👻",
+  "icon": "ghost",
+  "how": "mehrzahl",
+  "from": "n-gespenst"
+ },
+ "n-geldboerse": {
+  "emoji": "👛",
+  "icon": "purse",
+  "how": "name"
+ },
+ "n-gepaeck": {
+  "emoji": "🧳",
+  "icon": "luggage",
+  "how": "name"
+ },
+ "n-geschenk": {
+  "emoji": "🎁",
+  "icon": "wrapped-gift",
+  "how": "name"
+ },
+ "n-geschenke": {
+  "emoji": "🎁",
+  "icon": "wrapped-gift",
+  "how": "mehrzahl",
+  "from": "n-geschenk"
+ },
+ "n-gespenst": {
+  "emoji": "👻",
+  "icon": "ghost",
+  "how": "name"
+ },
+ "n-giraffe": {
+  "emoji": "🦒",
+  "icon": "giraffe",
+  "how": "name"
+ },
+ "n-giraffen": {
+  "emoji": "🦒",
+  "icon": "giraffe",
+  "how": "mehrzahl",
+  "from": "n-giraffe"
+ },
+ "n-gitarre": {
+  "emoji": "🎸",
+  "icon": "guitar",
+  "how": "name"
+ },
+ "n-gitarren": {
+  "emoji": "🎸",
+  "icon": "guitar",
+  "how": "mehrzahl",
+  "from": "n-gitarre"
+ },
+ "n-glocke": {
+  "emoji": "🔔",
+  "icon": "bell",
+  "how": "name"
+ },
+ "n-glocken": {
+  "emoji": "🔔",
+  "icon": "bell",
+  "how": "mehrzahl",
+  "from": "n-glocke"
+ },
+ "n-gluecksklee": {
+  "emoji": "🍀",
+  "icon": "four-leaf-clover",
+  "how": "name"
+ },
+ "n-gluehbirne": {
+  "emoji": "💡",
+  "icon": "light-bulb",
+  "how": "name"
+ },
+ "n-goldmedaille": {
+  "emoji": "🥇",
+  "icon": "1st-place-medal",
+  "how": "name"
+ },
+ "n-gorilla": {
+  "emoji": "🦍",
+  "icon": "gorilla",
+  "how": "name"
+ },
+ "n-grabstein": {
+  "emoji": "🪦",
+  "icon": "headstone",
+  "how": "name"
+ },
+ "n-grille": {
+  "emoji": "🦗",
+  "icon": "cricket",
+  "how": "name"
+ },
+ "n-gurke": {
+  "emoji": "🥒",
+  "icon": "cucumber",
+  "how": "name"
+ },
+ "n-gurken": {
+  "emoji": "🥒",
+  "icon": "cucumber",
+  "how": "mehrzahl",
+  "from": "n-gurke"
+ },
+ "n-haemmer": {
+  "emoji": "🔨",
+  "icon": "hammer",
+  "how": "mehrzahl",
+  "from": "n-hammer"
+ },
+ "n-hahn": {
+  "emoji": "🐓",
+  "icon": "rooster",
+  "how": "name"
+ },
+ "n-hai": {
+  "emoji": "🦈",
+  "icon": "shark",
+  "how": "name"
+ },
+ "n-haie": {
+  "emoji": "🦈",
+  "icon": "shark",
+  "how": "mehrzahl",
+  "from": "n-hai"
+ },
+ "n-haken": {
+  "emoji": "🪝",
+  "icon": "hook",
+  "how": "name"
+ },
+ "n-hamburger": {
+  "emoji": "🍔",
+  "icon": "hamburger",
+  "how": "name"
+ },
+ "n-hammer": {
+  "emoji": "🔨",
+  "icon": "hammer",
+  "how": "name"
+ },
+ "n-hamster": {
+  "emoji": "🐹",
+  "icon": "hamster",
+  "how": "name"
+ },
+ "n-handschuhe": {
+  "emoji": "🧤",
+  "icon": "gloves",
+  "how": "name"
+ },
+ "n-handtasche": {
+  "emoji": "👜",
+  "icon": "handbag",
+  "how": "name"
+ },
+ "n-harfe": {
+  "emoji": "🪉",
+  "icon": "harp",
+  "how": "name"
+ },
+ "n-hase": {
+  "emoji": "🐇",
+  "icon": "rabbit",
+  "how": "name"
+ },
+ "n-hasen": {
+  "emoji": "🐇",
+  "icon": "rabbit",
+  "how": "mehrzahl",
+  "from": "n-hase"
+ },
+ "n-heldin": {
+  "emoji": "🦸‍♀",
+  "icon": "woman-superhero",
+  "how": "name"
+ },
+ "n-hirsch": {
+  "emoji": "🦌",
+  "icon": "deer",
+  "how": "name"
+ },
+ "n-hirsche": {
+  "emoji": "🦌",
+  "icon": "deer",
+  "how": "mehrzahl",
+  "from": "n-hirsch"
+ },
+ "n-hochzeit": {
+  "emoji": "💒",
+  "icon": "wedding",
+  "how": "name"
+ },
+ "n-holz": {
+  "emoji": "🪵",
+  "icon": "wood",
+  "how": "name"
+ },
+ "n-honigmelone": {
+  "emoji": "🍈",
+  "icon": "melon",
+  "how": "name"
+ },
+ "n-hotdog": {
+  "emoji": "🌭",
+  "icon": "hot-dog",
+  "how": "name"
+ },
+ "n-hotel": {
+  "emoji": "🏨",
+  "icon": "hotel",
+  "how": "name"
+ },
+ "n-hubschrauber": {
+  "emoji": "🚁",
+  "icon": "helicopter",
+  "how": "name"
+ },
+ "n-huette": {
+  "emoji": "🛖",
+  "icon": "hut",
+  "how": "name"
+ },
+ "n-huetten": {
+  "emoji": "🛖",
+  "icon": "hut",
+  "how": "mehrzahl",
+  "from": "n-huette"
+ },
+ "n-huhn": {
+  "emoji": "🐔",
+  "icon": "chicken",
+  "how": "name"
+ },
+ "n-hummer": {
+  "emoji": "🦞",
+  "icon": "lobster",
+  "how": "name"
+ },
+ "n-igel": {
+  "emoji": "🦔",
+  "icon": "hedgehog",
+  "how": "name"
+ },
+ "n-ingwer": {
+  "emoji": "🫚",
+  "icon": "ginger-root",
+  "how": "name"
+ },
+ "n-insel": {
+  "emoji": "🏝",
+  "icon": "desert-island",
+  "how": "name2"
+ },
+ "n-inseln": {
+  "emoji": "🏝",
+  "icon": "desert-island",
+  "how": "mehrzahl",
+  "from": "n-insel"
+ },
+ "n-jeans": {
+  "emoji": "👖",
+  "icon": "jeans",
+  "how": "name"
+ },
+ "n-jongleur": {
+  "emoji": "🤹‍♂",
+  "icon": "man-juggling",
+  "how": "name"
+ },
+ "n-jongleurin": {
+  "emoji": "🤹‍♀",
+  "icon": "woman-juggling",
+  "how": "name"
+ },
+ "n-junge": {
+  "emoji": "👦",
+  "icon": "boy",
+  "how": "name"
+ },
+ "n-jungen": {
+  "emoji": "👦",
+  "icon": "boy",
+  "how": "mehrzahl",
+  "from": "n-junge"
+ },
+ "n-kaefer": {
+  "emoji": "🪲",
+  "icon": "beetle",
+  "how": "name"
+ },
+ "n-kaenguru": {
+  "emoji": "🦘",
+  "icon": "kangaroo",
+  "how": "name"
+ },
+ "n-kaktus": {
+  "emoji": "🌵",
+  "icon": "cactus",
+  "how": "name"
+ },
+ "n-kalender": {
+  "emoji": "📅",
+  "icon": "calendar",
+  "how": "name"
+ },
+ "n-kamel": {
+  "emoji": "🐫",
+  "icon": "two-hump-camel",
+  "how": "name"
+ },
+ "n-kamele": {
+  "emoji": "🐫",
+  "icon": "two-hump-camel",
+  "how": "mehrzahl",
+  "from": "n-kamel"
+ },
+ "n-kanu": {
+  "emoji": "🛶",
+  "icon": "canoe",
+  "how": "name"
+ },
+ "n-kapsel": {
+  "emoji": "💊",
+  "icon": "pill",
+  "how": "name"
+ },
+ "n-karotte": {
+  "emoji": "🥕",
+  "icon": "carrot",
+  "how": "name"
+ },
+ "n-kartoffel": {
+  "emoji": "🥔",
+  "icon": "potato",
+  "how": "name"
+ },
+ "n-kartoffeln": {
+  "emoji": "🥔",
+  "icon": "potato",
+  "how": "mehrzahl",
+  "from": "n-kartoffel"
+ },
+ "n-kastanie": {
+  "emoji": "🌰",
+  "icon": "chestnut",
+  "how": "name"
+ },
+ "n-kastanien": {
+  "emoji": "🌰",
+  "icon": "chestnut",
+  "how": "mehrzahl",
+  "from": "n-kastanie"
+ },
+ "n-kaufhaus": {
+  "emoji": "🏬",
+  "icon": "department-store",
+  "how": "name"
+ },
+ "n-keks": {
+  "emoji": "🍪",
+  "icon": "cookie",
+  "how": "name"
+ },
+ "n-kekse": {
+  "emoji": "🍪",
+  "icon": "cookie",
+  "how": "mehrzahl",
+  "from": "n-keks"
+ },
+ "n-kerze": {
+  "emoji": "🕯",
+  "icon": "candle",
+  "how": "name"
+ },
+ "n-kerzen": {
+  "emoji": "🕯",
+  "icon": "candle",
+  "how": "mehrzahl",
+  "from": "n-kerze"
+ },
+ "n-kescher": {
+  "emoji": "🪍",
+  "icon": "net-with-handle",
+  "how": "name"
+ },
+ "n-ketten": {
+  "emoji": "⛓",
+  "icon": "chains",
+  "how": "name"
+ },
+ "n-kind": {
+  "emoji": "🧒",
+  "icon": "child",
+  "how": "name"
+ },
+ "n-kirche": {
+  "emoji": "⛪",
+  "icon": "church",
+  "how": "name"
+ },
+ "n-kirchen": {
+  "emoji": "⛪",
+  "icon": "church",
+  "how": "mehrzahl",
+  "from": "n-kirche"
+ },
+ "n-kirschbluete": {
+  "emoji": "🌸",
+  "icon": "cherry-blossom",
+  "how": "name"
+ },
+ "n-kirschen": {
+  "emoji": "🍒",
+  "icon": "cherries",
+  "how": "name"
+ },
+ "n-kiwi--frucht": {
+  "emoji": "🥝",
+  "icon": "kiwi-fruit",
+  "how": "hand"
+ },
+ "n-kleeblatt": {
+  "emoji": "☘",
+  "icon": "shamrock",
+  "how": "name"
+ },
+ "n-kleid": {
+  "emoji": "👗",
+  "icon": "dress",
+  "how": "name"
+ },
+ "n-kleider": {
+  "emoji": "👗",
+  "icon": "dress",
+  "how": "mehrzahl",
+  "from": "n-kleid"
+ },
+ "n-kleinbus": {
+  "emoji": "🚐",
+  "icon": "minibus",
+  "how": "name"
+ },
+ "n-knoblauch": {
+  "emoji": "🧄",
+  "icon": "garlic",
+  "how": "name"
+ },
+ "n-knochen": {
+  "emoji": "🦴",
+  "icon": "bone",
+  "how": "name"
+ },
+ "n-koala": {
+  "emoji": "🐨",
+  "icon": "koala",
+  "how": "name"
+ },
+ "n-kobold": {
+  "emoji": "👺",
+  "icon": "goblin",
+  "how": "name"
+ },
+ "n-koch": {
+  "emoji": "👨‍🍳",
+  "icon": "man-cook",
+  "how": "name"
+ },
+ "n-koeche": {
+  "emoji": "👨‍🍳",
+  "icon": "man-cook",
+  "how": "mehrzahl",
+  "from": "n-koch"
+ },
+ "n-koechin": {
+  "emoji": "👩‍🍳",
+  "icon": "woman-cook",
+  "how": "name"
+ },
+ "n-koerbe": {
+  "emoji": "🧺",
+  "icon": "basket",
+  "how": "mehrzahl",
+  "from": "n-korb"
+ },
+ "n-kokosnuss": {
+  "emoji": "🥥",
+  "icon": "coconut",
+  "how": "name"
+ },
+ "n-komet": {
+  "emoji": "☄",
+  "icon": "comet",
+  "how": "name"
+ },
+ "n-kompass": {
+  "emoji": "🧭",
+  "icon": "compass",
+  "how": "name"
+ },
+ "n-konserve": {
+  "emoji": "🥫",
+  "icon": "canned-food",
+  "how": "name"
+ },
+ "n-kopfhoerer": {
+  "emoji": "🎧",
+  "icon": "headphone",
+  "how": "name"
+ },
+ "n-koralle": {
+  "emoji": "🪸",
+  "icon": "coral",
+  "how": "name"
+ },
+ "n-korb": {
+  "emoji": "🧺",
+  "icon": "basket",
+  "how": "name"
+ },
+ "n-kraene": {
+  "emoji": "🏗",
+  "icon": "building-construction",
+  "how": "mehrzahl",
+  "from": "n-kran"
+ },
+ "n-kraeuter": {
+  "emoji": "🌿",
+  "icon": "herb",
+  "how": "name"
+ },
+ "n-kran": {
+  "emoji": "🏗",
+  "icon": "building-construction",
+  "how": "name"
+ },
+ "n-krankenhaeuser": {
+  "emoji": "🏥",
+  "icon": "hospital",
+  "how": "mehrzahl",
+  "from": "n-krankenhaus"
+ },
+ "n-krankenhaus": {
+  "emoji": "🏥",
+  "icon": "hospital",
+  "how": "name"
+ },
+ "n-krankenwagen": {
+  "emoji": "🚑",
+  "icon": "ambulance",
+  "how": "name"
+ },
+ "n-krebs": {
+  "emoji": "🦀",
+  "icon": "crab",
+  "how": "name"
+ },
+ "n-krebse": {
+  "emoji": "🦀",
+  "icon": "crab",
+  "how": "mehrzahl",
+  "from": "n-krebs"
+ },
+ "n-kristallkugel": {
+  "emoji": "🔮",
+  "icon": "crystal-ball",
+  "how": "name"
+ },
+ "n-krokodil": {
+  "emoji": "🐊",
+  "icon": "crocodile",
+  "how": "name"
+ },
+ "n-krokodile": {
+  "emoji": "🐊",
+  "icon": "crocodile",
+  "how": "mehrzahl",
+  "from": "n-krokodil"
+ },
+ "n-krone": {
+  "emoji": "👑",
+  "icon": "crown",
+  "how": "name"
+ },
+ "n-kronen": {
+  "emoji": "👑",
+  "icon": "crown",
+  "how": "mehrzahl",
+  "from": "n-krone"
+ },
+ "n-kruecke": {
+  "emoji": "🩼",
+  "icon": "crutch",
+  "how": "name"
+ },
+ "n-kuchen": {
+  "emoji": "🥧",
+  "icon": "pie",
+  "how": "name"
+ },
+ "n-kuechenmesser": {
+  "emoji": "🔪",
+  "icon": "kitchen-knife",
+  "how": "name"
+ },
+ "n-kuechenrolle": {
+  "emoji": "🧻",
+  "icon": "roll-of-paper",
+  "how": "name"
+ },
+ "n-kueken": {
+  "emoji": "🐤",
+  "icon": "baby-chick",
+  "how": "name"
+ },
+ "n-kuenstler": {
+  "emoji": "👨‍🎨",
+  "icon": "man-artist",
+  "how": "name"
+ },
+ "n-kuenstlerin": {
+  "emoji": "👩‍🎨",
+  "icon": "woman-artist",
+  "how": "name"
+ },
+ "n-kugelfisch": {
+  "emoji": "🐡",
+  "icon": "blowfish",
+  "how": "name"
+ },
+ "n-kugelschreiber": {
+  "emoji": "🖊",
+  "icon": "pen",
+  "how": "name"
+ },
+ "n-lama": {
+  "emoji": "🦙",
+  "icon": "llama",
+  "how": "name"
+ },
+ "n-laptop": {
+  "emoji": "💻",
+  "icon": "laptop",
+  "how": "name"
+ },
+ "n-laub": {
+  "emoji": "🍂",
+  "icon": "fallen-leaf",
+  "how": "name"
+ },
+ "n-laubbaum": {
+  "emoji": "🌳",
+  "icon": "deciduous-tree",
+  "how": "name"
+ },
+ "n-lautsprecher": {
+  "emoji": "🔊",
+  "icon": "speaker-high-volume",
+  "how": "hand"
+ },
+ "n-lehrer": {
+  "emoji": "👨‍🏫",
+  "icon": "man-teacher",
+  "how": "name"
+ },
+ "n-lehrerin": {
+  "emoji": "👩‍🏫",
+  "icon": "woman-teacher",
+  "how": "name"
+ },
+ "n-leiter--zum-steigen": {
+  "emoji": "🪜",
+  "icon": "ladder",
+  "how": "hand"
+ },
+ "n-leitern": {
+  "emoji": "🪜",
+  "icon": "ladder",
+  "how": "mehrzahl",
+  "from": "n-leiter--zum-steigen"
+ },
+ "n-leopard": {
+  "emoji": "🐆",
+  "icon": "leopard",
+  "how": "name"
+ },
+ "n-lesezeichen": {
+  "emoji": "🔖",
+  "icon": "bookmark",
+  "how": "name"
+ },
+ "n-leuchtturm": {
+  "emoji": "🛙",
+  "icon": "lighthouse",
+  "how": "name"
+ },
+ "n-liebesbrief": {
+  "emoji": "💌",
+  "icon": "love-letter",
+  "how": "name"
+ },
+ "n-lieferwagen": {
+  "emoji": "🚚",
+  "icon": "delivery-truck",
+  "how": "name"
+ },
+ "n-limette": {
+  "emoji": "🍋‍🟩",
+  "icon": "lime",
+  "how": "name"
+ },
+ "n-lineal": {
+  "emoji": "📏",
+  "icon": "straight-ruler",
+  "how": "name"
+ },
+ "n-lineale": {
+  "emoji": "📏",
+  "icon": "straight-ruler",
+  "how": "mehrzahl",
+  "from": "n-lineal"
+ },
+ "n-lippenstift": {
+  "emoji": "💄",
+  "icon": "lipstick",
+  "how": "name"
+ },
+ "n-loch": {
+  "emoji": "🕳",
+  "icon": "hole",
+  "how": "name"
+ },
+ "n-loecher": {
+  "emoji": "🕳",
+  "icon": "hole",
+  "how": "mehrzahl",
+  "from": "n-loch"
+ },
+ "n-loeffel": {
+  "emoji": "🥄",
+  "icon": "spoon",
+  "how": "name"
+ },
+ "n-loewe": {
+  "emoji": "🦁",
+  "icon": "lion",
+  "how": "name"
+ },
+ "n-loewen": {
+  "emoji": "🦁",
+  "icon": "lion",
+  "how": "mehrzahl",
+  "from": "n-loewe"
+ },
+ "n-luftballon": {
+  "emoji": "🎈",
+  "icon": "balloon",
+  "how": "name"
+ },
+ "n-luftballons": {
+  "emoji": "🎈",
+  "icon": "balloon",
+  "how": "mehrzahl",
+  "from": "n-luftballon"
+ },
+ "n-lunge": {
+  "emoji": "🫁",
+  "icon": "lungs",
+  "how": "name"
+ },
+ "n-lutscher": {
+  "emoji": "🍭",
+  "icon": "lollipop",
+  "how": "name"
+ },
+ "n-maedchen": {
+  "emoji": "👧",
+  "icon": "girl",
+  "how": "name"
+ },
+ "n-maenner": {
+  "emoji": "👨",
+  "icon": "man",
+  "how": "mehrzahl",
+  "from": "n-mann"
+ },
+ "n-maentel": {
+  "emoji": "🧥",
+  "icon": "coat",
+  "how": "mehrzahl",
+  "from": "n-mantel"
+ },
+ "n-magier": {
+  "emoji": "🧙‍♂",
+  "icon": "man-mage",
+  "how": "name"
+ },
+ "n-magnet": {
+  "emoji": "🧲",
+  "icon": "magnet",
+  "how": "name"
+ },
+ "n-maiskolben": {
+  "emoji": "🌽",
+  "icon": "ear-of-corn",
+  "how": "name"
+ },
+ "n-mammut": {
+  "emoji": "🦣",
+  "icon": "mammoth",
+  "how": "name"
+ },
+ "n-mandarine": {
+  "emoji": "🍊",
+  "icon": "tangerine",
+  "how": "name"
+ },
+ "n-mango": {
+  "emoji": "🥭",
+  "icon": "mango",
+  "how": "name"
+ },
+ "n-mann": {
+  "emoji": "👨",
+  "icon": "man",
+  "how": "name"
+ },
+ "n-mantel": {
+  "emoji": "🧥",
+  "icon": "coat",
+  "how": "name"
+ },
+ "n-maracas": {
+  "emoji": "🪇",
+  "icon": "maracas",
+  "how": "name"
+ },
+ "n-marienkaefer": {
+  "emoji": "🐞",
+  "icon": "lady-beetle",
+  "how": "name"
+ },
+ "n-masken": {
+  "emoji": "🎭",
+  "icon": "performing-arts",
+  "how": "name"
+ },
+ "n-mausefalle": {
+  "emoji": "🪤",
+  "icon": "mouse-trap",
+  "how": "name"
+ },
+ "n-mechaniker": {
+  "emoji": "👨‍🔧",
+  "icon": "man-mechanic",
+  "how": "name"
+ },
+ "n-mechanikerin": {
+  "emoji": "👩‍🔧",
+  "icon": "woman-mechanic",
+  "how": "name"
+ },
+ "n-meerjungfrau": {
+  "emoji": "🧜‍♀",
+  "icon": "mermaid",
+  "how": "name"
+ },
+ "n-mikrofon": {
+  "emoji": "🎤",
+  "icon": "microphone",
+  "how": "name"
+ },
+ "n-mikroskop": {
+  "emoji": "🔬",
+  "icon": "microscope",
+  "how": "name"
+ },
+ "n-milchstrasse": {
+  "emoji": "🌌",
+  "icon": "milky-way",
+  "how": "name"
+ },
+ "n-mondsichel": {
+  "emoji": "🌙",
+  "icon": "crescent-moon",
+  "how": "name"
+ },
+ "n-monster": {
+  "emoji": "👾",
+  "icon": "alien-monster",
+  "how": "name2"
+ },
+ "n-moschee": {
+  "emoji": "🕌",
+  "icon": "mosque",
+  "how": "name"
+ },
+ "n-motorboot": {
+  "emoji": "🛥",
+  "icon": "motor-boat",
+  "how": "name"
+ },
+ "n-motorrad": {
+  "emoji": "🏍",
+  "icon": "motorcycle",
+  "how": "name"
+ },
+ "n-motorraeder": {
+  "emoji": "🏍",
+  "icon": "motorcycle",
+  "how": "mehrzahl",
+  "from": "n-motorrad"
+ },
+ "n-muecke": {
+  "emoji": "🦟",
+  "icon": "mosquito",
+  "how": "name"
+ },
+ "n-muecken": {
+  "emoji": "🦟",
+  "icon": "mosquito",
+  "how": "mehrzahl",
+  "from": "n-muecke"
+ },
+ "n-muender": {
+  "emoji": "👄",
+  "icon": "mouth",
+  "how": "mehrzahl",
+  "from": "n-mund"
+ },
+ "n-muenze": {
+  "emoji": "🪙",
+  "icon": "coin",
+  "how": "name"
+ },
+ "n-muenzen": {
+  "emoji": "🪙",
+  "icon": "coin",
+  "how": "mehrzahl",
+  "from": "n-muenze"
+ },
+ "n-mund": {
+  "emoji": "👄",
+  "icon": "mouth",
+  "how": "name"
+ },
+ "n-mutter--schraube": {
+  "emoji": "🔩",
+  "icon": "nut-and-bolt",
+  "how": "hand"
+ },
+ "n-nadel--naehen": {
+  "emoji": "🪡",
+  "icon": "sewing-needle",
+  "how": "hand"
+ },
+ "n-nadelbaum": {
+  "emoji": "🌲",
+  "icon": "evergreen-tree",
+  "how": "name"
+ },
+ "n-naehnadel": {
+  "emoji": "🪡",
+  "icon": "sewing-needle",
+  "how": "name"
+ },
+ "n-nagellack": {
+  "emoji": "💅",
+  "icon": "nail-polish",
+  "how": "name"
+ },
+ "n-namensschild": {
+  "emoji": "📛",
+  "icon": "name-badge",
+  "how": "name"
+ },
+ "n-nase": {
+  "emoji": "👃",
+  "icon": "nose",
+  "how": "name"
+ },
+ "n-nasen": {
+  "emoji": "👃",
+  "icon": "nose",
+  "how": "mehrzahl",
+  "from": "n-nase"
+ },
+ "n-nashorn": {
+  "emoji": "🦏",
+  "icon": "rhinoceros",
+  "how": "name"
+ },
+ "n-nationalpark": {
+  "emoji": "🏞",
+  "icon": "national-park",
+  "how": "name"
+ },
+ "n-nebel": {
+  "emoji": "🌫",
+  "icon": "fog",
+  "how": "name"
+ },
+ "n-nest": {
+  "emoji": "🪹",
+  "icon": "empty-nest",
+  "how": "name2"
+ },
+ "n-nester": {
+  "emoji": "🪹",
+  "icon": "empty-nest",
+  "how": "mehrzahl",
+  "from": "n-nest"
+ },
+ "n-neumond": {
+  "emoji": "🌑",
+  "icon": "new-moon",
+  "how": "name"
+ },
+ "n-nilpferd": {
+  "emoji": "🦛",
+  "icon": "hippopotamus",
+  "how": "name"
+ },
+ "n-note--musik": {
+  "emoji": "🎵",
+  "icon": "musical-note",
+  "how": "hand"
+ },
+ "n-notenschluessel": {
+  "emoji": "🎼",
+  "icon": "musical-score",
+  "how": "name"
+ },
+ "n-notizblock": {
+  "emoji": "🗒",
+  "icon": "spiral-notepad",
+  "how": "name"
+ },
+ "n-notizbuch": {
+  "emoji": "📓",
+  "icon": "notebook",
+  "how": "name"
+ },
+ "n-ochse": {
+  "emoji": "🐂",
+  "icon": "ox",
+  "how": "name"
+ },
+ "n-ohr": {
+  "emoji": "👂",
+  "icon": "ear",
+  "how": "name"
+ },
+ "n-ohren": {
+  "emoji": "👂",
+  "icon": "ear",
+  "how": "mehrzahl",
+  "from": "n-ohr"
+ },
+ "n-olive": {
+  "emoji": "🫒",
+  "icon": "olive",
+  "how": "name"
+ },
+ "n-orang-utan": {
+  "emoji": "🦧",
+  "icon": "orangutan",
+  "how": "name"
+ },
+ "n-orca": {
+  "emoji": "🫍",
+  "icon": "orca",
+  "how": "name"
+ },
+ "n-ordner": {
+  "emoji": "📁",
+  "icon": "file-folder",
+  "how": "name"
+ },
+ "n-otter": {
+  "emoji": "🦦",
+  "icon": "otter",
+  "how": "name"
+ },
+ "n-paket": {
+  "emoji": "📦",
+  "icon": "package",
+  "how": "name"
+ },
+ "n-pakete": {
+  "emoji": "📦",
+  "icon": "package",
+  "how": "mehrzahl",
+  "from": "n-paket"
+ },
+ "n-palme": {
+  "emoji": "🌴",
+  "icon": "palm-tree",
+  "how": "name"
+ },
+ "n-panda": {
+  "emoji": "🐼",
+  "icon": "panda",
+  "how": "name"
+ },
+ "n-papagei": {
+  "emoji": "🦜",
+  "icon": "parrot",
+  "how": "name"
+ },
+ "n-papageien": {
+  "emoji": "🦜",
+  "icon": "parrot",
+  "how": "mehrzahl",
+  "from": "n-papagei"
+ },
+ "n-papierkorb": {
+  "emoji": "🗑",
+  "icon": "wastebasket",
+  "how": "name"
+ },
+ "n-papierlaterne": {
+  "emoji": "🏮",
+  "icon": "red-paper-lantern",
+  "how": "name2"
+ },
+ "n-paprika": {
+  "emoji": "🫑",
+  "icon": "bell-pepper",
+  "how": "name"
+ },
+ "n-paprikas": {
+  "emoji": "🫑",
+  "icon": "bell-pepper",
+  "how": "mehrzahl",
+  "from": "n-paprika"
+ },
+ "n-peperoni": {
+  "emoji": "🌶",
+  "icon": "hot-pepper",
+  "how": "name"
+ },
+ "n-pfannkuchen": {
+  "emoji": "🥞",
+  "icon": "pancakes",
+  "how": "name"
+ },
+ "n-pfau": {
+  "emoji": "🦚",
+  "icon": "peacock",
+  "how": "name"
+ },
+ "n-pferd": {
+  "emoji": "🐎",
+  "icon": "horse",
+  "how": "name"
+ },
+ "n-pferde": {
+  "emoji": "🐎",
+  "icon": "horse",
+  "how": "mehrzahl",
+  "from": "n-pferd"
+ },
+ "n-pfirsich": {
+  "emoji": "🍑",
+  "icon": "peach",
+  "how": "name"
+ },
+ "n-pfirsiche": {
+  "emoji": "🍑",
+  "icon": "peach",
+  "how": "mehrzahl",
+  "from": "n-pfirsich"
+ },
+ "n-pilot": {
+  "emoji": "👨‍✈",
+  "icon": "man-pilot",
+  "how": "name"
+ },
+ "n-piloten": {
+  "emoji": "👨‍✈",
+  "icon": "man-pilot",
+  "how": "mehrzahl",
+  "from": "n-pilot"
+ },
+ "n-pilotin": {
+  "emoji": "👩‍✈",
+  "icon": "woman-pilot",
+  "how": "name"
+ },
+ "n-pilz": {
+  "emoji": "🍄‍🟫",
+  "icon": "brown-mushroom",
+  "how": "name2"
+ },
+ "n-pilze": {
+  "emoji": "🍄‍🟫",
+  "icon": "brown-mushroom",
+  "how": "mehrzahl",
+  "from": "n-pilz"
+ },
+ "n-pinguin": {
+  "emoji": "🐧",
+  "icon": "penguin",
+  "how": "name"
+ },
+ "n-pinguine": {
+  "emoji": "🐧",
+  "icon": "penguin",
+  "how": "mehrzahl",
+  "from": "n-pinguin"
+ },
+ "n-pinsel": {
+  "emoji": "🖌",
+  "icon": "paintbrush",
+  "how": "name"
+ },
+ "n-piratenflagge": {
+  "emoji": "🏴‍☠",
+  "icon": "pirate-flag",
+  "how": "name"
+ },
+ "n-pizza": {
+  "emoji": "🍕",
+  "icon": "pizza",
+  "how": "name"
+ },
+ "n-pokal": {
+  "emoji": "🏆",
+  "icon": "trophy",
+  "how": "name"
+ },
+ "n-polizist": {
+  "emoji": "👮‍♂",
+  "icon": "man-police-officer",
+  "how": "name"
+ },
+ "n-polizisten": {
+  "emoji": "👮‍♂",
+  "icon": "man-police-officer",
+  "how": "mehrzahl",
+  "from": "n-polizist"
+ },
+ "n-polizistin": {
+  "emoji": "👮‍♀",
+  "icon": "woman-police-officer",
+  "how": "name"
+ },
+ "n-popcorn": {
+  "emoji": "🍿",
+  "icon": "popcorn",
+  "how": "name"
+ },
+ "n-posaune": {
+  "emoji": "🪊",
+  "icon": "trombone",
+  "how": "name"
+ },
+ "n-prinz": {
+  "emoji": "🤴",
+  "icon": "prince",
+  "how": "name"
+ },
+ "n-prinzen": {
+  "emoji": "🤴",
+  "icon": "prince",
+  "how": "mehrzahl",
+  "from": "n-prinz"
+ },
+ "n-prinzessin": {
+  "emoji": "👸",
+  "icon": "princess",
+  "how": "name"
+ },
+ "n-prinzessinnen": {
+  "emoji": "👸",
+  "icon": "princess",
+  "how": "mehrzahl",
+  "from": "n-prinzessin"
+ },
+ "n-pudding": {
+  "emoji": "🍮",
+  "icon": "custard",
+  "how": "name"
+ },
+ "n-pudel": {
+  "emoji": "🐩",
+  "icon": "poodle",
+  "how": "name"
+ },
+ "n-puppe--spielzeug": {
+  "emoji": "🪆",
+  "icon": "nesting-dolls",
+  "how": "hand"
+ },
+ "n-puppen": {
+  "emoji": "🪆",
+  "icon": "nesting-dolls",
+  "how": "mehrzahl",
+  "from": "n-puppe--spielzeug"
+ },
+ "n-qualle": {
+  "emoji": "🪼",
+  "icon": "jellyfish",
+  "how": "name"
+ },
+ "n-quallen": {
+  "emoji": "🪼",
+  "icon": "jellyfish",
+  "how": "mehrzahl",
+  "from": "n-qualle"
+ },
+ "n-rad--fahrrad": {
+  "emoji": "🚲",
+  "icon": "bicycle",
+  "how": "hand"
+ },
+ "n-radfahrer": {
+  "emoji": "🚴‍♂",
+  "icon": "man-biking",
+  "how": "name"
+ },
+ "n-radfahrerin": {
+  "emoji": "🚴‍♀",
+  "icon": "woman-biking",
+  "how": "name"
+ },
+ "n-radiergummi": {
+  "emoji": "🪌",
+  "icon": "eraser",
+  "how": "name"
+ },
+ "n-radiergummis": {
+  "emoji": "🪌",
+  "icon": "eraser",
+  "how": "mehrzahl",
+  "from": "n-radiergummi"
+ },
+ "n-radio": {
+  "emoji": "📻",
+  "icon": "radio",
+  "how": "name"
+ },
+ "n-radios": {
+  "emoji": "📻",
+  "icon": "radio",
+  "how": "mehrzahl",
+  "from": "n-radio"
+ },
+ "n-rakete": {
+  "emoji": "🚀",
+  "icon": "rocket",
+  "how": "name"
+ },
+ "n-raketen": {
+  "emoji": "🚀",
+  "icon": "rocket",
+  "how": "mehrzahl",
+  "from": "n-rakete"
+ },
+ "n-rasierer": {
+  "emoji": "🪒",
+  "icon": "razor",
+  "how": "name"
+ },
+ "n-ratte": {
+  "emoji": "🐀",
+  "icon": "rat",
+  "how": "name"
+ },
+ "n-ratten": {
+  "emoji": "🐀",
+  "icon": "rat",
+  "how": "mehrzahl",
+  "from": "n-ratte"
+ },
+ "n-raupe--tier": {
+  "emoji": "🐛",
+  "icon": "bug",
+  "how": "hand"
+ },
+ "n-raupen": {
+  "emoji": "🐛",
+  "icon": "bug",
+  "how": "mehrzahl",
+  "from": "n-raupe--tier"
+ },
+ "n-reagenzglas": {
+  "emoji": "🧪",
+  "icon": "test-tube",
+  "how": "name"
+ },
+ "n-regenboegen": {
+  "emoji": "🌈",
+  "icon": "rainbow",
+  "how": "mehrzahl",
+  "from": "n-regenbogen"
+ },
+ "n-regenbogen": {
+  "emoji": "🌈",
+  "icon": "rainbow",
+  "how": "name"
+ },
+ "n-regenschirm": {
+  "emoji": "☂",
+  "icon": "umbrella",
+  "how": "name"
+ },
+ "n-rennauto": {
+  "emoji": "🏎",
+  "icon": "racing-car",
+  "how": "name"
+ },
+ "n-rettungsring": {
+  "emoji": "🛟",
+  "icon": "ring-buoy",
+  "how": "name"
+ },
+ "n-richter": {
+  "emoji": "👨‍⚖",
+  "icon": "man-judge",
+  "how": "name"
+ },
+ "n-riesenrad": {
+  "emoji": "🎡",
+  "icon": "ferris-wheel",
+  "how": "name"
+ },
+ "n-ring": {
+  "emoji": "💍",
+  "icon": "ring",
+  "how": "name"
+ },
+ "n-roboter": {
+  "emoji": "🤖",
+  "icon": "robot",
+  "how": "name"
+ },
+ "n-roentgenbild": {
+  "emoji": "🩻",
+  "icon": "x-ray",
+  "how": "name"
+ },
+ "n-rollschuh": {
+  "emoji": "🛼",
+  "icon": "roller-skate",
+  "how": "name"
+ },
+ "n-rollschuhe": {
+  "emoji": "🛼",
+  "icon": "roller-skate",
+  "how": "mehrzahl",
+  "from": "n-rollschuh"
+ },
+ "n-rose": {
+  "emoji": "🌹",
+  "icon": "rose",
+  "how": "name"
+ },
+ "n-rosen": {
+  "emoji": "🌹",
+  "icon": "rose",
+  "how": "mehrzahl",
+  "from": "n-rose"
+ },
+ "n-s-bahn": {
+  "emoji": "🚈",
+  "icon": "light-rail",
+  "how": "name"
+ },
+ "n-saenger": {
+  "emoji": "👨‍🎤",
+  "icon": "man-singer",
+  "how": "name"
+ },
+ "n-saengerin": {
+  "emoji": "👩‍🎤",
+  "icon": "woman-singer",
+  "how": "name"
+ },
+ "n-salat--gericht": {
+  "emoji": "🥗",
+  "icon": "green-salad",
+  "how": "hand"
+ },
+ "n-salz": {
+  "emoji": "🧂",
+  "icon": "salt",
+  "how": "name"
+ },
+ "n-sanduhr": {
+  "emoji": "⌛",
+  "icon": "hourglass-done",
+  "how": "name"
+ },
+ "n-sandwich": {
+  "emoji": "🥪",
+  "icon": "sandwich",
+  "how": "name"
+ },
+ "n-sarg": {
+  "emoji": "⚰",
+  "icon": "coffin",
+  "how": "name"
+ },
+ "n-satellit": {
+  "emoji": "🛰",
+  "icon": "satellite",
+  "how": "name"
+ },
+ "n-saxofon": {
+  "emoji": "🎷",
+  "icon": "saxophone",
+  "how": "name"
+ },
+ "n-schach": {
+  "emoji": "♟",
+  "icon": "chess-pawn",
+  "how": "name2"
+ },
+ "n-schachtel": {
+  "emoji": "🥡",
+  "icon": "takeout-box",
+  "how": "name2"
+ },
+ "n-schaf": {
+  "emoji": "🐑",
+  "icon": "ewe",
+  "how": "name"
+ },
+ "n-schafe": {
+  "emoji": "🐑",
+  "icon": "ewe",
+  "how": "mehrzahl",
+  "from": "n-schaf"
+ },
+ "n-schal": {
+  "emoji": "🧣",
+  "icon": "scarf",
+  "how": "name"
+ },
+ "n-schals": {
+  "emoji": "🧣",
+  "icon": "scarf",
+  "how": "mehrzahl",
+  "from": "n-schal"
+ },
+ "n-schaufel": {
+  "emoji": "🪏",
+  "icon": "shovel",
+  "how": "name"
+ },
+ "n-schaufeln": {
+  "emoji": "🪏",
+  "icon": "shovel",
+  "how": "mehrzahl",
+  "from": "n-schaufel"
+ },
+ "n-schere": {
+  "emoji": "✂",
+  "icon": "scissors",
+  "how": "name"
+ },
+ "n-scheren": {
+  "emoji": "✂",
+  "icon": "scissors",
+  "how": "mehrzahl",
+  "from": "n-schere"
+ },
+ "n-schiff": {
+  "emoji": "🚢",
+  "icon": "ship",
+  "how": "name"
+ },
+ "n-schiffe": {
+  "emoji": "🚢",
+  "icon": "ship",
+  "how": "mehrzahl",
+  "from": "n-schiff"
+ },
+ "n-schildkroete": {
+  "emoji": "🐢",
+  "icon": "turtle",
+  "how": "name"
+ },
+ "n-schildkroeten": {
+  "emoji": "🐢",
+  "icon": "turtle",
+  "how": "mehrzahl",
+  "from": "n-schildkroete"
+ },
+ "n-schlange--tier": {
+  "emoji": "🐍",
+  "icon": "snake",
+  "how": "hand"
+ },
+ "n-schlangen": {
+  "emoji": "🐍",
+  "icon": "snake",
+  "how": "mehrzahl",
+  "from": "n-schlange--tier"
+ },
+ "n-schleife": {
+  "emoji": "🎀",
+  "icon": "ribbon",
+  "how": "hand"
+ },
+ "n-schlitten": {
+  "emoji": "🛷",
+  "icon": "sled",
+  "how": "name"
+ },
+ "n-schlittschuh": {
+  "emoji": "⛸",
+  "icon": "ice-skate",
+  "how": "name"
+ },
+ "n-schloesser": {
+  "emoji": "🏰",
+  "icon": "castle",
+  "how": "mehrzahl",
+  "from": "n-schloss--burg"
+ },
+ "n-schloss--burg": {
+  "emoji": "🏰",
+  "icon": "castle",
+  "how": "hand"
+ },
+ "n-schloss--tuerschloss": {
+  "emoji": "🔒",
+  "icon": "locked",
+  "how": "hand"
+ },
+ "n-schluessel": {
+  "emoji": "🔑",
+  "icon": "key",
+  "how": "name"
+ },
+ "n-schmetterling": {
+  "emoji": "🦋",
+  "icon": "butterfly",
+  "how": "name"
+ },
+ "n-schmetterlinge": {
+  "emoji": "🦋",
+  "icon": "butterfly",
+  "how": "mehrzahl",
+  "from": "n-schmetterling"
+ },
+ "n-schnecke--tier": {
+  "emoji": "🐌",
+  "icon": "snail",
+  "how": "hand"
+ },
+ "n-schnecken": {
+  "emoji": "🐌",
+  "icon": "snail",
+  "how": "mehrzahl",
+  "from": "n-schnecke--tier"
+ },
+ "n-schneckenhaus": {
+  "emoji": "🐚",
+  "icon": "spiral-shell",
+  "how": "name"
+ },
+ "n-schneeflocke": {
+  "emoji": "❄",
+  "icon": "snowflake",
+  "how": "name"
+ },
+ "n-schneeflocken": {
+  "emoji": "❄",
+  "icon": "snowflake",
+  "how": "mehrzahl",
+  "from": "n-schneeflocke"
+ },
+ "n-schraubenschluessel": {
+  "emoji": "🔧",
+  "icon": "wrench",
+  "how": "name"
+ },
+ "n-schraubenzieher": {
+  "emoji": "🪛",
+  "icon": "screwdriver",
+  "how": "name"
+ },
+ "n-schraubzwinge": {
+  "emoji": "🗜",
+  "icon": "clamp",
+  "how": "name"
+ },
+ "n-schuh": {
+  "emoji": "🥿",
+  "icon": "flat-shoe",
+  "how": "name2"
+ },
+ "n-schuhe": {
+  "emoji": "🥿",
+  "icon": "flat-shoe",
+  "how": "mehrzahl",
+  "from": "n-schuh"
+ },
+ "n-schule": {
+  "emoji": "🏫",
+  "icon": "school",
+  "how": "name"
+ },
+ "n-schulen": {
+  "emoji": "🏫",
+  "icon": "school",
+  "how": "mehrzahl",
+  "from": "n-schule"
+ },
+ "n-schulranzen": {
+  "emoji": "🎒",
+  "icon": "backpack",
+  "how": "name"
+ },
+ "n-schultaschen": {
+  "emoji": "🎒",
+  "icon": "backpack",
+  "how": "mehrzahl",
+  "from": "n-schulranzen"
+ },
+ "n-schutzbrille": {
+  "emoji": "🥽",
+  "icon": "goggles",
+  "how": "name"
+ },
+ "n-schwaene": {
+  "emoji": "🦢",
+  "icon": "swan",
+  "how": "mehrzahl",
+  "from": "n-schwan"
+ },
+ "n-schwamm": {
+  "emoji": "🧽",
+  "icon": "sponge",
+  "how": "name"
+ },
+ "n-schwan": {
+  "emoji": "🦢",
+  "icon": "swan",
+  "how": "name"
+ },
+ "n-schwein": {
+  "emoji": "🐖",
+  "icon": "pig",
+  "how": "name"
+ },
+ "n-schweine": {
+  "emoji": "🐖",
+  "icon": "pig",
+  "how": "mehrzahl",
+  "from": "n-schwein"
+ },
+ "n-schwerter": {
+  "emoji": "⚔",
+  "icon": "crossed-swords",
+  "how": "name2"
+ },
+ "n-schwimmer": {
+  "emoji": "🏊‍♂",
+  "icon": "man-swimming",
+  "how": "name"
+ },
+ "n-schwimmerin": {
+  "emoji": "🏊‍♀",
+  "icon": "woman-swimming",
+  "how": "name"
+ },
+ "n-seehund": {
+  "emoji": "🦭",
+  "icon": "seal",
+  "how": "name"
+ },
+ "n-segelboot": {
+  "emoji": "⛵",
+  "icon": "sailboat",
+  "how": "name"
+ },
+ "n-seife": {
+  "emoji": "🧼",
+  "icon": "soap",
+  "how": "name"
+ },
+ "n-seifen": {
+  "emoji": "🧼",
+  "icon": "soap",
+  "how": "mehrzahl",
+  "from": "n-seife"
+ },
+ "n-sicherheitsnadel": {
+  "emoji": "🧷",
+  "icon": "safety-pin",
+  "how": "name"
+ },
+ "n-sicherheitsweste": {
+  "emoji": "🦺",
+  "icon": "safety-vest",
+  "how": "name"
+ },
+ "n-silbermedaille": {
+  "emoji": "🥈",
+  "icon": "2nd-place-medal",
+  "how": "name"
+ },
+ "n-sitzplatz": {
+  "emoji": "💺",
+  "icon": "seat",
+  "how": "name"
+ },
+ "n-skateboard": {
+  "emoji": "🛹",
+  "icon": "skateboard",
+  "how": "name"
+ },
+ "n-ski": {
+  "emoji": "🎿",
+  "icon": "skis",
+  "how": "name"
+ },
+ "n-skier": {
+  "emoji": "🎿",
+  "icon": "skis",
+  "how": "mehrzahl",
+  "from": "n-ski"
+ },
+ "n-skorpion": {
+  "emoji": "🦂",
+  "icon": "scorpion",
+  "how": "name"
+ },
+ "n-socken": {
+  "emoji": "🧦",
+  "icon": "socks",
+  "how": "name"
+ },
+ "n-softball": {
+  "emoji": "🥎",
+  "icon": "softball",
+  "how": "name"
+ },
+ "n-softeis": {
+  "emoji": "🍦",
+  "icon": "soft-ice-cream",
+  "how": "name"
+ },
+ "n-sonnenblume": {
+  "emoji": "🌻",
+  "icon": "sunflower",
+  "how": "name"
+ },
+ "n-sonnenblumen": {
+  "emoji": "🌻",
+  "icon": "sunflower",
+  "how": "mehrzahl",
+  "from": "n-sonnenblume"
+ },
+ "n-sonnenbrille": {
+  "emoji": "🕶",
+  "icon": "sunglasses",
+  "how": "name"
+ },
+ "n-sonnenschirm": {
+  "emoji": "⛱",
+  "icon": "umbrella-on-ground",
+  "how": "name2"
+ },
+ "n-sonnenschirme": {
+  "emoji": "⛱",
+  "icon": "umbrella-on-ground",
+  "how": "mehrzahl",
+  "from": "n-sonnenschirm"
+ },
+ "n-spaghetti": {
+  "emoji": "🍝",
+  "icon": "spaghetti",
+  "how": "name"
+ },
+ "n-spiegel": {
+  "emoji": "🪞",
+  "icon": "mirror",
+  "how": "name"
+ },
+ "n-spielplatzrutsche": {
+  "emoji": "🛝",
+  "icon": "playground-slide",
+  "how": "name"
+ },
+ "n-spinne": {
+  "emoji": "🕷",
+  "icon": "spider",
+  "how": "name"
+ },
+ "n-spinnen": {
+  "emoji": "🕷",
+  "icon": "spider",
+  "how": "mehrzahl",
+  "from": "n-spinne"
+ },
+ "n-spinnennetz": {
+  "emoji": "🕸",
+  "icon": "spider-web",
+  "how": "name"
+ },
+ "n-sportschuh": {
+  "emoji": "👟",
+  "icon": "running-shoe",
+  "how": "name"
+ },
+ "n-springbrunnen": {
+  "emoji": "⛲",
+  "icon": "fountain",
+  "how": "name"
+ },
+ "n-spritze": {
+  "emoji": "💉",
+  "icon": "syringe",
+  "how": "name"
+ },
+ "n-stadion": {
+  "emoji": "🏟",
+  "icon": "stadium",
+  "how": "name"
+ },
+ "n-statue": {
+  "emoji": "🗿",
+  "icon": "moai",
+  "how": "name"
+ },
+ "n-staubwolke": {
+  "emoji": "💨",
+  "icon": "dashing-away",
+  "how": "name"
+ },
+ "n-stecknadel": {
+  "emoji": "📍",
+  "icon": "round-pushpin",
+  "how": "name"
+ },
+ "n-sterne": {
+  "emoji": "✨",
+  "icon": "sparkles",
+  "how": "name2"
+ },
+ "n-sternenhimmel": {
+  "emoji": "🌃",
+  "icon": "night-with-stars",
+  "how": "name"
+ },
+ "n-sternschnuppe": {
+  "emoji": "🌠",
+  "icon": "shooting-star",
+  "how": "name"
+ },
+ "n-stethoskop": {
+  "emoji": "🩺",
+  "icon": "stethoscope",
+  "how": "name"
+ },
+ "n-stoppschild": {
+  "emoji": "🛑",
+  "icon": "stop-sign",
+  "how": "name"
+ },
+ "n-stoppuhr": {
+  "emoji": "⏱",
+  "icon": "stopwatch",
+  "how": "name"
+ },
+ "n-strassenbahn": {
+  "emoji": "🚊",
+  "icon": "tram",
+  "how": "name"
+ },
+ "n-strassenbahnen": {
+  "emoji": "🚊",
+  "icon": "tram",
+  "how": "mehrzahl",
+  "from": "n-strassenbahn"
+ },
+ "n-strauss--blumen": {
+  "emoji": "💐",
+  "icon": "bouquet",
+  "how": "hand"
+ },
+ "n-stuehle": {
+  "emoji": "🪑",
+  "icon": "chair",
+  "how": "mehrzahl",
+  "from": "n-stuhl"
+ },
+ "n-stuhl": {
+  "emoji": "🪑",
+  "icon": "chair",
+  "how": "name"
+ },
+ "n-suesskartoffel": {
+  "emoji": "🍠",
+  "icon": "roasted-sweet-potato",
+  "how": "name2"
+ },
+ "n-superheld": {
+  "emoji": "🦸‍♂",
+  "icon": "man-superhero",
+  "how": "name"
+ },
+ "n-sushi": {
+  "emoji": "🍣",
+  "icon": "sushi",
+  "how": "name"
+ },
+ "n-synagoge": {
+  "emoji": "🕍",
+  "icon": "synagogue",
+  "how": "name"
+ },
+ "n-t-shirt": {
+  "emoji": "👕",
+  "icon": "t-shirt",
+  "how": "name"
+ },
+ "n-taco": {
+  "emoji": "🌮",
+  "icon": "taco",
+  "how": "name"
+ },
+ "n-tafel--schokolade": {
+  "emoji": "🍫",
+  "icon": "chocolate-bar",
+  "how": "hand"
+ },
+ "n-taschenlampe": {
+  "emoji": "🔦",
+  "icon": "flashlight",
+  "how": "name"
+ },
+ "n-taschenlampen": {
+  "emoji": "🔦",
+  "icon": "flashlight",
+  "how": "mehrzahl",
+  "from": "n-taschenlampe"
+ },
+ "n-tastatur": {
+  "emoji": "⌨",
+  "icon": "keyboard",
+  "how": "name"
+ },
+ "n-taube": {
+  "emoji": "🕊",
+  "icon": "dove",
+  "how": "name"
+ },
+ "n-tauben": {
+  "emoji": "🕊",
+  "icon": "dove",
+  "how": "mehrzahl",
+  "from": "n-taube"
+ },
+ "n-taxi": {
+  "emoji": "🚕",
+  "icon": "taxi",
+  "how": "name"
+ },
+ "n-taxis": {
+  "emoji": "🚕",
+  "icon": "taxi",
+  "how": "mehrzahl",
+  "from": "n-taxi"
+ },
+ "n-tee": {
+  "emoji": "🍵",
+  "icon": "teacup-without-handle",
+  "how": "hand"
+ },
+ "n-teekanne": {
+  "emoji": "🫖",
+  "icon": "teapot",
+  "how": "name"
+ },
+ "n-telefon": {
+  "emoji": "☎",
+  "icon": "telephone",
+  "how": "name"
+ },
+ "n-teleskop": {
+  "emoji": "🔭",
+  "icon": "telescope",
+  "how": "name"
+ },
+ "n-tennisball": {
+  "emoji": "🎾",
+  "icon": "tennis",
+  "how": "name"
+ },
+ "n-thermometer": {
+  "emoji": "🌡",
+  "icon": "thermometer",
+  "how": "name"
+ },
+ "n-ticket": {
+  "emoji": "🎫",
+  "icon": "ticket",
+  "how": "name"
+ },
+ "n-tickets": {
+  "emoji": "🎫",
+  "icon": "ticket",
+  "how": "mehrzahl",
+  "from": "n-ticket"
+ },
+ "n-tiger": {
+  "emoji": "🐅",
+  "icon": "tiger",
+  "how": "name"
+ },
+ "n-tintenfisch": {
+  "emoji": "🦑",
+  "icon": "squid",
+  "how": "name"
+ },
+ "n-tischtennis": {
+  "emoji": "🏓",
+  "icon": "ping-pong",
+  "how": "name"
+ },
+ "n-toilette": {
+  "emoji": "🚽",
+  "icon": "toilet",
+  "how": "name"
+ },
+ "n-toiletten": {
+  "emoji": "🚻",
+  "icon": "restroom",
+  "how": "name"
+ },
+ "n-tomate": {
+  "emoji": "🍅",
+  "icon": "tomato",
+  "how": "name"
+ },
+ "n-tomaten": {
+  "emoji": "🍅",
+  "icon": "tomato",
+  "how": "mehrzahl",
+  "from": "n-tomate"
+ },
+ "n-topfpflanze": {
+  "emoji": "🪴",
+  "icon": "potted-plant",
+  "how": "name"
+ },
+ "n-tor--sport": {
+  "emoji": "🥅",
+  "icon": "goal-net",
+  "how": "hand"
+ },
+ "n-tore": {
+  "emoji": "🥅",
+  "icon": "goal-net",
+  "how": "mehrzahl",
+  "from": "n-tor--sport"
+ },
+ "n-torte": {
+  "emoji": "🍰",
+  "icon": "shortcake",
+  "how": "name"
+ },
+ "n-totenkopf": {
+  "emoji": "💀",
+  "icon": "skull",
+  "how": "name"
+ },
+ "n-traktor": {
+  "emoji": "🚜",
+  "icon": "tractor",
+  "how": "name"
+ },
+ "n-traktoren": {
+  "emoji": "🚜",
+  "icon": "tractor",
+  "how": "mehrzahl",
+  "from": "n-traktor"
+ },
+ "n-trauben": {
+  "emoji": "🍇",
+  "icon": "grapes",
+  "how": "name"
+ },
+ "n-tretroller": {
+  "emoji": "🛴",
+  "icon": "kick-scooter",
+  "how": "name"
+ },
+ "n-trinkwasser": {
+  "emoji": "🚰",
+  "icon": "potable-water",
+  "how": "name"
+ },
+ "n-troll": {
+  "emoji": "🧌",
+  "icon": "troll",
+  "how": "name"
+ },
+ "n-trommel": {
+  "emoji": "🥁",
+  "icon": "drum",
+  "how": "name"
+ },
+ "n-trommeln": {
+  "emoji": "🥁",
+  "icon": "drum",
+  "how": "mehrzahl",
+  "from": "n-trommel"
+ },
+ "n-trompete": {
+  "emoji": "🎺",
+  "icon": "trumpet",
+  "how": "name"
+ },
+ "n-tropfen": {
+  "emoji": "💧",
+  "icon": "droplet",
+  "how": "name"
+ },
+ "n-truthahn": {
+  "emoji": "🦃",
+  "icon": "turkey",
+  "how": "name"
+ },
+ "n-tuer": {
+  "emoji": "🚪",
+  "icon": "door",
+  "how": "name"
+ },
+ "n-tueren": {
+  "emoji": "🚪",
+  "icon": "door",
+  "how": "mehrzahl",
+  "from": "n-tuer"
+ },
+ "n-tulpe": {
+  "emoji": "🌷",
+  "icon": "tulip",
+  "how": "name"
+ },
+ "n-tulpen": {
+  "emoji": "🌷",
+  "icon": "tulip",
+  "how": "mehrzahl",
+  "from": "n-tulpe"
+ },
+ "n-u-bahn": {
+  "emoji": "🚇",
+  "icon": "metro",
+  "how": "name"
+ },
+ "n-ungeheuer": {
+  "emoji": "👹",
+  "icon": "ogre",
+  "how": "name"
+ },
+ "n-vampir": {
+  "emoji": "🧛",
+  "icon": "vampire",
+  "how": "name"
+ },
+ "n-volleyball": {
+  "emoji": "🏐",
+  "icon": "volleyball",
+  "how": "name"
+ },
+ "n-vollmond": {
+  "emoji": "🌕",
+  "icon": "full-moon",
+  "how": "name"
+ },
+ "n-vulkan": {
+  "emoji": "🌋",
+  "icon": "volcano",
+  "how": "name"
+ },
+ "n-waage": {
+  "emoji": "⚖",
+  "icon": "balance-scale",
+  "how": "name"
+ },
+ "n-wachsmalstift": {
+  "emoji": "🖍",
+  "icon": "crayon",
+  "how": "name"
+ },
+ "n-waffel": {
+  "emoji": "🧇",
+  "icon": "waffle",
+  "how": "name"
+ },
+ "n-waffeln": {
+  "emoji": "🧇",
+  "icon": "waffle",
+  "how": "mehrzahl",
+  "from": "n-waffel"
+ },
+ "n-wal": {
+  "emoji": "🐋",
+  "icon": "whale",
+  "how": "name"
+ },
+ "n-wale": {
+  "emoji": "🐋",
+  "icon": "whale",
+  "how": "mehrzahl",
+  "from": "n-wal"
+ },
+ "n-waschbaer": {
+  "emoji": "🦝",
+  "icon": "raccoon",
+  "how": "name"
+ },
+ "n-wassermann": {
+  "emoji": "🧜‍♂",
+  "icon": "merman",
+  "how": "name"
+ },
+ "n-wassermelone": {
+  "emoji": "🍉",
+  "icon": "watermelon",
+  "how": "name"
+ },
+ "n-wasserpistole": {
+  "emoji": "🔫",
+  "icon": "water-pistol",
+  "how": "name"
+ },
+ "n-wasserpistolen": {
+  "emoji": "🔫",
+  "icon": "water-pistol",
+  "how": "mehrzahl",
+  "from": "n-wasserpistole"
+ },
+ "n-wecker": {
+  "emoji": "⏰",
+  "icon": "alarm-clock",
+  "how": "name"
+ },
+ "n-weihnachtsbaum": {
+  "emoji": "🎄",
+  "icon": "christmas-tree",
+  "how": "name"
+ },
+ "n-weihnachtsmann": {
+  "emoji": "🎅",
+  "icon": "santa-claus",
+  "how": "name"
+ },
+ "n-welle": {
+  "emoji": "🌊",
+  "icon": "water-wave",
+  "how": "name"
+ },
+ "n-wellen": {
+  "emoji": "🌊",
+  "icon": "water-wave",
+  "how": "mehrzahl",
+  "from": "n-welle"
+ },
+ "n-weltkarte": {
+  "emoji": "🗺",
+  "icon": "world-map",
+  "how": "name"
+ },
+ "n-werkzeugkasten": {
+  "emoji": "🧰",
+  "icon": "toolbox",
+  "how": "name"
+ },
+ "n-widder": {
+  "emoji": "🐏",
+  "icon": "ram",
+  "how": "name"
+ },
+ "n-wildschwein": {
+  "emoji": "🐗",
+  "icon": "boar",
+  "how": "name"
+ },
+ "n-wind": {
+  "emoji": "🌬",
+  "icon": "wind-face",
+  "how": "name"
+ },
+ "n-windspiel": {
+  "emoji": "🎐",
+  "icon": "wind-chime",
+  "how": "name2"
+ },
+ "n-wirbelsturm": {
+  "emoji": "🌪",
+  "icon": "tornado",
+  "how": "name"
+ },
+ "n-wissenschaftler": {
+  "emoji": "👨‍🔬",
+  "icon": "man-scientist",
+  "how": "name"
+ },
+ "n-woelfe": {
+  "emoji": "🐺",
+  "icon": "wolf",
+  "how": "mehrzahl",
+  "from": "n-wolf"
+ },
+ "n-wolf": {
+  "emoji": "🐺",
+  "icon": "wolf",
+  "how": "name"
+ },
+ "n-wollknaeuel": {
+  "emoji": "🧶",
+  "icon": "yarn",
+  "how": "name"
+ },
+ "n-wuermer": {
+  "emoji": "🪱",
+  "icon": "worm",
+  "how": "mehrzahl",
+  "from": "n-wurm"
+ },
+ "n-wueste": {
+  "emoji": "🏜",
+  "icon": "desert",
+  "how": "name"
+ },
+ "n-wunderkerze": {
+  "emoji": "🎇",
+  "icon": "sparkler",
+  "how": "name"
+ },
+ "n-wurm": {
+  "emoji": "🪱",
+  "icon": "worm",
+  "how": "name"
+ },
+ "n-zahn": {
+  "emoji": "🦷",
+  "icon": "tooth",
+  "how": "name"
+ },
+ "n-zahnbuerste": {
+  "emoji": "🪥",
+  "icon": "toothbrush",
+  "how": "name"
+ },
+ "n-zahnbuersten": {
+  "emoji": "🪥",
+  "icon": "toothbrush",
+  "how": "mehrzahl",
+  "from": "n-zahnbuerste"
+ },
+ "n-zahnrad": {
+  "emoji": "⚙",
+  "icon": "gear",
+  "how": "name"
+ },
+ "n-zauberstab": {
+  "emoji": "🪄",
+  "icon": "magic-wand",
+  "how": "name"
+ },
+ "n-zauberstaebe": {
+  "emoji": "🪄",
+  "icon": "magic-wand",
+  "how": "mehrzahl",
+  "from": "n-zauberstab"
+ },
+ "n-zebra": {
+  "emoji": "🦓",
+  "icon": "zebra",
+  "how": "name"
+ },
+ "n-zebras": {
+  "emoji": "🦓",
+  "icon": "zebra",
+  "how": "mehrzahl",
+  "from": "n-zebra"
+ },
+ "n-zeitung": {
+  "emoji": "📰",
+  "icon": "newspaper",
+  "how": "name"
+ },
+ "n-zeitungen": {
+  "emoji": "📰",
+  "icon": "newspaper",
+  "how": "mehrzahl",
+  "from": "n-zeitung"
+ },
+ "n-zelt": {
+  "emoji": "⛺",
+  "icon": "tent",
+  "how": "name"
+ },
+ "n-zelte": {
+  "emoji": "⛺",
+  "icon": "tent",
+  "how": "mehrzahl",
+  "from": "n-zelt"
+ },
+ "n-ziege": {
+  "emoji": "🐐",
+  "icon": "goat",
+  "how": "name"
+ },
+ "n-ziegelstein": {
+  "emoji": "🧱",
+  "icon": "brick",
+  "how": "name"
+ },
+ "n-ziegen": {
+  "emoji": "🐐",
+  "icon": "goat",
+  "how": "mehrzahl",
+  "from": "n-ziege"
+ },
+ "n-zirkuszelt": {
+  "emoji": "🎪",
+  "icon": "circus-tent",
+  "how": "name"
+ },
+ "n-zitrone": {
+  "emoji": "🍋",
+  "icon": "lemon",
+  "how": "name"
+ },
+ "n-zitronen": {
+  "emoji": "🍋",
+  "icon": "lemon",
+  "how": "mehrzahl",
+  "from": "n-zitrone"
+ },
+ "n-zombie": {
+  "emoji": "🧟",
+  "icon": "zombie",
+  "how": "name"
+ },
+ "n-zuege": {
+  "emoji": "🚆",
+  "icon": "train",
+  "how": "mehrzahl",
+  "from": "n-zug"
+ },
+ "n-zug": {
+  "emoji": "🚆",
+  "icon": "train",
+  "how": "name"
+ },
+ "n-zunge": {
+  "emoji": "👅",
+  "icon": "tongue",
+  "how": "name"
+ },
+ "n-zungen": {
+  "emoji": "👅",
+  "icon": "tongue",
+  "how": "mehrzahl",
+  "from": "n-zunge"
+ },
+ "n-zwiebel": {
+  "emoji": "🧅",
+  "icon": "onion",
+  "how": "name"
+ },
+ "n-zwiebeln": {
+  "emoji": "🧅",
+  "icon": "onion",
+  "how": "mehrzahl",
+  "from": "n-zwiebel"
+ },
+ "n-zylinder": {
+  "emoji": "🎩",
+  "icon": "top-hat",
+  "how": "name"
+ },
+ "w-blasen": {
+  "emoji": "🫧",
+  "icon": "bubbles",
+  "how": "name"
+ },
+ "w-mal": {
+  "emoji": "✖",
+  "icon": "multiply",
+  "how": "name"
+ },
+ "w-minus": {
+  "emoji": "➖",
+  "icon": "minus",
+  "how": "name"
+ },
+ "w-neblig": {
+  "emoji": "🌁",
+  "icon": "foggy",
+  "how": "name"
+ },
+ "w-plus": {
+  "emoji": "➕",
+  "icon": "plus",
+  "how": "name"
+ },
+ "w-schlafen": {
+  "emoji": "💤",
+  "icon": "zzz",
+  "how": "name"
+ },
+ "w-schwarze-katze": {
+  "emoji": "🐈‍⬛",
+  "icon": "black-cat",
+  "how": "name"
+ },
+ "w-verboten": {
+  "emoji": "🚫",
+  "icon": "prohibited",
+  "how": "name"
+ },
+ "w-wiederholen": {
+  "emoji": "🔁",
+  "icon": "repeat-button",
+  "how": "name"
+ }
+}

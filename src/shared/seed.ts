@@ -18,6 +18,8 @@ export interface SeedRecord {
   order?: number;
   kind: "word" | "color" | "number";
   pictogram_key?: string | null;
+  /** Bilddatei unter public/pictograms/, z. B. „noto/frog.svg“ oder „eigene/n-hund.svg“. */
+  pictogram_file?: string | null;
   color?: string;
   number?: number;
   description?: string;
@@ -48,6 +50,11 @@ export interface SeedMeaningRow {
 
 export const PICTOGRAM_LIBRARY = "Schreiblern-Referenz";
 export const PICTOGRAM_LICENSE = "Eigene Vektorzeichnung aus dem Übergabepaket";
+export const PICTOGRAM_FILE = /^(noto|eigene)\/[a-z0-9-]{1,80}\.svg$/;
+const FILE_LIBRARIES: Record<string, { library: string; license: string; attribution: string | null }> = {
+  noto: { library: "Noto Emoji", license: "Apache-2.0", attribution: "Noto Emoji, Copyright Google LLC" },
+  eigene: { library: "Schreiblern-App", license: "Eigene Zeichnung (ungeprüft)", attribution: null },
+};
 
 export const wordIdFor = (display: string) => `de:${cleanDisplay(display)}`;
 
@@ -74,6 +81,9 @@ export function toSeedRows(records: SeedRecord[]): SeedMeaningRow[] {
     else if (r.pictogram_key) {
       if (!(BUILTIN_PICTOGRAMS as readonly string[]).includes(r.pictogram_key)) throw new Error(`Unbekanntes Piktogramm: ${r.pictogram_key}`);
       pictogramId = `builtin:${r.pictogram_key}`;
+    } else if (r.pictogram_file) {
+      if (!PICTOGRAM_FILE.test(r.pictogram_file)) throw new Error(`Ungültige Bilddatei: ${r.pictogram_file}`);
+      pictogramId = `file:${r.pictogram_file}`;
     }
     const sortOrder = r.order ?? (perSet.get(r.set) ?? 0) + 1;
     perSet.set(r.set, Math.max(perSet.get(r.set) ?? 0, sortOrder));
@@ -117,6 +127,12 @@ export function seedSql(rows: SeedMeaningRow[]): string {
     `(${q("number-dots")}, 'number', NULL, ${q(PICTOGRAM_LIBRARY)}, ${q(PICTOGRAM_LICENSE)}, NULL)`,
     ...BUILTIN_PICTOGRAMS.map((k) => `(${q(`builtin:${k}`)}, 'builtin', NULL, ${q(PICTOGRAM_LIBRARY)}, ${q(PICTOGRAM_LICENSE)}, NULL)`),
   ];
+  const files = [...new Set(rows.map((r) => r.pictogramId).filter((p): p is string => !!p?.startsWith("file:")))].sort();
+  for (const id of files) {
+    const path = id.slice("file:".length);
+    const lib = FILE_LIBRARIES[path.split("/")[0]!]!;
+    pics.push(`(${q(id)}, 'file', ${q(`/pictograms/${path}`)}, ${q(lib.library)}, ${q(lib.license)}, ${q(lib.attribution)})`);
+  }
   lines.push(...insertChunks(`INSERT OR IGNORE INTO pictograms (id, kind, path, library, license, attribution) VALUES`, pics));
   const words = new Map(rows.map((r) => [r.wordId, r]));
   lines.push(
@@ -139,6 +155,15 @@ export function seedSql(rows: SeedMeaningRow[]): string {
     const ids = rows.filter((r) => r.difficulty === level).map((r) => q(r.id));
     for (let i = 0; i < ids.length; i += SQL_CHUNK * 3) {
       lines.push(`UPDATE meanings SET difficulty = ${level} WHERE difficulty IS NULL AND id IN (${ids.slice(i, i + SQL_CHUNK * 3).join(", ")});`);
+    }
+  }
+  // Bilder für bestehende Einträge nachtragen: nur wo noch keins ist. Eine eigene Zeichnung ersetzt ein Noto-Emoji.
+  const byPic = new Map<string, string[]>();
+  for (const r of rows) if (r.pictogramId?.startsWith("file:")) byPic.set(r.pictogramId, [...(byPic.get(r.pictogramId) ?? []), q(r.id)]);
+  for (const [pic, ids] of byPic) {
+    const cond = pic.startsWith("file:eigene/") ? "(pictogram_id IS NULL OR pictogram_id LIKE 'file:noto/%')" : "pictogram_id IS NULL";
+    for (let i = 0; i < ids.length; i += SQL_CHUNK * 3) {
+      lines.push(`UPDATE meanings SET pictogram_id = ${q(pic)} WHERE ${cond} AND id IN (${ids.slice(i, i + SQL_CHUNK * 3).join(", ")});`);
     }
   }
   return lines.join("\n") + "\n";

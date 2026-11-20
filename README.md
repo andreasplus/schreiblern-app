@@ -46,6 +46,20 @@ zwei = two [2]
 - Die **Schwierigkeit** (1 sehr leicht bis 5 sehr schwer) berechnet `src/shared/difficulty.ts` aus der Schreibweise: Buchstabenzahl, Silben und Rechtschreibbesonderheiten (sch, ck, ie, Doppelkonsonanten, Dehnungs-h, ß, Fremdwortschreibungen …). Innerhalb einer Sammlung stehen leichte Wörter vorn.
 - `node scripts/wortschatz-report.ts` zeigt Zahlen, Verteilung der Stufen und Warnungen (`--warnings`, `--collections`, `--level 1`).
 
+## Bilder
+
+- **Eingebaute Zeichnungen** (`src/shared/pictograms.ts`) für die Referenzwörter.
+- **Noto Emoji** (Apache 2.0) für rund 700 weitere Wörter. `scripts/bilder-zuordnen.ts` ordnet sie über die deutschen Unicode-Namen zu (nur sichere Treffer, Mehrzahl übernimmt das Bild der Einzahl) und legt die benutzten SVGs unter `public/pictograms/noto/` ab. Korrekturen stehen in `data/bilder/noto-manuell.txt` (`Wort = 🐸` oder `Wort = -`).
+- **Eigene SVGs**: Eine Datei `public/pictograms/eigene/<Bedeutungs-ID>.svg` wird beim nächsten Seed automatisch zugeordnet und ersetzt ein Noto-Emoji. Skripte, Ereignis-Attribute und externe Verweise sind darin nicht erlaubt.
+- `node scripts/bildauftrag.ts` schreibt `generated/bildauftrag.csv`: alle Wörter ohne Bild mit Dateiname, Wortart, Priorität und einer Bildbeschreibung (deutsch und als englischer Prompt).
+
+Neu zuordnen (die Quellen sind bewusst keine Abhängigkeit des Projekts):
+
+```bash
+npm i --no-save @iconify-json/noto cldr-annotations-full cldr-annotations-derived-full
+node scripts/bilder-zuordnen.ts
+```
+
 Der Seed-Import ist wiederholbar: Er legt nur Fehlendes an, überschreibt nichts und meldet Abweichungen zwischen `data/*.json` und der Datenbank. Änderungen an bestehenden Einträgen gehören in eine neue Migration.
 
 ## Prüfen
@@ -79,5 +93,6 @@ Siehe [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Es werden keine kostenpflichtige
 
 - ABeeZee: SIL Open Font License 1.1, unverändert unter `public/fonts/` mit Lizenztext. Quelle: https://github.com/google/fonts/tree/main/ofl/abeezee
 - Piktogramme: Vektorzeichnungen aus den Skripten des Übergabepakets.
+- Noto Emoji (`public/pictograms/noto/`): Copyright Google LLC, Apache License 2.0, siehe `public/pictograms/noto/LICENSE.txt`. Die Zuordnung nutzt die deutschen Emoji-Namen aus Unicode CLDR (Unicode License); diese Daten werden nur beim Zuordnen gelesen und nicht ausgeliefert.
 - Wortschatz (`data/wortschatz/`): eigene Zusammenstellung für dieses Projekt, ohne Übernahme aus fremden Wortlisten oder Datenbanken.
 - Auto: Das frühere Rasterbild `car.png` stammt aus einer Nutzervorlage ohne Nachweis zur öffentlichen Weiterverwendung. Es ist durch eine eigene Vektorzeichnung ersetzt. `car.png`, `reference.png` und die 35-seitige Beispiel-PDF (enthält das Bild) liegen deshalb nicht in diesem öffentlichen Repository.

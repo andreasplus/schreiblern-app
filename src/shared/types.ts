@@ -13,6 +13,8 @@ export interface Meaning {
   color: string | null;
   /** Schlüssel einer eingebauten Vektorzeichnung oder null für „ohne Bild“. */
   pictogram: string | null;
+  /** Adresse einer Bilddatei (Noto-Emoji oder eigene Zeichnung), wenn es keine eingebaute Zeichnung gibt. */
+  pictogramUrl: string | null;
   status: MeaningStatus;
   collection: string | null;
   sortOrder: number | null;

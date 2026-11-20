@@ -1,0 +1,59 @@
+# Handverlesene Zuordnungen zu Noto-Emojis
+> Ergänzt oder ersetzt die automatische Zuordnung in scripts/bilder-zuordnen.ts.
+// Format: Wort (Bedeutung) = Emoji   oder   Wort = -   (kein Emoji, z. B. weil die automatische Wahl falsch ist)
+// Wörter mit mehreren Bedeutungen ordnet das Skript nie automatisch zu, nur hier.
+Schnecke (Tier) = 🐌
+Schlange (Tier) = 🐍
+Raupe (Tier) = 🐛
+Fliege (Insekt) = 🪰
+Kiwi (Frucht) = 🥝
+Birne (Obst) = 🍐
+Eis (Speiseeis) = 🍦
+Salat (Gericht) = 🥗
+Strauß (Blumen) = 💐
+Erde (Planet) = 🌍
+Blatt (Pflanze) = 🍃
+Blatt (Papier) = 📄
+Feder (Vogel) = 🪶
+Flügel (Vogel) = 🪽
+Tor (Sport) = 🥅
+Note (Musik) = 🎵
+Drachen (Spielzeug) = 🪁
+Schloss (Burg) = 🏰
+Schloss (Türschloss) = 🔒
+Leiter (zum Steigen) = 🪜
+Rad (Fahrrad) = 🚲
+Tafel (Schokolade) = 🍫
+Nadel (Nähen) = 🪡
+Mutter (Schraube) = 🔩
+Bank (Geldinstitut) = 🏦
+Puppe (Spielzeug) = 🪆
+// Bessere Wahl als die automatische
+Tee = 🍵
+Schleife = 🎀
+Lautsprecher = 🔊
+// Automatische Wahl passt nicht (falsches Bild, Verbform oder nicht kindgerecht)
+Frauen = -
+Männer = -
+Gruß = -
+Kette = -
+Punkte = -
+Puppen = -
+Stein = -
+Taste = -
+Tower = -
+Umschlag = -
+Untertasse = -
+Zahlen = -
+Pause = -
+Kreuz = -
+Lilie = -
+Mittelfinger = -
+Wohnmobil = -
+fliege = -
+funkeln = -
+knoten = -
+schloss = -
+schwamm = -
+tropfen = -
+wache = -

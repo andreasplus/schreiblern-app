@@ -90,6 +90,7 @@ button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); o
 
 .thumb { flex: 0 0 auto; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; }
 .thumb svg { width: 100%; height: 100%; }
+.thumb img { width: 70%; height: 70%; object-fit: contain; }
 .thumb-empty { border: 1px dashed var(--line); border-radius: 6px; }
 
 .meaning-de { font-weight: 600; }
