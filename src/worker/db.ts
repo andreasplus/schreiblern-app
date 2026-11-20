@@ -120,7 +120,7 @@ interface PageRow extends MeaningRow {
  * dieselbe Logik wie früher im Browser (src/shared/filters.ts). Für die Sortierung „nach Sammlung“
  * reicht je Bedeutung die erste Sammlung; die vollständige Liste wird nur für die Seite geladen.
  */
-export async function getWordsPage(db: D1Database, f: Filters, offset: number, limit: number): Promise<WordsPage> {
+export async function getWordsPage(db: D1Database, f: Filters, offset: number, limit: number, printed: ReadonlySet<string> = new Set()): Promise<WordsPage> {
   const where: string[] = [];
   const binds: unknown[] = [];
   let join: string;
@@ -148,7 +148,7 @@ export async function getWordsPage(db: D1Database, f: Filters, offset: number, l
     collections: r.coll_id ? [r.coll_id] : [],
     collectionPositions: r.coll_id ? { [r.coll_id]: r.coll_pos ?? 0 } : {},
   }));
-  const all = applyFilters(candidates, colls!.results as unknown as Collection[], f);
+  const all = applyFilters(candidates, colls!.results as unknown as Collection[], f, printed);
   const page = all.slice(offset, offset + limit);
 
   if (page.length) {

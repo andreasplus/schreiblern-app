@@ -1,5 +1,5 @@
 import { getCollection, getMeanings, getWordsPage, listCollections, searchWords, MAX_IDS, MAX_QUERY_LENGTH, WORDS_PAGE_DEFAULT, WORDS_PAGE_MAX } from "./db.ts";
-import { filtersFromParams } from "../shared/filters.ts";
+import { filtersFromParams, MAX_PRINTED_IDS } from "../shared/filters.ts";
 
 export interface Env {
   DB: D1Database;
@@ -10,12 +10,14 @@ const json = (body: unknown, status = 200, cache = "no-store") =>
     status,
     headers: { "content-type": "application/json; charset=utf-8", "cache-control": cache, "x-content-type-options": "nosniff" },
   });
+const ID = /^[a-z0-9-]{1,64}$/;
 const error = (status: number, message: string) => json({ error: message }, status);
 
 export async function handleApi(request: Request, env: Env): Promise<Response> {
   const url = new URL(request.url);
-  if (request.method !== "GET") return error(405, "Nur GET wird unterstützt.");
   const path = url.pathname.replace(/\/+$/, "");
+  // POST nur für /api/words: Die Liste gedruckter Seiten kann für die Adresse zu lang werden.
+  if (request.method !== "GET" && !(request.method === "POST" && path === "/api/words")) return error(405, "Nur GET wird unterstützt.");
 
   if (path === "/api/health") return json({ ok: true });
 
@@ -39,7 +41,22 @@ export async function handleApi(request: Request, env: Env): Promise<Response> {
     const limit = Number(p.get("limit") ?? WORDS_PAGE_DEFAULT);
     if (!Number.isInteger(offset) || offset < 0) return error(400, "offset muss eine ganze Zahl ab 0 sein.");
     if (!Number.isInteger(limit) || limit < 1 || limit > WORDS_PAGE_MAX) return error(400, `limit muss zwischen 1 und ${WORDS_PAGE_MAX} liegen.`);
-    return json(await getWordsPage(env.DB, filtersFromParams(p), offset, limit));
+    let printed = new Set<string>();
+    if (request.method === "POST") {
+      const raw = await request.text();
+      if (raw.length > MAX_PRINTED_IDS * 70) return error(413, "Anfrage ist zu groß.");
+      let body: unknown;
+      try {
+        body = JSON.parse(raw);
+      } catch {
+        return error(400, "Ungültiges JSON.");
+      }
+      const ids = (body as { printed?: unknown } | null)?.printed;
+      if (!Array.isArray(ids) || ids.length > MAX_PRINTED_IDS || !ids.every((id) => typeof id === "string" && ID.test(id)))
+        return error(400, `printed muss eine Liste von höchstens ${MAX_PRINTED_IDS} IDs sein.`);
+      printed = new Set(ids as string[]);
+    }
+    return json(await getWordsPage(env.DB, filtersFromParams(p), offset, limit, printed));
   }
   if (path === "/api/collections") return json({ collections: await listCollections(env.DB) });
 

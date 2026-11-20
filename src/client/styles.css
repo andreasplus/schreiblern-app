@@ -141,3 +141,11 @@ button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); o
   .print-page:last-child { break-after: auto; page-break-after: auto; }
   .print-page .worksheet-frame svg { width: 210mm; height: 297mm; }
 }
+
+/* Gedruckte Seiten */
+.segmented button + button { border-left: 0; }
+.printed-badge { background: #e3f3e6; color: #1f6b33; }
+.word-card.is-printed .word-picture { opacity: 0.6; }
+.printed-prompt { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 10px 12px; margin: 8px 0; border: 1px solid var(--accent); border-radius: 10px; background: var(--accent-soft); }
+.printed-prompt span { flex: 1 1 100%; font-weight: 600; }
+@media print { .printed-prompt { display: none; } }

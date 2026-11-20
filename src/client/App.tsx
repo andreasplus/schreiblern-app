@@ -3,7 +3,8 @@ import type { Collection, Meaning } from "../shared/types.ts";
 import { fetchCollections, fetchMeanings, fetchWords, WORDS_PAGE } from "./api.ts";
 import { MeaningLabel, PictogramThumb, Worksheet } from "./Worksheet.tsx";
 import { readSelection, writeSelection, MAX_SELECTION } from "./selection.ts";
-import { DEFAULT_FILTERS, MAX_DIFF, MAX_LEN, letterCount, type Filters, type SortKey } from "./filters.ts";
+import { DEFAULT_FILTERS, MAX_DIFF, MAX_LEN, letterCount, type Filters, type PrintedMode, type SortKey } from "./filters.ts";
+import { formatDate, loadPrinted, markPrinted, PRINTED_KEY, savePrinted, today, unmarkPrinted, type PrintedMap } from "./printed.ts";
 import { DIFFICULTY_LABELS } from "../shared/difficulty.ts";
 
 type LoadState = { status: "loading" } | { status: "error"; message: string } | { status: "ready" };
@@ -30,6 +31,23 @@ async function fontsReady() {
   await document.fonts.ready;
 }
 
+const PRINTED_OPTIONS: Array<{ value: PrintedMode; label: string }> = [
+  { value: "all", label: "Alle" },
+  { value: "open", label: "Noch nicht gedruckt" },
+  { value: "done", label: "Schon gedruckt" },
+];
+
+/** Frage nach dem Druckdialog: Der Browser meldet nicht, ob wirklich gedruckt oder abgebrochen wurde. */
+function PrintedPrompt({ count, onYes, onNo }: { count: number; onYes: () => void; onNo: () => void }) {
+  return (
+    <div className="printed-prompt" role="status">
+      <span>{count === 1 ? "Wurde die Seite gedruckt?" : `Wurden die ${count} Seiten gedruckt?`}</span>
+      <button type="button" className="primary" onClick={onYes}>Ja, als gedruckt markieren</button>
+      <button type="button" onClick={onNo}>Nein</button>
+    </div>
+  );
+}
+
 const LENGTH_PRESETS: Array<{ label: string; min: number; max: number }> = [
   { label: "Alle Längen", min: 1, max: MAX_LEN },
   { label: "3 Buchstaben", min: 3, max: 3 },
@@ -52,6 +70,9 @@ export function App() {
   const [notice, setNotice] = useState<string | null>(null);
   const [printPages, setPrintPages] = useState<Meaning[] | null>(null);
   const [busy, setBusy] = useState(false);
+  const [printed, setPrinted] = useState<PrintedMap>(loadPrinted);
+  const [askPrinted, setAskPrinted] = useState<string[] | null>(null);
+  const [confirmClear, setConfirmClear] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -60,12 +81,29 @@ export function App() {
       .catch((e: Error) => setLoad({ status: "error", message: e.message }));
   }, [reload]);
 
+  // Markierungen aus anderen Tabs übernehmen.
+  useEffect(() => {
+    const onStorage = (e: StorageEvent) => e.key === PRINTED_KEY && setPrinted(loadPrinted());
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, []);
+
+  const updatePrinted = (fn: (m: PrintedMap) => PrintedMap) =>
+    setPrinted((m) => {
+      const next = fn(m);
+      if (!savePrinted(next)) setNotice("Dieser Browser erlaubt kein Speichern. Die Markierungen gehen beim Schließen verloren.");
+      return next;
+    });
+  const printedIds = useMemo(() => Object.keys(printed).sort(), [printed]);
+  // Nur wenn nach „gedruckt“ gefiltert wird, ändern neue Markierungen das Ergebnis.
+  const printedKey = filters.printed === "all" ? "" : printedIds.join(",");
+
   // Der Server filtert und sortiert; geladen wird seitenweise. Tippen in der Suche wird kurz abgewartet.
   useEffect(() => {
     const ctrl = new AbortController();
     setLoad({ status: "loading" });
     const t = setTimeout(() => {
-      fetchWords(filters, 0, ctrl.signal)
+      fetchWords(filters, 0, ctrl.signal, printedIds)
         .then((page) => {
           setWords(page.meanings);
           setTotal(page.total);
@@ -80,12 +118,13 @@ export function App() {
       clearTimeout(t);
       ctrl.abort();
     };
-  }, [filters, reload]);
+    // printedIds ändert sich nur zusammen mit printedKey, wenn es eine Rolle spielt.
+  }, [filters, reload, printedKey]);
   const loadAll = () => setReload((n) => n + 1);
 
   const loadMore = () => {
     setLoadingMore(true);
-    fetchWords(filters, words.length)
+    fetchWords(filters, words.length, undefined, printedIds)
       .then((page) => {
         setWords((w) => [...w, ...page.meanings.filter((m) => !w.some((x) => x.id === m.id))]);
         setTotal(page.total);
@@ -153,7 +192,10 @@ export function App() {
 
   useEffect(() => {
     if (!printPages) return;
-    const done = () => setPrintPages(null);
+    const done = () => {
+      setAskPrinted([...new Set(printPages.map((m) => m.id))]);
+      setPrintPages(null);
+    };
     window.addEventListener("afterprint", done, { once: true });
     const raf = requestAnimationFrame(() => window.print());
     return () => {
@@ -161,6 +203,16 @@ export function App() {
       window.removeEventListener("afterprint", done);
     };
   }, [printPages]);
+
+  const confirmPrinted = () => {
+    if (askPrinted) updatePrinted((m) => markPrinted(m, askPrinted, today()));
+    setAskPrinted(null);
+  };
+  const togglePrinted = (m: Meaning) =>
+    updatePrinted((map) => (map[m.id] ? unmarkPrinted(map, [m.id]) : markPrinted(map, [m.id], today())));
+  const printedCount = printedIds.length;
+  const selectionPrinted = selection.filter((m) => printed[m.id]).length;
+  const prompt = askPrinted && <PrintedPrompt count={askPrinted.length} onYes={confirmPrinted} onNo={() => setAskPrinted(null)} />;
 
   const lengthActive = (min: number, max: number) => filters.minLen === min && filters.maxLen === max;
   const filtered = filters !== DEFAULT_FILTERS && JSON.stringify(filters) !== JSON.stringify(DEFAULT_FILTERS);
@@ -258,6 +310,17 @@ export function App() {
                     </select>
                   </div>
                 </div>
+
+                <div className="control" role="group" aria-label="Gedruckt">
+                  <span>Gedruckt{printedCount ? ` (${printedCount.toLocaleString("de-DE")})` : ""}</span>
+                  <div className="segmented">
+                    {PRINTED_OPTIONS.map((o) => (
+                      <button key={o.value} type="button" className={filters.printed === o.value ? "is-active" : ""} aria-pressed={filters.printed === o.value} onClick={() => setFilter("printed", o.value)}>
+                        {o.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
 
               <div className="chips small-chips" role="group" aria-label="Schnellauswahl Länge">
@@ -289,14 +352,19 @@ export function App() {
               </p>
             )}
             {load.status === "ready" && !visible.length && (
-              <p className="status">Keine Wörter passen zu diesen Filtern. Neue Wörter anlegen kommt in einer späteren Version.</p>
+              <p className="status">
+                {filters.printed === "done" && !printedCount
+                  ? "Noch keine Seite als gedruckt markiert. Nach dem Drucken fragt die App, ob die Seiten gedruckt wurden."
+                  : "Keine Wörter passen zu diesen Filtern. Neue Wörter anlegen kommt in einer späteren Version."}
+              </p>
             )}
 
             <ul className="word-grid" aria-label="Wörter">
               {visible.map((m) => {
                 const selected = inSelection.has(m.id);
+                const printedOn = printed[m.id];
                 return (
-                  <li key={m.id} className={`word-card${selected ? " is-selected" : ""}${m.color ? " is-color" : ""}`}>
+                  <li key={m.id} className={`word-card${selected ? " is-selected" : ""}${printedOn ? " is-printed" : ""}${m.color ? " is-color" : ""}`}>
                     <button type="button" className="word-open" onClick={() => openPreview(m)} aria-label={`Vorschau ${m.de}${m.description ? ` (${m.description})` : ""} · ${m.en}`}>
                       <span className="word-picture">
                         <PictogramThumb meaning={m} />
@@ -308,6 +376,7 @@ export function App() {
                         <span>{letterCount(filters.lang === "de" ? m.de : m.en)} Buchst.</span>
                         {m.difficulty !== null && <span title={DIFFICULTY_LABELS[m.difficulty as 1]}>Stufe {m.difficulty}</span>}
                         {m.status === "draft" && <span className="badge">ungeprüft</span>}
+                        {printedOn && <span className="badge printed-badge" title={`Gedruckt am ${formatDate(printedOn)}`}>gedruckt</span>}
                       </span>
                     </button>
                     <button
@@ -336,6 +405,7 @@ export function App() {
           <aside className="panel selection-panel" aria-labelledby="selection-title">
             <h2 id="selection-title">Druckauswahl ({selection.length})</h2>
             {notice && <p className="error" role="alert">{notice}</p>}
+            {!preview && prompt}
             {selection.length === 0 ? (
               <p className="hint">Noch leer. Tippe auf + bei einem Wort. Jede Seite der Auswahl wird als eigene A4-Seite gedruckt.</p>
             ) : (
@@ -345,6 +415,7 @@ export function App() {
                     <button type="button" className="sel-item" onClick={() => openPreview(m)}>
                       <PictogramThumb meaning={m} />
                       <MeaningLabel meaning={m} />
+                      {printed[m.id] && <span className="badge printed-badge" title={`Gedruckt am ${formatDate(printed[m.id]!)}`}>gedruckt</span>}
                     </button>
                     <span className="row-actions">
                       <button type="button" aria-label={`${m.de} nach oben`} disabled={i === 0} onClick={() => move(i, -1)}>↑</button>
@@ -361,8 +432,28 @@ export function App() {
               </button>
               <button type="button" disabled={!selection.length} onClick={() => setSelection([])}>Leeren</button>
             </div>
+            {selectionPrinted > 0 && (
+              <p className="small">
+                {selectionPrinted === 1 ? "1 Seite der Auswahl wurde schon gedruckt." : `${selectionPrinted} Seiten der Auswahl wurden schon gedruckt.`}{" "}
+                <button type="button" className="link" onClick={() => setSelection((s) => s.filter((m) => !printed[m.id]))}>Aus der Auswahl nehmen</button>
+              </p>
+            )}
             <p className="small">
               Im Druckdialog A4, Skalierung 100 % und „Hintergrundgrafiken“ wählen. „Als PDF speichern“ ist dort ebenfalls möglich.
+            </p>
+            <p className="small">
+              {printedCount === 0
+                ? "Gedruckte Seiten merkt sich die App nur in diesem Browser."
+                : `${printedCount.toLocaleString("de-DE")} ${printedCount === 1 ? "Seite" : "Seiten"} als gedruckt markiert, nur in diesem Browser gespeichert.`}{" "}
+              {printedCount > 0 &&
+                (confirmClear ? (
+                  <>
+                    <button type="button" className="link" onClick={() => { updatePrinted(() => ({})); setConfirmClear(false); }}>Wirklich alle löschen</button>{" "}
+                    <button type="button" className="link" onClick={() => setConfirmClear(false)}>Abbrechen</button>
+                  </>
+                ) : (
+                  <button type="button" className="link" onClick={() => setConfirmClear(true)}>Markierungen löschen</button>
+                ))}
             </p>
           </aside>
         </div>
@@ -382,9 +473,13 @@ export function App() {
               <button type="button" onClick={() => toggle(preview)}>
                 {inSelection.has(preview.id) ? "Aus der Druckauswahl" : "Zur Druckauswahl"}
               </button>
+              <button type="button" aria-pressed={!!printed[preview.id]} onClick={() => togglePrinted(preview)}>
+                {printed[preview.id] ? `Gedruckt am ${formatDate(printed[preview.id]!)} ✓` : "Als gedruckt markieren"}
+              </button>
               <button type="button" className="primary" disabled={busy} onClick={() => print([preview])}>Diese Seite drucken</button>
               <button type="button" aria-label="Schließen" onClick={() => dialogRef.current?.close()}>✕</button>
             </div>
+            {prompt}
             {preview.collections && preview.collections.length > 0 && (
               <p className="small">Sammlungen: {preview.collections.map((c) => collectionName.get(c) ?? c).join(", ")}</p>
             )}

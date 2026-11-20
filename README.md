@@ -85,6 +85,12 @@ Die 35-seitige Referenz-PDF ist nicht im Repository (siehe Rechte). Ohne sie ver
 
 Geprüft: Chromium (automatisiert, 35 Seiten). Firefox, Safari und mobiles Drucken sind noch von Hand zu prüfen, siehe offene Punkte.
 
+### Gedruckte Seiten
+
+Nach dem Druckdialog fragt die App, ob die Seiten wirklich gedruckt wurden (der Browser meldet nicht, ob abgebrochen wurde). Mit „Ja“ werden sie als gedruckt markiert; in der Vorschau lässt sich die Markierung auch von Hand setzen oder entfernen. Der Filter „Gedruckt“ zeigt alle, nur noch nicht gedruckte oder nur schon gedruckte Seiten.
+
+Die Markierungen liegen nur im Browser (`localStorage`, Schlüssel `schreiblern.gedruckt.v1`, ID → Datum). Ein Cookie wäre auf etwa 4 KB begrenzt und ginge bei jedem Abruf an den Server. Für den Filter schickt die App die IDs per `POST /api/words` mit; gespeichert wird auf dem Server nichts.
+
 ## Deployment
 
 Siehe [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Es werden keine kostenpflichtigen Dienste aktiviert. P0 braucht keine Geheimnisse.
