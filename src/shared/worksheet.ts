@@ -16,6 +16,8 @@ export interface WorksheetEntry {
   number: number | null;
   color: string | null;
   pictogram: string | null;
+  /** Bilddatei (SVG), wenn es keine eingebaute Zeichnung gibt. Wird 100 pt groß an der Bildposition gezeigt. */
+  pictogramUrl?: string | null;
 }
 
 export const FONT_FAMILY = "ABeeZee";
@@ -118,6 +120,11 @@ export function renderWorksheetSvg(entry: WorksheetEntry, idPrefix = "ws"): stri
   const pic = pictogramSvg(entry);
   if (pic) {
     parts.push(`<g class="ws-pictogram" transform="translate(${n(PAGE_W / 2)} ${n(PAGE_H - 127)})" stroke-miterlimit="10">${pic}</g>`);
+  } else if (entry.pictogramUrl && /^\/pictograms\/[a-z0-9/-]+\.svg$/.test(entry.pictogramUrl)) {
+    // Die Seite hat y nach oben; das Bild wird deshalb lokal zurückgespiegelt.
+    parts.push(
+      `<g class="ws-pictogram" transform="translate(${n(PAGE_W / 2)} ${n(PAGE_H - 127)}) scale(1 -1)"><image href="${escapeXml(entry.pictogramUrl)}" x="-50" y="-50" width="100" height="100"/></g>`,
+    );
   }
   parts.push(column(37, entry.de, "de", entry.number, idPrefix));
   parts.push(column(312, entry.en, "en", entry.number, idPrefix));

@@ -3,7 +3,7 @@ import { applyFilters, DEFAULT_FILTERS, filtersFromParams, filtersToParams, lett
 import type { Collection, Meaning } from "../src/shared/types.ts";
 
 const m = (id: string, de: string, en: string, collections: Record<string, number> = {}, description: string | null = null): Meaning => ({
-  id, wordId: `de:${de}`, de, en, description, kind: "word", number: null, color: null, pictogram: null, status: "reference",
+  id, wordId: `de:${de}`, de, en, description, kind: "word", number: null, color: null, pictogram: null, pictogramUrl: null, status: "reference",
   collection: null, sortOrder: null, difficulty: null, collections: Object.keys(collections), collectionPositions: collections,
 });
 const cols: Collection[] = [

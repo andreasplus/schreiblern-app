@@ -8,7 +8,7 @@ export function Worksheet({ meaning, idPrefix }: { meaning: Meaning; idPrefix: s
   const svg = useMemo(
     () =>
       renderWorksheetSvg(
-        { de: meaning.de, en: meaning.en, number: meaning.number, color: meaning.color, pictogram: meaning.pictogram },
+        { de: meaning.de, en: meaning.en, number: meaning.number, color: meaning.color, pictogram: meaning.pictogram, pictogramUrl: meaning.pictogramUrl },
         idPrefix,
       ),
     [meaning, idPrefix],
@@ -32,6 +32,13 @@ export function MeaningLabel({ meaning }: { meaning: Meaning }) {
 
 export function PictogramThumb({ meaning }: { meaning: Meaning }) {
   const inner = pictogramSvg(meaning);
+  if (!inner && meaning.pictogramUrl) {
+    return (
+      <span className="thumb">
+        <img src={meaning.pictogramUrl} alt="" loading="lazy" decoding="async" />
+      </span>
+    );
+  }
   if (!inner) return <span className="thumb thumb-empty" aria-label="ohne Bild" />;
   const svg =
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-72 -72 144 144" font-family="ABeeZee" aria-hidden="true">` +

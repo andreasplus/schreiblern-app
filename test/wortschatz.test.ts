@@ -3,6 +3,10 @@ import { difficultyOf, syllableCount } from "../src/shared/difficulty.ts";
 import { buildWortschatz, meaningIdFor, parseFile } from "../src/shared/wortschatz.ts";
 import { collectionsSql, seedSql, SQL_CHUNK } from "../src/shared/seed.ts";
 import { loadSeedData } from "../scripts/seed-data.ts";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import { handleApi } from "../src/worker/index.ts";
+import type { Meaning } from "../src/shared/types.ts";
 import { freshDb, root, run } from "./helpers.ts";
 
 describe("Schwierigkeit", () => {
@@ -63,6 +67,14 @@ describe("gesamter Wortschatz", () => {
       expect(members.has(r.id)).toBe(true);
     }
   });
+  it("ordnet über 600 Bedeutungen ein Noto-Bild zu, und jede Datei liegt vor", () => {
+    const files = data.rows.map((r) => r.pictogramId).filter((p): p is string => !!p?.startsWith("file:"));
+    expect(files.length).toBeGreaterThan(600);
+    for (const f of new Set(files)) expect(existsSync(join(root, "public", "pictograms", f.slice(5)))).toBe(true);
+    // Wörter mit mehreren Bedeutungen nur aus der Handliste: Schnecke (Tier) ja, Schnecke (Gebäck) nein.
+    expect(data.rows.find((r) => r.display === "Schnecke" && r.description === "Tier")?.pictogramId).toBe("file:noto/snail.svg");
+    expect(data.rows.find((r) => r.display === "Schnecke" && r.description === "Gebäck")?.pictogramId).toBeNull();
+  });
   it("bleibt unter der D1-Grenze von 100 KB je Anweisung", () => {
     const sql = seedSql(data.rows) + collectionsSql(data.collections, data.rows);
     const longest = Math.max(...sql.split(/;\n/).map((s) => new TextEncoder().encode(s).length));
@@ -76,9 +88,15 @@ describe("gesamter Wortschatz", () => {
       await run(db, sql);
       // Bestehende Datenbanken (vor Migration 0003) bekommen die Schwierigkeit beim nächsten Seed nachgetragen.
       await db.prepare("UPDATE meanings SET difficulty = NULL").run();
+      await db.prepare("UPDATE meanings SET pictogram_id = NULL WHERE pictogram_id LIKE 'file:%'").run();
       await run(db, sql);
       const n = await db.prepare("SELECT count(*) AS n FROM meanings WHERE difficulty IS NOT NULL").first<{ n: number }>();
       expect(n?.n).toBe(data.rows.length);
+      const pics = await db.prepare("SELECT count(*) AS n FROM meanings WHERE pictogram_id LIKE 'file:%'").first<{ n: number }>();
+      expect(pics?.n).toBe(data.rows.filter((r) => r.pictogramId?.startsWith("file:")).length);
+      const res = await handleApi(new Request("https://t/api/words?q=frosch"), { DB: db });
+      const frosch = ((await res.json()) as { meanings: Meaning[] }).meanings.find((m) => m.de === "Frosch");
+      expect(frosch?.pictogramUrl).toBe("/pictograms/noto/frog.svg");
       const c = await db.prepare("SELECT count(*) AS n FROM collections").first<{ n: number }>();
       expect(c?.n).toBe(data.collections.length);
     } finally {

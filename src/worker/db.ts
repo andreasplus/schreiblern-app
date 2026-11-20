@@ -38,6 +38,7 @@ export function toMeaning(r: MeaningRow): Meaning {
     number: r.number_value,
     color: r.color_hex,
     pictogram: r.pictogram_id?.startsWith("builtin:") ? r.pictogram_id.slice("builtin:".length) : null,
+    pictogramUrl: r.pictogram_id?.startsWith("file:") ? `/pictograms/${r.pictogram_id.slice("file:".length)}` : null,
     status: r.status,
     collection: r.collection,
     sortOrder: r.sort_order,

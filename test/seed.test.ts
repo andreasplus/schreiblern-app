@@ -71,3 +71,17 @@ describe("Seed-Import in D1", () => {
     ).rejects.toThrow(/UNIQUE/);
   });
 });
+
+describe("Bilddateien im Seed", () => {
+  const base = { id: "n-frosch", de: "Frosch", en: "frog", set: "tiere", kind: "word" as const };
+  it("legt Bild und Nachtrag für bestehende Einträge an", () => {
+    const rows = toSeedRows([{ ...base, pictogram_file: "noto/frog.svg" }, { ...base, id: "n-igel", de: "Igel", en: "hedgehog", pictogram_file: "eigene/n-igel.svg" }]);
+    const sql = seedSql(rows);
+    expect(sql).toContain("('file:noto/frog.svg', 'file', '/pictograms/noto/frog.svg', 'Noto Emoji', 'Apache-2.0'");
+    expect(sql).toContain("UPDATE meanings SET pictogram_id = 'file:noto/frog.svg' WHERE pictogram_id IS NULL AND id IN ('n-frosch');");
+    expect(sql).toContain("UPDATE meanings SET pictogram_id = 'file:eigene/n-igel.svg' WHERE (pictogram_id IS NULL OR pictogram_id LIKE 'file:noto/%') AND id IN ('n-igel');");
+  });
+  it("lehnt ungültige Dateinamen ab", () => {
+    for (const f of ["../x.svg", "noto/x.png", "fremd/x.svg", "noto/X Y.svg"]) expect(() => toSeedRows([{ ...base, pictogram_file: f }])).toThrow(/Bilddatei/);
+  });
+});

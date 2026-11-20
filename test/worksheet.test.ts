@@ -68,3 +68,19 @@ describe("Schreibseite", () => {
     expect(svg).not.toContain("<b>");
   });
 });
+
+describe("Bilddateien auf der Schreibseite", () => {
+  it("zeigt ein Noto-Bild als <image>, wenn es keine eingebaute Zeichnung gibt", () => {
+    const svg = renderWorksheetSvg({ ...entry("Frosch", "frog"), pictogramUrl: "/pictograms/noto/frog.svg" });
+    expect(svg).toContain('<image href="/pictograms/noto/frog.svg" x="-50" y="-50" width="100" height="100"/>');
+  });
+  it("lässt fremde oder ungültige Adressen weg", () => {
+    for (const url of ["https://example.com/x.svg", "/pictograms/../secret.svg", '/pictograms/a".svg']) {
+      expect(renderWorksheetSvg({ ...entry("Frosch", "frog"), pictogramUrl: url })).not.toContain("<image");
+    }
+  });
+  it("bevorzugt die eingebaute Zeichnung", () => {
+    const svg = renderWorksheetSvg({ ...entry("Haus", "house", { pictogram: "Haus" }), pictogramUrl: "/pictograms/noto/house.svg" });
+    expect(svg).not.toContain("<image");
+  });
+});

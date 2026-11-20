@@ -8,6 +8,21 @@ import { DIFFICULTY_LABELS } from "../shared/difficulty.ts";
 
 type LoadState = { status: "loading" } | { status: "error"; message: string } | { status: "ready" };
 
+/** Bilddateien vor dem Druck laden, damit sie auf jeder Seite erscheinen. Fehler blockieren den Druck nicht. */
+async function imagesReady(pages: Meaning[]) {
+  const urls = [...new Set(pages.map((m) => m.pictogramUrl).filter((u): u is string => !!u))];
+  await Promise.all(
+    urls.map(
+      (src) =>
+        new Promise<void>((resolve) => {
+          const img = new Image();
+          img.onload = img.onerror = () => resolve();
+          img.src = src;
+        }),
+    ),
+  );
+}
+
 const DIFF_LEVELS = Array.from({ length: MAX_DIFF }, (_, i) => i + 1);
 
 async function fontsReady() {
@@ -129,6 +144,7 @@ export function App() {
     setBusy(true);
     try {
       await fontsReady();
+      await imagesReady(pages);
       setPrintPages(pages);
     } finally {
       setBusy(false);

@@ -278,6 +278,31 @@ Abnahme:
 - Satzzeichen und Großschreibung am Satzanfang bleiben erhalten.
 - Ob Nutzer eigene Sätze eingeben dürfen, ist offen. Wenn ja, gelten dieselben Kontingente und Prüfregeln wie für neue Wörter (APP-08 bis APP-11).
 
+## Neu aufgenommen am 20. November 2026
+
+### APP-19: Sammlung der Woche je Schwierigkeitsstufe (P1)
+
+Hintergrund: Aus den 242 Sammlungen soll jede Woche eine Sammlung vorgeschlagen werden, getrennt nach Schwierigkeitsstufe (1 sehr leicht bis 5 sehr schwer). So bekommt ein Kind passend zu seinem Stand jede Woche neue Wörter.
+
+Abnahme:
+- Je Stufe gibt es pro Kalenderwoche (ISO-Woche, Zeitzone Europe/Berlin) genau eine Sammlung der Woche. Gezeigt werden nur die Wörter dieser Stufe aus der Sammlung.
+- Die Auswahl ist für alle Nutzer gleich und über die Woche stabil. Sie wird ohne Datenbankschreiben aus Woche und Stufe abgeleitet (zum Beispiel eine feste, gemischte Reihenfolge der Sammlungen), damit kein Zeitplaner nötig ist.
+- Eine Sammlung kommt für eine Stufe nur in Frage, wenn sie genug Wörter dieser Stufe hat (Vorschlag: mindestens 8). Wiederholungen erst, wenn alle passenden Sammlungen dran waren.
+- Mit einem Klick in die Druckauswahl übernehmen. Die Seiten druckt die bestehende Druckvorlage, eine A4-Seite je Wort.
+- Offen: Ob der Betreiber einzelne Wochen von Hand festlegen kann (etwa „Weihnachten“ im Dezember, „Ostern“ vor Ostern). Vorschlag: optionale Zuordnung Woche zu Sammlung in einer Seed-Datei, die Vorrang vor der berechneten Auswahl hat.
+
+### APP-20: Begriff des Tages je Schwierigkeitsstufe (P1)
+
+Hintergrund: Jeden Tag ein Wort pro Schwierigkeitsstufe als kleine tägliche Übung.
+
+Abnahme:
+- Je Stufe genau ein Wort pro Kalendertag (Zeitzone Europe/Berlin), für alle Nutzer gleich. Die Auswahl wird aus Datum und Stufe abgeleitet, ohne Zeitplaner.
+- Bevorzugt werden geprüfte Wörter mit Bild. Solange es davon zu wenige gibt, dürfen ungeprüfte Wörter vorkommen und sind wie in der Übersicht gekennzeichnet.
+- Ein Wort wiederholt sich innerhalb einer Stufe frühestens nach einem vollen Durchlauf.
+- Nur Grundformen, keine Mehrzahl- oder Zeitformen. Dafür brauchen Einträge eine Kennzeichnung der Wortform; heute ist sie nur an der Sammlung erkennbar.
+- Die Seite zeigt das Wort mit Vorschau und bietet „Diese Seite drucken“ an. Ein API-Endpunkt (Vorschlag `/api/today?level=1`) liefert das Wort, mit Cache bis Mitternacht.
+- Offen: Ob der Begriff des Tages zur Sammlung der Woche passen soll (Wort aus der aktuellen Sammlung) oder unabhängig gewählt wird.
+
 ## Datenmodell als Ausgangspunkt
 
 | Entität | Wesentliche Felder |
@@ -306,6 +331,7 @@ Die konkrete Transaktionsstrategie für D1 muss Claude anhand der aktuellen Plat
 8. Eigene Schrift: Datei, Lizenz und ob sie ABeeZee ersetzt oder zur Auswahl steht (APP-16).
 9. Erste Druck-Sets und die Definition von „kurzes Wort“ (APP-17).
 10. Layout der Satzseite und ob Nutzer eigene Sätze eingeben dürfen (APP-18).
+11. Handverlesene Sammlungen für besondere Wochen und ob der Begriff des Tages zur Sammlung der Woche passt (APP-19, APP-20).
 
 ## Empfohlene Reihenfolge
 

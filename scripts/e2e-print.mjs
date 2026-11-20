@@ -147,6 +147,20 @@ await page.pdf({ path: pdf1, preferCSSPageSize: true, printBackground: true });
 check(pdfPages(pdf1).pages === 1, "Einzeldruck erzeugt genau eine Seite, keine leere Schlussseite");
 await page.keyboard.press("Escape");
 
+// Noto-Bild: Kachel und Einzeldruck
+await page.fill("#q", "Frosch");
+await settle();
+const froschImg = page.locator(".word-card", { hasText: "Frosch" }).first().locator("img");
+check((await froschImg.getAttribute("src")) === "/pictograms/noto/frog.svg", "Frosch zeigt das Noto-Bild auf der Kachel");
+await page.getByRole("button", { name: "Vorschau Frosch · frog" }).click();
+check((await page.locator(".preview-dialog svg.worksheet image").count()) === 1, "Vorschau zeigt das Noto-Bild auf der Schreibseite");
+await page.getByRole("button", { name: "Diese Seite drucken" }).click();
+await page.locator(".print-page image").first().waitFor({ state: "attached" });
+const pdfFrosch = join(outDir, "frosch.pdf");
+await page.pdf({ path: pdfFrosch, preferCSSPageSize: true, printBackground: true });
+check(pdfPages(pdfFrosch).pages === 1, "Frosch druckt genau eine Seite mit Bild");
+await page.keyboard.press("Escape");
+
 // Mobile Ansicht
 await page.fill("#q", "");
 await page.setViewportSize({ width: 390, height: 844 });
