@@ -3,6 +3,8 @@ import { normalizeTerm } from "./normalize.ts";
 
 export type SortKey = "collection" | "alpha" | "length" | "difficulty";
 export type Lang = "de" | "en";
+/** all = alle Seiten, open = noch nicht gedruckt, done = schon gedruckt */
+export type PrintedMode = "all" | "open" | "done";
 
 export interface Filters {
   query: string;
@@ -16,6 +18,8 @@ export interface Filters {
   minDiff: number;
   maxDiff: number;
   sort: SortKey;
+  /** Filter nach den im Browser als gedruckt markierten Seiten */
+  printed: PrintedMode;
 }
 
 export const MAX_LEN = 15;
@@ -29,8 +33,12 @@ export const DEFAULT_FILTERS: Filters = {
   minDiff: 1,
   maxDiff: MAX_DIFF,
   sort: "collection",
+  printed: "all",
 };
 const SORT_KEYS: readonly SortKey[] = ["collection", "alpha", "length", "difficulty"];
+const PRINTED_MODES: readonly PrintedMode[] = ["all", "open", "done"];
+/** Höchstzahl gedruckter IDs, die der Server pro Abruf annimmt */
+export const MAX_PRINTED_IDS = 20000;
 
 /** Anzahl Buchstaben (ohne Leerzeichen, Ziffern und Satzzeichen); ß und Umlaute zählen als ein Buchstabe. */
 export function letterCount(word: string): number {
@@ -43,7 +51,8 @@ const wordOf = (m: Meaning, lang: Lang) => (lang === "de" ? m.de : m.en);
 
 const collators = { de: new Intl.Collator("de", { sensitivity: "base" }), en: new Intl.Collator("en", { sensitivity: "base" }) };
 
-export function applyFilters(words: Meaning[], collections: Collection[], f: Filters): Meaning[] {
+/** printed: IDs der als gedruckt markierten Seiten; nur bei f.printed ≠ "all" von Bedeutung. */
+export function applyFilters(words: Meaning[], collections: Collection[], f: Filters, printed: ReadonlySet<string> = new Set()): Meaning[] {
   const q = normalizeTerm(f.query);
   const collOrder = new Map(collections.map((c, i) => [c.id, i]));
   const diffActive = f.minDiff > 1 || f.maxDiff < MAX_DIFF;
@@ -54,6 +63,7 @@ export function applyFilters(words: Meaning[], collections: Collection[], f: Fil
   const items: Array<{ m: Meaning; len: number; group: number; pos: number }> = [];
   for (const m of words) {
     if (f.collection && !m.collections?.includes(f.collection)) continue;
+    if (f.printed !== "all" && printed.has(m.id) !== (f.printed === "done")) continue;
     const len = letterCount(wordOf(m, f.lang));
     if (len < f.minLen || (f.maxLen < MAX_LEN && len > f.maxLen)) continue;
     if (diffActive && (m.difficulty == null || m.difficulty < f.minDiff || m.difficulty > f.maxDiff)) continue;
@@ -98,6 +108,7 @@ export function filtersToParams(f: Filters): URLSearchParams {
   if (f.minDiff !== DEFAULT_FILTERS.minDiff) p.set("minDiff", String(f.minDiff));
   if (f.maxDiff !== DEFAULT_FILTERS.maxDiff) p.set("maxDiff", String(f.maxDiff));
   if (f.sort !== DEFAULT_FILTERS.sort) p.set("sort", f.sort);
+  if (f.printed !== DEFAULT_FILTERS.printed) p.set("printed", f.printed);
   return p;
 }
 
@@ -105,6 +116,7 @@ export function filtersToParams(f: Filters): URLSearchParams {
 export function filtersFromParams(p: URLSearchParams): Filters {
   const collection = p.get("collection") ?? "";
   const sort = p.get("sort") as SortKey | null;
+  const printed = p.get("printed") as PrintedMode | null;
   const minLen = intIn(p.get("minLen"), 1, MAX_LEN, DEFAULT_FILTERS.minLen);
   const minDiff = intIn(p.get("minDiff"), 1, MAX_DIFF, DEFAULT_FILTERS.minDiff);
   return {
@@ -116,5 +128,6 @@ export function filtersFromParams(p: URLSearchParams): Filters {
     minDiff,
     maxDiff: Math.max(minDiff, intIn(p.get("maxDiff"), 1, MAX_DIFF, DEFAULT_FILTERS.maxDiff)),
     sort: sort && SORT_KEYS.includes(sort) ? sort : DEFAULT_FILTERS.sort,
+    printed: printed && PRINTED_MODES.includes(printed) ? printed : DEFAULT_FILTERS.printed,
   };
 }

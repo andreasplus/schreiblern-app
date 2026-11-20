@@ -76,12 +76,25 @@ describe("Schwierigkeit und Adressparameter", () => {
     expect(d).toEqual([...d].sort());
   });
   it("übersetzt Filter verlustfrei in Adressparameter und zurück", () => {
-    const f: Filters = { query: "Bär", collection: "tiere", lang: "en", minLen: 3, maxLen: 5, minDiff: 2, maxDiff: 4, sort: "difficulty" };
+    const f: Filters = { query: "Bär", collection: "tiere", lang: "en", minLen: 3, maxLen: 5, minDiff: 2, maxDiff: 4, sort: "difficulty", printed: "open" };
     expect(filtersFromParams(filtersToParams(f))).toEqual(f);
     expect(filtersToParams(DEFAULT_FILTERS).toString()).toBe("");
   });
   it("ersetzt ungültige Parameter durch Standardwerte", () => {
-    const f = filtersFromParams(new URLSearchParams("collection=../x&minDiff=9&maxDiff=0&sort=evil&minLen=abc"));
+    const f = filtersFromParams(new URLSearchParams("collection=../x&minDiff=9&maxDiff=0&sort=evil&minLen=abc&printed=x"));
     expect(f).toEqual(DEFAULT_FILTERS);
+  });
+});
+
+describe("Filter gedruckt", () => {
+  const printed = new Set(["hund", "maus"]);
+  const runP = (mode: Filters["printed"]) => applyFilters(words, cols, { ...DEFAULT_FILTERS, printed: mode }, printed).map((m) => m.id);
+  it("zeigt alle, nur offene oder nur gedruckte Seiten", () => {
+    const all = runP("all");
+    expect(runP("done").sort()).toEqual(["hund", "maus"]);
+    expect(runP("open")).toEqual(all.filter((id) => !printed.has(id)));
+  });
+  it("ignoriert Markierungen ohne aktiven Filter", () => {
+    expect(applyFilters(words, cols, DEFAULT_FILTERS, printed)).toHaveLength(words.length);
   });
 });

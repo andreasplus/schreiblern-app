@@ -161,6 +161,27 @@ await page.pdf({ path: pdfFrosch, preferCSSPageSize: true, printBackground: true
 check(pdfPages(pdfFrosch).pages === 1, "Frosch druckt genau eine Seite mit Bild");
 await page.keyboard.press("Escape");
 
+// Gedruckte Seiten: Nachfrage nach dem Druckdialog, Markierung, Filter, Neuladen
+await page.evaluate(() => window.dispatchEvent(new Event("afterprint")));
+await page.getByRole("button", { name: "Ja, als gedruckt markieren" }).click();
+await settle();
+check((await page.locator(".word-card", { hasText: "Frosch" }).first().locator(".printed-badge").count()) === 1, "Frosch ist nach dem Druck als gedruckt markiert");
+await page.fill("#q", "");
+const printedGroup = page.getByRole("group", { name: "Gedruckt" });
+await printedGroup.getByRole("button", { name: "Schon gedruckt" }).click();
+await settle();
+check((await totalWords()) === 1 && (await cards.count()) === 1, "Filter „Schon gedruckt“ zeigt genau Frosch");
+await printedGroup.getByRole("button", { name: "Noch nicht gedruckt" }).click();
+await settle();
+check((await totalWords()) === total - 1, "Filter „Noch nicht gedruckt“ blendet Frosch aus");
+await page.reload();
+await cards.first().waitFor();
+check((await page.getByRole("group", { name: "Gedruckt" }).textContent())?.includes("Gedruckt (1)"), "Markierung übersteht Neuladen");
+if (shots) await page.screenshot({ path: join(outDir, "gedruckt.png") });
+await page.getByRole("button", { name: "Markierungen löschen" }).click();
+await page.getByRole("button", { name: "Wirklich alle löschen" }).click();
+check((await page.evaluate(() => localStorage.getItem("schreiblern.gedruckt.v1"))) === null, "Markierungen lassen sich löschen");
+
 // Mobile Ansicht
 await page.fill("#q", "");
 await page.setViewportSize({ width: 390, height: 844 });

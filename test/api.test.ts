@@ -113,6 +113,20 @@ describe("Abruf für den Druck", () => {
     const d = (await call<WordsPage>("/api/words?sort=difficulty&limit=500")).body.meanings.map((m) => m.difficulty ?? 6);
     expect(d).toEqual([...d].sort((a, b) => a - b));
   });
+  it("filtert nach gedruckten Seiten aus dem Rumpf", async () => {
+    const all = (await call<WordsPage>("/api/words?sort=alpha&limit=500")).body;
+    const ids = all.meanings.slice(0, 3).map((m) => m.id);
+    const post = (q: string, body: unknown) => call<WordsPage>(`/api/words?${q}`, { method: "POST", body: JSON.stringify(body) });
+    const done = (await post("sort=alpha&printed=done", { printed: ids })).body;
+    expect(done.meanings.map((m) => m.id)).toEqual(ids);
+    const open = (await post("sort=alpha&printed=open&limit=500", { printed: ids })).body;
+    expect(open.total).toBe(all.total - 3);
+    expect(open.meanings.some((m) => ids.includes(m.id))).toBe(false);
+    expect((await post("printed=done", { printed: ["<x>"] })).status).toBe(400);
+    expect((await post("printed=done", { printed: "a" })).status).toBe(400);
+    expect((await call("/api/words", { method: "POST", body: "{" })).status).toBe(400);
+    expect((await call("/api/collections", { method: "POST" })).status).toBe(405);
+  });
   it("prüft limit, offset und Suchlänge", async () => {
     expect((await call("/api/words?limit=0")).status).toBe(400);
     expect((await call("/api/words?limit=501")).status).toBe(400);
