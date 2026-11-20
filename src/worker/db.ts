@@ -1,4 +1,5 @@
-import type { Collection, Meaning, SearchResultWord } from "../shared/types.ts";
+import type { Collection, Meaning, SearchResultWord, WordsPage } from "../shared/types.ts";
+import { applyFilters, MAX_DIFF, type Filters } from "../shared/filters.ts";
 import { normalizeTerm } from "../shared/normalize.ts";
 
 export const MAX_QUERY_LENGTH = 60;
@@ -19,10 +20,11 @@ interface MeaningRow {
   status: Meaning["status"];
   collection: string | null;
   sort_order: number | null;
+  difficulty: number | null;
 }
 
 const SELECT = `SELECT m.id, m.word_id, w.display, w.normalized, m.description, m.translation_en, m.kind,
-  m.number_value, m.color_hex, m.pictogram_id, m.status, m.collection, m.sort_order
+  m.number_value, m.color_hex, m.pictogram_id, m.status, m.collection, m.sort_order, m.difficulty
   FROM meanings m JOIN words w ON w.id = m.word_id`;
 
 export function toMeaning(r: MeaningRow): Meaning {
@@ -39,6 +41,7 @@ export function toMeaning(r: MeaningRow): Meaning {
     status: r.status,
     collection: r.collection,
     sortOrder: r.sort_order,
+    difficulty: r.difficulty,
   };
 }
 
@@ -102,24 +105,70 @@ export async function listCollections(db: D1Database): Promise<Collection[]> {
   return results;
 }
 
-/** Alle Bedeutungen mit ihren Sammlungen, für die Wortübersicht. */
-export async function getAllWords(db: D1Database): Promise<Meaning[]> {
-  const [meanings, items] = await db.batch([
-    db.prepare(`${SELECT} ORDER BY m.collection, m.sort_order, w.normalized, m.id`),
-    db.prepare(
-      `SELECT ci.meaning_id, ci.collection_id, ci.sort_order FROM collection_items ci JOIN collections c ON c.id = ci.collection_id ORDER BY c.sort_order`,
-    ),
-  ]);
-  const tags = new Map<string, { ids: string[]; pos: Record<string, number> }>();
-  for (const r of items!.results as Array<{ meaning_id: string; collection_id: string; sort_order: number }>) {
-    const t = tags.get(r.meaning_id) ?? { ids: [], pos: {} };
-    t.ids.push(r.collection_id);
-    t.pos[r.collection_id] = r.sort_order;
-    tags.set(r.meaning_id, t);
+export const WORDS_PAGE_DEFAULT = 120;
+export const WORDS_PAGE_MAX = 500;
+
+interface PageRow extends MeaningRow {
+  coll_id: string | null;
+  coll_pos: number | null;
+}
+
+/**
+ * Eine Seite der Wortübersicht, serverseitig gefiltert und sortiert.
+ * Sammlung und Schwierigkeit filtert SQL; Suche, Buchstabenzahl und Sortierung übernimmt
+ * dieselbe Logik wie früher im Browser (src/shared/filters.ts). Für die Sortierung „nach Sammlung“
+ * reicht je Bedeutung die erste Sammlung; die vollständige Liste wird nur für die Seite geladen.
+ */
+export async function getWordsPage(db: D1Database, f: Filters, offset: number, limit: number): Promise<WordsPage> {
+  const where: string[] = [];
+  const binds: unknown[] = [];
+  let join: string;
+  if (f.collection) {
+    binds.push(f.collection);
+    join = `JOIN collection_items fc ON fc.meaning_id = m.id AND fc.collection_id = ?${binds.length}`;
+  } else {
+    join = `LEFT JOIN (
+      SELECT ci.meaning_id, ci.collection_id, ci.sort_order,
+        row_number() OVER (PARTITION BY ci.meaning_id ORDER BY c.sort_order, ci.sort_order) AS rn
+      FROM collection_items ci JOIN collections c ON c.id = ci.collection_id) fc ON fc.meaning_id = m.id AND fc.rn = 1`;
   }
-  return (meanings!.results as unknown as MeaningRow[]).map((r) => ({
+  if (f.minDiff > 1 || f.maxDiff < MAX_DIFF) {
+    binds.push(f.minDiff, f.maxDiff);
+    where.push(`m.difficulty BETWEEN ?${binds.length - 1} AND ?${binds.length}`);
+  }
+  const sql = `${SELECT.replace(" FROM meanings m", ", fc.collection_id AS coll_id, fc.sort_order AS coll_pos\n  FROM meanings m")} ${join}
+    ${where.length ? `WHERE ${where.join(" AND ")}` : ""}`;
+  const [rows, colls] = await db.batch([
+    db.prepare(sql).bind(...binds),
+    db.prepare("SELECT id, name, description, 0 AS count FROM collections ORDER BY sort_order, id"),
+  ]);
+  const candidates = (rows!.results as unknown as PageRow[]).map((r) => ({
     ...toMeaning(r),
-    collections: tags.get(r.id)?.ids ?? [],
-    collectionPositions: tags.get(r.id)?.pos ?? {},
+    collections: r.coll_id ? [r.coll_id] : [],
+    collectionPositions: r.coll_id ? { [r.coll_id]: r.coll_pos ?? 0 } : {},
   }));
+  const all = applyFilters(candidates, colls!.results as unknown as Collection[], f);
+  const page = all.slice(offset, offset + limit);
+
+  if (page.length) {
+    const { results } = await db
+      .prepare(
+        `SELECT ci.meaning_id, ci.collection_id, ci.sort_order FROM collection_items ci JOIN collections c ON c.id = ci.collection_id
+         WHERE ci.meaning_id IN (SELECT value FROM json_each(?1)) ORDER BY c.sort_order`,
+      )
+      .bind(JSON.stringify(page.map((m) => m.id)))
+      .all<{ meaning_id: string; collection_id: string; sort_order: number }>();
+    const tags = new Map<string, { ids: string[]; pos: Record<string, number> }>();
+    for (const r of results) {
+      const t = tags.get(r.meaning_id) ?? { ids: [], pos: {} };
+      t.ids.push(r.collection_id);
+      t.pos[r.collection_id] = r.sort_order;
+      tags.set(r.meaning_id, t);
+    }
+    for (const m of page) {
+      m.collections = tags.get(m.id)?.ids ?? [];
+      m.collectionPositions = tags.get(m.id)?.pos ?? {};
+    }
+  }
+  return { meanings: page, total: all.length, offset, limit };
 }

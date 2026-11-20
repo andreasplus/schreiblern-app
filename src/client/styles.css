@@ -57,6 +57,9 @@ button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); o
 .controls { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 14px; align-items: end; }
 .control { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; color: var(--muted); }
 .control select { color: var(--text); padding: 6px 8px; }
+.collection-control { margin-top: 12px; }
+.collection-control select { max-width: 100%; }
+.load-more { text-align: center; margin: 18px 0; }
 .segmented { display: inline-flex; }
 .segmented button { border-radius: 0; padding: 6px 12px; }
 .segmented button:first-child { border-radius: 8px 0 0 8px; }

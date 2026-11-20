@@ -41,8 +41,14 @@ await page.goto(base);
 
 const cards = page.locator(".word-card");
 await cards.first().waitFor();
-const total = await cards.count();
-check(total >= 40, `Wortübersicht zeigt alle Wörter als Kacheln (${total})`);
+const status = page.locator(".count");
+const totalWords = async () => Number(((await status.textContent()) ?? "").replace(/\./g, "").match(/^(\d+)/)?.[1] ?? 0);
+const total = await totalWords();
+check(total >= 10000, `Wortübersicht kennt über 10.000 Wörter (${total})`);
+check((await cards.count()) === 120, "Die erste Seite zeigt 120 Kacheln");
+await page.getByRole("button", { name: /^Weitere Wörter laden/ }).click();
+await cards.nth(239).waitFor();
+check((await cards.count()) === 240, "„Weitere Wörter laden“ hängt die nächste Seite an");
 
 // Auto: Kachel öffnet die Vorschau
 await page.getByRole("button", { name: "Vorschau Auto · car" }).click();
@@ -51,7 +57,9 @@ await page.getByRole("button", { name: "Schließen" }).click();
 
 // Bank: zwei Bedeutungen als getrennte Kacheln, keine Vorauswahl
 await page.fill("#q", "  BANK ");
-check(await cards.count() === 2, "Bank erscheint als zwei Bedeutungen");
+await page.getByRole("button", { name: "Vorschau Bank (Sitzgelegenheit) · bench" }).waitFor();
+const bankCards = await page.locator(".word-de", { hasText: /^Bank$/ }).count();
+check(bankCards === 3, `Bank erscheint als drei Bedeutungen (ist: ${bankCards})`);
 check(await page.locator(".word-card.is-selected").count() === 0, "Bank wird nicht automatisch ausgewählt");
 await page.getByRole("button", { name: "Vorschau Bank (Sitzgelegenheit) · bench" }).click();
 const previewText = await page.locator(".preview-dialog svg.worksheet").textContent();
@@ -66,29 +74,42 @@ check(true, "Kein-Treffer-Hinweis erscheint");
 await page.fill("#q", "");
 
 // Sammlungen, Sortierung, Längenfilter
-await page.getByRole("button", { name: /^Tiere/ }).click();
-check(await cards.count() === 6, "Sammlung Tiere zeigt 6 Wörter");
-await page.getByRole("button", { name: /^Farben/ }).click();
-check(await page.locator(".word-card.is-color").count() === await cards.count(), "Sammlung Farben zeigt nur Farbkreise");
-await page.getByRole("button", { name: /^Alle/ }).first().click();
+const collectionSelect = page.getByLabel("Sammlung");
+const pickCollection = async (label) => {
+  const value = await collectionSelect.locator("option", { hasText: label }).first().getAttribute("value");
+  await collectionSelect.selectOption(value);
+  await page.waitForFunction((t) => !document.querySelector(".count")?.textContent?.startsWith(String(t)), total);
+};
+await pickCollection("Tiere (");
+const tiereOption = (await collectionSelect.locator("option", { hasText: "Tiere (" }).first().textContent()) ?? "";
+check(String(await totalWords()) === /\((\d+)\)/.exec(tiereOption)?.[1], `Sammlung Tiere zeigt so viele Wörter wie angekündigt (${tiereOption})`);
+await pickCollection("Farben (");
+check((await page.locator(".word-card").first().getAttribute("class"))?.includes("is-color"), "Sammlung Farben beginnt mit Farbkreisen");
+await collectionSelect.selectOption("");
+await page.getByLabel("Schwierigkeit bis").selectOption("1");
+await page.waitForFunction((t) => !document.querySelector(".count")?.textContent?.startsWith(String(t)), total);
+const metas = await page.locator(".word-meta").allTextContents();
+check(metas.length > 0 && metas.every((t) => t.includes("Stufe 1")), `Schwierigkeit „sehr leicht“ zeigt nur Stufe 1 (${metas.length} Kacheln)`);
+await page.getByLabel("Schwierigkeit bis").selectOption("5");
 await page.getByRole("button", { name: "3 Buchstaben" }).click();
 const de3 = await page.locator(".word-de").allTextContents();
 check(de3.length > 0 && de3.every((w) => [...w.replace(/[^\p{L}]/gu, "")].length === 3), `3 Buchstaben (Deutsch): ${de3.join(", ")}`);
 await page.getByRole("button", { name: "Englisch", exact: true }).click();
 const en3 = await page.locator(".word-en").allTextContents();
 check(en3.length > 0 && en3.every((w) => w.length === 3), `3 Buchstaben (Englisch): ${en3.join(", ")}`);
-await page.locator("select").first().selectOption("alpha");
+await page.getByLabel("Sortieren").selectOption("alpha");
+await page.waitForTimeout(500);
 const sorted = await page.locator(".word-en").allTextContents();
 check(JSON.stringify(sorted) === JSON.stringify([...sorted].sort((a, b) => a.localeCompare(b, "en"))), "alphabetisch nach Englisch sortiert");
 if (shots) await page.screenshot({ path: join(outDir, "filter-3-buchstaben.png") });
 await page.getByRole("button", { name: "Filter zurücksetzen" }).click();
 if (shots) await page.screenshot({ path: join(outDir, "uebersicht.png") });
 
-// Mehrseitendruck: Erste Wörter + Zahlen
-await page.getByRole("button", { name: /^Erste Wörter/ }).click();
+// Mehrseitendruck: Erste Wörter (25) + die ersten 10 Zahlen (Sammlung Zahlen, nach Sammlung sortiert)
+await pickCollection("Erste Wörter (");
 await page.getByRole("button", { name: "Alle angezeigten zur Druckauswahl" }).click();
-await page.getByRole("button", { name: /^Zahlen/ }).click();
-await page.getByRole("button", { name: "Alle angezeigten zur Druckauswahl" }).click();
+await pickCollection("Zahlen (");
+for (let i = 0; i < 10; i++) await page.locator(".word-toggle").nth(i).click();
 await page.getByRole("heading", { name: "Druckauswahl (35)" }).waitFor();
 check(page.url().includes("#auswahl=seed-001,"), "Druckauswahl steht in der Adresse");
 

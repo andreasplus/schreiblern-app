@@ -3,7 +3,7 @@
 Angsthase = scaredy-cat
 Faulpelz = lazybones
 Frechdachs = cheeky monkey
-Schlafmütze = sleepyhead
+Schlafmütze = nightcap
 Naschkatze = sweet tooth
 Wasserratte = water baby
 Bücherwurm = bookworm
