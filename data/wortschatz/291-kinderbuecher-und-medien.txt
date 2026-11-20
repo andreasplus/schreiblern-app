@@ -1,0 +1,31 @@
+# Kinderbücher und Medien
+> Wimmelbücher, Hörspiele und Kindersendungen
+Bilderbuchkino = picture book cinema
+Kinderzeitschrift = children's magazine
+Kindersendung = children's programme
+Zeichentrickserie = cartoon series
+Comicheft = comic book
+Rätselbuch = riddle book
+Wimmelbuch = busy book
+Pop-up-Buch = pop-up book
+Fühlbuch = touch-and-feel book
+Badebuch = bath book
+Pappbilderbuch = board book
+Sachbilderbuch = picture reference book
+Kinderlexikon = children's encyclopedia
+Vorlesebuch = read-aloud book
+Erstlesebuch = first reader
+Buchseite = book page
+Buchrücken = book spine
+Buchdeckel = hardback cover
+Buchtitel = book title
+Hörspielfigur = audio figure
+Kinderradio = children's radio
+Lieblingsgeschichte = favourite story
+Geschichtenerzähler = storyteller
+Märchenstunde = fairy tale hour
+Bücherflohmarkt = book sale
+Leseausweis = reading pass
+Buchpreis = book prize
+Fernsehsendung = television programme
+Bildschirmzeit = screen time

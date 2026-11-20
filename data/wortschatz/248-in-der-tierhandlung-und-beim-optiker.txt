@@ -1,0 +1,30 @@
+# In der Tierhandlung und beim Optiker
+> Futter, Käfige, Brillen und Linsen
+Tierhandlung = pet shop
+Zoohandlung = pet store
+Fischfutter = fish food
+Vogelsand = bird sand
+Katzenstreu = cat litter
+Nagerfutter = rodent food
+Heuraufe = hay rack
+Kauknochen = chew bone
+Hundespielzeug = dog toy
+Katzenspielzeug = cat toy
+Hamsterrad = hamster wheel
+Nagertränke = water bottle for pets
+Aquariumpumpe = aquarium pump
+Wasserpflanzen = aquatic plants
+Hundebett = dog bed
+Hundemantel = dog coat
+Hundekeks = dog biscuit
+Optiker = optician
+Optikerin = optician
+Brillengestell = glasses frame
+Brillenglas = spectacle lens
+Sehtest = eye test
+Sehtafel = eye chart
+Kontaktlinse = contact lens
+Lesebrille = reading glasses
+Kinderbrille = children's glasses
+Brillenputztuch = glasses cloth
+Brillenband = glasses strap

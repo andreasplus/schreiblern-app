@@ -1,0 +1,30 @@
+# Unter Wasser und am Strand
+> Meeresgrund, Sandbank und Strandgut
+Sandbank = sandbank
+Wattenmeer = Wadden Sea
+Meeresgrund = seabed
+Unterwasserwelt = underwater world
+Tiefseefisch = deep-sea fish
+Seetang = seaweed
+Treibholz = driftwood
+Strandgut = flotsam
+Badeinsel = bathing platform
+Bootssteg = boat jetty
+Hafenrundfahrt = harbour tour
+Strandmuschel = beach tent
+Wellenreiten = surfing the waves
+Strandspaziergang = walk on the beach
+Sandkuchen = sand cake
+Wattwanderung = mudflat hike
+Krabbenkutter = shrimp boat
+Fischerboot = fishing boat
+Muschelschale = seashell
+Bernsteinsuche = amber hunting
+Strandspielzeug = beach toys
+Strandball = beach ball toy
+Sandschaufel = sand spade
+Sandeimer = sand bucket
+Meeresrauschen = sound of the sea
+Meeresbrise = sea breeze
+Salzluft = salty air
+Ferieninsel = holiday island

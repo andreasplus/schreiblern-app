@@ -1,0 +1,27 @@
+# Retter und Helfer
+> Wer hilft, wenn es brennt oder kracht
+Atemschutz = breathing apparatus
+Löschwasser = firefighting water
+Löschzug = fire engine convoy
+Feuerwehrleiter = fire ladder
+Rettungshund = rescue dog
+Rettungsschere = rescue cutter
+Wasserwerfer = water cannon
+Polizeimütze = police cap
+Polizeiuniform = police uniform
+Polizeisirene = police siren
+Verkehrspolizist = traffic police officer
+Einsatzwagen = emergency vehicle
+Rettungsdienst = ambulance service
+Rettungswache = ambulance station
+Bergwacht = mountain rescue
+Wasserwacht = water rescue
+Seenotretter = sea rescuer
+Notfallkoffer = emergency case
+Helfer = helper
+Helferin = helper
+Ersthelfer = first aider
+Lebensretter = lifesaver
+Unfallstelle = accident scene
+Absperrband = barrier tape
+Rettungsweg = rescue route

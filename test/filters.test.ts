@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { applyFilters, DEFAULT_FILTERS, letterCount, MAX_LEN, type Filters } from "../src/client/filters.ts";
+import { applyFilters, DEFAULT_FILTERS, filtersFromParams, filtersToParams, letterCount, MAX_LEN, type Filters } from "../src/client/filters.ts";
 import type { Collection, Meaning } from "../src/shared/types.ts";
 
 const m = (id: string, de: string, en: string, collections: Record<string, number> = {}, description: string | null = null): Meaning => ({
   id, wordId: `de:${de}`, de, en, description, kind: "word", number: null, color: null, pictogram: null, status: "reference",
-  collection: null, sortOrder: null, collections: Object.keys(collections), collectionPositions: collections,
+  collection: null, sortOrder: null, difficulty: null, collections: Object.keys(collections), collectionPositions: collections,
 });
 const cols: Collection[] = [
   { id: "tiere", name: "Tiere", description: null, count: 3 },
@@ -61,5 +61,27 @@ describe("applyFilters", () => {
     expect(run({ query: "mous" })).toEqual(["maus"]);
     expect(run({ query: "bar" })).toEqual([]);
     expect(run({ query: "bär" })).toEqual(["baer"]);
+  });
+});
+
+describe("Schwierigkeit und Adressparameter", () => {
+  const withDiff = words.map((w, i) => ({ ...w, difficulty: (i % 5) + 1 }));
+  const runD = (f: Partial<Filters>) => applyFilters(withDiff, cols, { ...DEFAULT_FILTERS, ...f });
+  it("filtert nach Schwierigkeitsstufen", () => {
+    expect(runD({ minDiff: 2, maxDiff: 3 }).every((m) => m.difficulty! >= 2 && m.difficulty! <= 3)).toBe(true);
+    expect(runD({ minDiff: 2, maxDiff: 3 })).toHaveLength(3);
+  });
+  it("sortiert nach Schwierigkeit, dann nach Länge", () => {
+    const d = runD({ sort: "difficulty" }).map((m) => m.difficulty);
+    expect(d).toEqual([...d].sort());
+  });
+  it("übersetzt Filter verlustfrei in Adressparameter und zurück", () => {
+    const f: Filters = { query: "Bär", collection: "tiere", lang: "en", minLen: 3, maxLen: 5, minDiff: 2, maxDiff: 4, sort: "difficulty" };
+    expect(filtersFromParams(filtersToParams(f))).toEqual(f);
+    expect(filtersToParams(DEFAULT_FILTERS).toString()).toBe("");
+  });
+  it("ersetzt ungültige Parameter durch Standardwerte", () => {
+    const f = filtersFromParams(new URLSearchParams("collection=../x&minDiff=9&maxDiff=0&sort=evil&minLen=abc"));
+    expect(f).toEqual(DEFAULT_FILTERS);
   });
 });

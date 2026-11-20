@@ -1,0 +1,31 @@
+# Obst- und Gemüsesorten
+> Noch mehr Früchte und Gemüse
+Spitzkohl = pointed cabbage
+Wirsing = savoy cabbage
+Chinakohl = Chinese leaves
+Mangold = chard
+Pastinake = parsnip
+Steckrübe = swede
+Petersilienwurzel = parsley root
+Schwarzwurzel = salsify
+Zuckerschote = mangetout
+Kirschtomate = cherry tomato
+Fleischtomate = beef tomato
+Peperoni = hot pepper
+Kidneybohne = kidney bean
+Brechbohne = green bean
+Erbsenschote = pea pod
+Zuckermais = sweetcorn
+Marone = roasted chestnut
+Physalis = physalis
+Kumquat = kumquat
+Drachenfrucht = dragon fruit
+Cranberry = cranberry
+Holunderbeere = elderberry fruit
+Hagebutte = rose hip
+Schlehe = sloe
+Sanddorn = sea buckthorn
+Reneklode = greengage
+Wildapfel = crab apple
+Babykarotte = baby carrot
+rote Zwiebel = red onion

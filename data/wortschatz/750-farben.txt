@@ -1,0 +1,43 @@
+# Farben
+## Farbwörter mit Farbkreis
+pink = pink #e754a6
+türkis = turquoise #22b8b0
+grau = grey #8c8c8c
+beige = beige #e6d3b3
+silber = silver #c0c0c8
+gold = gold #d4a017
+hellblau = light blue #8cc8f0
+dunkelblau = dark blue #1f3c88
+hellgrün = light green #9ad66a
+dunkelgrün = dark green #1f6b35
+dunkelrot = dark red #8b1a1a
+violett = violet #7f3fbf
+## Rund um Farben
+Farbe = paint
+Farbkasten = paint box
+Regenbogen = rainbow
+Farbkreis = colour wheel
+bunt = colourful
+farbig = coloured
+farblos = colourless
+hell = bright
+dunkel = dark
+blass = pale
+grell = garish
+kunterbunt = multicoloured
+schwarz-weiß = black and white
+rötlich = reddish
+bläulich = bluish
+grünlich = greenish
+gelblich = yellowish
+himmelblau = sky blue
+knallrot = bright red
+zitronengelb = lemon yellow
+grasgrün = grass green
+schneeweiß = snow white
+pechschwarz = pitch black
+rosarot = rose red
+malen = paint
+mischen = mix
+färben = dye
+anmalen = colour in

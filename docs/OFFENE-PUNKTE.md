@@ -14,7 +14,16 @@
 - Sammlungen liegen in `data/collections.json` und den Tabellen `collections` und `collection_items` (Migration 0002). Eine Bedeutung kann in mehreren Sammlungen stehen. Der Seed-Import ergänzt neue Mitglieder, entfernt aber keine. Dafür braucht es eine Migration.
 - „Kurze Wörter“ ist bewusst ein Längenfilter (Deutsch oder Englisch) und keine feste Sammlung.
 - Neu und ungeprüft: orange, lila, rosa, braun, schwarz, weiß sowie Vogel, Wolke, Baum, Blume und Herz mit eigenen Zeichnungen.
-- `/api/words` liefert alle Bedeutungen, gefiltert und sortiert wird im Browser. Ab einigen tausend Wörtern braucht es serverseitige Filter und Seiten.
+- `/api/words` filtert und sortiert serverseitig und liefert Seiten zu 120 Wörtern (`limit` bis 500, `offset`). Parameter: `q`, `collection`, `lang`, `minLen`, `maxLen`, `minDiff`, `maxDiff`, `sort` (`collection`, `alpha`, `length`, `difficulty`). Die Sammlungsauswahl ist bei 242 Sammlungen eine Liste statt Knöpfen.
+- Der Worker liest für „Alle Sammlungen“ je Abruf alle rund 10.000 Bedeutungen und filtert sie (lokal etwa 0,3 s, davon 20 bis 30 ms Rechenzeit). Im kostenlosen Workers-Tarif (10 ms CPU) kann das knapp werden. Wenn ja: Buchstabenzahl als Spalte speichern und alles in SQL filtern, oder Antworten zwischenspeichern.
+
+## Wortschatz (10.000 Wörter)
+
+- 10.057 Bedeutungen (10.021 Wörter) in 242 Sammlungen aus dem Alltag, Textdateien in `data/wortschatz/`. Format und Regeln stehen im README.
+- **Alles ungeprüft** (`draft`) und **ohne Bilder**. Übersetzungen und Bedeutungsangaben sollten stichprobenartig geprüft werden, besonders bei Wörtern mit mehreren Bedeutungen.
+- Enthalten sind auch Mehrzahlformen (Äpfel, Bäume), Zeitformen (ging, gelaufen, er läuft) und Steigerungen (größer, am größten), weil gerade diese Schreibweisen geübt werden.
+- Schwierigkeit ist eine Regel, kein Urteil von Lehrkräften. Verteilung: Stufe 1 4 %, 2 17 %, 3 25 %, 4 30 %, 5 23 %. Wenn die Stufen zu streng wirken, lassen sich die Schwellen in `src/shared/difficulty.ts` an einer Stelle anpassen; der nächste Seed setzt die Stufe aber nur bei leeren Werten, für bestehende braucht es eine Migration.
+- Migration 0003 legt die Spalte `meanings.difficulty` an; der Seed trägt sie auch bei bestehenden Einträgen nach.
 
 ## Noch zu prüfen
 

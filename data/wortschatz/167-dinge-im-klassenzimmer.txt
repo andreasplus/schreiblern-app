@@ -1,0 +1,30 @@
+# Dinge im Klassenzimmer
+> Pult, Tafel und Leisten
+Klassenschrank = classroom cupboard
+Lehrerpult = teacher's desk
+Beamer = digital projector
+Tafellappen = board cloth
+Tafelschwamm = board sponge
+Kreidestück = piece of chalk
+Wandkarte = wall map
+Weltkugel = world globe
+Buchstabenleiste = alphabet strip
+Zahlenleiste = number strip
+Klassenuhr = classroom clock
+Schülertisch = pupil's desk
+Schulstuhl = school chair
+Garderobenleiste = coat rack
+Fensterbankpflanze = windowsill plant
+Klassenfenster = classroom window
+Klassentür = classroom door
+Ablagefach = filing tray
+Materialschrank = supply cupboard
+Leseteppich = reading carpet
+Kuschelecke = cosy corner
+Tafelbild = board work
+Arbeitsheft = workbook
+Kopiervorlage = photocopiable sheet
+Folienstift = OHP pen
+Magnetbuchstabe = magnetic letter
+Klassentier = class pet
+Klassenmaskottchen = class mascot

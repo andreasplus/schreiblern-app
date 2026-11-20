@@ -1,0 +1,27 @@
+# Werkzeuge der Berufe
+> Womit Menschen arbeiten
+Arztkittel = doctor's coat
+Malerpinsel = decorator's brush
+Maurerkelle = bricklayer's trowel
+Gärtnerschürze = gardener's apron
+Polizeikelle = police signalling disc
+Feuerwehraxt = fire axe
+Friseurschere = hairdressing scissors
+Bäckermütze = baker's hat
+Postsack = mailbag
+Kochschürze = chef's apron
+Werkzeuggürtel = tool belt
+Sicherheitsweste = safety vest
+Schweißgerät = welding machine
+Lötkolben = soldering iron
+Zahnarztbohrer = dentist's drill
+Tierarztkoffer = vet's bag
+Fischernetz = fishing net
+Melkmaschine = milking machine
+Kehrbesen = street broom
+Notizblock = memo pad
+Diktiergerät = dictaphone
+Kasse = till
+Registrierkasse = cash register
+Barcodescanner = barcode scanner
+Gepäckwagen = luggage trolley

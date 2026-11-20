@@ -1,0 +1,36 @@
+# Rad, Auto und Bauernhof
+> Noch mehr Wörter für unterwegs und auf dem Hof
+Fahrradkorb = bike basket
+Gangschaltung = gears
+Rückstrahler = reflector
+Tretroller = scooter
+Gaspedal = accelerator
+Rückspiegel = rear-view mirror
+Rücksitz = back seat
+Beifahrer = passenger
+Ersatzrad = spare wheel
+Tankdeckel = fuel cap
+Navi = sat nav
+Knopfdruck = push of a button
+Futtertrog = feeding trough
+Garn = yarn
+Angelrute = fishing rod
+Angelhaken = fish hook
+Wachturm = watchtower
+Brieffreund = pen pal
+Liebesbrief = love letter
+Dankesbrief = thank-you letter
+Paketbote = parcel carrier
+Paketband = parcel tape
+Geschenkkarte = gift card
+Spielplatzrutsche = playground slide
+Kinderkrippe = crèche
+Kinderschuh = children's shoe
+Kinderkarussell = merry-go-round
+Schulheft = exercise book
+Schulbrot = packed lunch
+Schulferien = school holidays
+Schulleiter = head teacher
+Pausenglocke = break bell
+Fußballfan = football fan
+Ballspielplatz = ball court

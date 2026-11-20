@@ -1,0 +1,33 @@
+# Tierkinder
+> Wie die Tierbabys heißen
+Tierkind = baby animal
+Welpe = puppy
+Kätzchen = kitten
+Kalb = calf
+Fohlen = foal
+Ferkel = piglet
+Lamm = lamb
+Zicklein = kid
+Küken = chick
+Entenküken = duckling
+Gänseküken = gosling
+Rehkitz = fawn
+Frischling = young boar
+Häschen = bunny
+Jungtier = young animal
+Bärenjunges = bear cub
+Löwenbaby = lion cub
+Kaulquappe = tadpole
+Raupe (Tier) = caterpillar
+Larve = larva
+Ei = egg
+Nest = nest
+Mutter (Elternteil) = mother
+Vater = father
+Familie = family
+Tiermama = animal mother
+Junge = boy
+klein = small
+süß = sweet
+jung = young
+tapsig = clumsy

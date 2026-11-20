@@ -1,11 +1,14 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Collection, Meaning } from "../shared/types.ts";
-import { fetchCollections, fetchMeanings, fetchWords } from "./api.ts";
+import { fetchCollections, fetchMeanings, fetchWords, WORDS_PAGE } from "./api.ts";
 import { MeaningLabel, PictogramThumb, Worksheet } from "./Worksheet.tsx";
 import { readSelection, writeSelection, MAX_SELECTION } from "./selection.ts";
-import { applyFilters, DEFAULT_FILTERS, MAX_LEN, letterCount, type Filters, type SortKey } from "./filters.ts";
+import { DEFAULT_FILTERS, MAX_DIFF, MAX_LEN, letterCount, type Filters, type SortKey } from "./filters.ts";
+import { DIFFICULTY_LABELS } from "../shared/difficulty.ts";
 
 type LoadState = { status: "loading" } | { status: "error"; message: string } | { status: "ready" };
+
+const DIFF_LEVELS = Array.from({ length: MAX_DIFF }, (_, i) => i + 1);
 
 async function fontsReady() {
   await document.fonts.load('27px "ABeeZee"');
@@ -23,6 +26,10 @@ const LENGTH_PRESETS: Array<{ label: string; min: number; max: number }> = [
 export function App() {
   const [load, setLoad] = useState<LoadState>({ status: "loading" });
   const [words, setWords] = useState<Meaning[]>([]);
+  const [total, setTotal] = useState(0);
+  const [allCount, setAllCount] = useState<number | null>(null);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [reload, setReload] = useState(0);
   const [collections, setCollections] = useState<Collection[]>([]);
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS);
   const [preview, setPreview] = useState<Meaning | null>(null);
@@ -32,17 +39,45 @@ export function App() {
   const [busy, setBusy] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const loadAll = useCallback(() => {
-    setLoad({ status: "loading" });
-    Promise.all([fetchWords(), fetchCollections()])
-      .then(([w, c]) => {
-        setWords(w);
-        setCollections(c);
-        setLoad({ status: "ready" });
-      })
+  useEffect(() => {
+    fetchCollections()
+      .then(setCollections)
       .catch((e: Error) => setLoad({ status: "error", message: e.message }));
-  }, []);
-  useEffect(loadAll, [loadAll]);
+  }, [reload]);
+
+  // Der Server filtert und sortiert; geladen wird seitenweise. Tippen in der Suche wird kurz abgewartet.
+  useEffect(() => {
+    const ctrl = new AbortController();
+    setLoad({ status: "loading" });
+    const t = setTimeout(() => {
+      fetchWords(filters, 0, ctrl.signal)
+        .then((page) => {
+          setWords(page.meanings);
+          setTotal(page.total);
+          if (JSON.stringify(filters) === JSON.stringify(DEFAULT_FILTERS)) setAllCount(page.total);
+          setLoad({ status: "ready" });
+        })
+        .catch((e: Error) => {
+          if (!ctrl.signal.aborted) setLoad({ status: "error", message: e.message });
+        });
+    }, filters.query ? 250 : 0);
+    return () => {
+      clearTimeout(t);
+      ctrl.abort();
+    };
+  }, [filters, reload]);
+  const loadAll = () => setReload((n) => n + 1);
+
+  const loadMore = () => {
+    setLoadingMore(true);
+    fetchWords(filters, words.length)
+      .then((page) => {
+        setWords((w) => [...w, ...page.meanings.filter((m) => !w.some((x) => x.id === m.id))]);
+        setTotal(page.total);
+      })
+      .catch((e: Error) => setNotice(`Weitere Wörter konnten nicht geladen werden: ${e.message}`))
+      .finally(() => setLoadingMore(false));
+  };
 
   // Druckauswahl aus der Adresse wiederherstellen (#auswahl=id1,id2).
   useEffect(() => {
@@ -58,7 +93,7 @@ export function App() {
     if (hash !== window.location.hash) history.replaceState(null, "", hash || window.location.pathname + window.location.search);
   }, [selection]);
 
-  const visible = useMemo(() => applyFilters(words, collections, filters), [words, collections, filters]);
+  const visible = words;
   const inSelection = useMemo(() => new Set(selection.map((m) => m.id)), [selection]);
   const collectionName = useMemo(() => new Map(collections.map((c) => [c.id, c.name])), [collections]);
   const setFilter = <K extends keyof Filters>(key: K, value: Filters[K]) => setFilters((f) => ({ ...f, [key]: value }));
@@ -137,31 +172,26 @@ export function App() {
                 onChange={(e) => setFilter("query", e.target.value)}
               />
 
-              <div className="chips" role="group" aria-label="Sammlung">
-                <button type="button" className={`chip${filters.collection === "" ? " is-active" : ""}`} aria-pressed={filters.collection === ""} onClick={() => setFilter("collection", "")}>
-                  Alle <span className="chip-count">{words.length}</span>
-                </button>
-                {collections.map((c) => (
-                  <button
-                    key={c.id}
-                    type="button"
-                    className={`chip${filters.collection === c.id ? " is-active" : ""}`}
-                    aria-pressed={filters.collection === c.id}
-                    title={c.description ?? undefined}
-                    onClick={() => setFilter("collection", c.id)}
-                  >
-                    {c.name} <span className="chip-count">{c.count}</span>
-                  </button>
-                ))}
-              </div>
+              <label className="control collection-control">
+                <span>Sammlung</span>
+                <select aria-label="Sammlung" value={filters.collection} onChange={(e) => setFilter("collection", e.target.value)}>
+                  <option value="">Alle Sammlungen{allCount !== null ? ` (${allCount})` : ""}</option>
+                  {collections.map((c) => (
+                    <option key={c.id} value={c.id} title={c.description ?? undefined}>
+                      {c.name} ({c.count})
+                    </option>
+                  ))}
+                </select>
+              </label>
 
               <div className="controls">
                 <label className="control">
                   <span>Sortieren</span>
-                  <select value={filters.sort} onChange={(e) => setFilter("sort", e.target.value as SortKey)}>
+                  <select aria-label="Sortieren" value={filters.sort} onChange={(e) => setFilter("sort", e.target.value as SortKey)}>
                     <option value="collection">nach Sammlung</option>
                     <option value="alpha">alphabetisch</option>
                     <option value="length">nach Länge</option>
+                    <option value="difficulty">nach Schwierigkeit</option>
                   </select>
                 </label>
 
@@ -193,6 +223,27 @@ export function App() {
                 </div>
               </div>
 
+              <div className="controls">
+                <div className="control" role="group" aria-label="Schwierigkeit">
+                  <span>Schwierigkeit</span>
+                  <div className="range">
+                    <select aria-label="Schwierigkeit ab" value={filters.minDiff} onChange={(e) => {
+                      const v = Number(e.target.value);
+                      setFilters((f) => ({ ...f, minDiff: v, maxDiff: Math.max(v, f.maxDiff) }));
+                    }}>
+                      {DIFF_LEVELS.map((n) => <option key={n} value={n}>{n} {DIFFICULTY_LABELS[n as 1]}</option>)}
+                    </select>
+                    <span>bis</span>
+                    <select aria-label="Schwierigkeit bis" value={filters.maxDiff} onChange={(e) => {
+                      const v = Number(e.target.value);
+                      setFilters((f) => ({ ...f, maxDiff: v, minDiff: Math.min(v, f.minDiff) }));
+                    }}>
+                      {DIFF_LEVELS.map((n) => <option key={n} value={n}>{n} {DIFFICULTY_LABELS[n as 1]}</option>)}
+                    </select>
+                  </div>
+                </div>
+              </div>
+
               <div className="chips small-chips" role="group" aria-label="Schnellauswahl Länge">
                 {LENGTH_PRESETS.map((p) => (
                   <button key={p.label} type="button" className={`chip${lengthActive(p.min, p.max) ? " is-active" : ""}`} aria-pressed={lengthActive(p.min, p.max)} onClick={() => setFilters((f) => ({ ...f, minLen: p.min, maxLen: p.max }))}>
@@ -204,7 +255,8 @@ export function App() {
 
             <div className="grid-head">
               <p className="count" role="status">
-                {load.status === "ready" && (visible.length === 1 ? "1 Wort" : `${visible.length} Wörter`)}
+                {load.status === "ready" && (total === 1 ? "1 Wort" : `${total.toLocaleString("de-DE")} Wörter`)}
+                {load.status === "ready" && total > visible.length && ` · ${visible.length} angezeigt`}
               </p>
               {filtered && <button type="button" className="link" onClick={() => setFilters(DEFAULT_FILTERS)}>Filter zurücksetzen</button>}
               <div className="spacer" />
@@ -237,7 +289,8 @@ export function App() {
                       <span className="word-en">{m.en}</span>
                       {m.description && <span className="word-desc">{m.description}</span>}
                       <span className="word-meta">
-                        {letterCount(filters.lang === "de" ? m.de : m.en)} Buchst.
+                        <span>{letterCount(filters.lang === "de" ? m.de : m.en)} Buchst.</span>
+                        {m.difficulty !== null && <span title={DIFFICULTY_LABELS[m.difficulty as 1]}>Stufe {m.difficulty}</span>}
                         {m.status === "draft" && <span className="badge">ungeprüft</span>}
                       </span>
                     </button>
@@ -255,6 +308,13 @@ export function App() {
                 );
               })}
             </ul>
+            {load.status === "ready" && total > visible.length && (
+              <p className="load-more">
+                <button type="button" disabled={loadingMore} onClick={loadMore}>
+                  {loadingMore ? "Wird geladen …" : `Weitere Wörter laden (${Math.min(WORDS_PAGE, total - visible.length)} von ${total - visible.length})`}
+                </button>
+              </p>
+            )}
           </main>
 
           <aside className="panel selection-panel" aria-labelledby="selection-title">

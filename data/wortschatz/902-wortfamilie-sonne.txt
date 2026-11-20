@@ -1,0 +1,32 @@
+# Wortfamilie Sonne
+> Zusammengesetzte Wörter mit Sonne
+Sonne = sun
+Sonnenaufgang = sunrise
+Sonnenbad = sunbathing
+Sonnenblume = sunflower
+Sonnenblumenkern = sunflower seed
+Sonnenbrand = sunburn
+Sonnenbrille = sunglasses
+Sonnencreme = sun cream
+Sonnendach = sun canopy
+Sonnenenergie = solar energy
+Sonnenfinsternis = solar eclipse
+Sonnenhut = sun hat
+Sonnenkäfer = sun beetle
+Sonnenlicht = sunlight
+Sonnenschein = sunshine
+Sonnenschirm = parasol
+Sonnenstrahl = sunbeam
+Sonnenstich = sunstroke
+Sonnensystem = solar system
+Sonnenuhr = sundial
+Sonnenuntergang = sunset
+Sonnenwärme = warmth of the sun
+Sonnenseite = sunny side
+Sonntag = Sunday
+Abendsonne = evening sun
+Morgensonne = morning sun
+Mittagssonne = midday sun
+Wintersonne = winter sun
+sonnig = sunny
+sonnen = sunbathe

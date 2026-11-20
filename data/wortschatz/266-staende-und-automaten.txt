@@ -1,0 +1,32 @@
+# Stände, Buden und Automaten
+> Pizza, Pommes und Popcorn unterwegs
+Pizzastück = slice of pizza
+Pizzabrötchen = pizza roll
+Pizzaofen = pizza oven
+Pizzabäcker = pizza chef
+Pizzakarton = pizza box
+Pizzaschnecke = pizza swirl
+Burgerbrötchen = burger bun
+Pommesgabel = chip fork
+Pommesbude = chip stand
+Eiskaffee = iced coffee
+Eisschokolade = iced chocolate
+Eiswaffel = ice cream wafer
+Eistorte = ice cream cake
+Obststand = fruit stall
+Gemüsestand = vegetable stall
+Fischstand = fish stall
+Käsestand = cheese stall
+Brotstand = bread stall
+Marktschreier = market crier
+Wurststand = sausage stand
+Crêpestand = crêpe stand
+Waffelstand = waffle stand
+Popcornmaschine = popcorn machine
+Zuckerwattemaschine = candyfloss machine
+Süßigkeitenautomat = sweet machine
+Kaugummiautomat = gum machine
+Getränkeautomat = drinks machine
+Fahrkartenschalter = ticket office
+Imbissbude = snack stand
+Eiswagenglocke = ice cream van bell
